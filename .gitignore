@@ -1,0 +1,8 @@
+# AI Documentation
+walkthrough.md
+brain/
+
+# IDE/Junk
+.DS_Store
+node_modules/
+.env
