@@ -296,6 +296,7 @@ services:
       - "443:443"  # Reserved for future SSL
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./ssl:/etc/caddy/ssl:ro
       - caddy_data:/data
       - caddy_config:/config
     healthcheck:

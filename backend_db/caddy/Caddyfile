@@ -8,7 +8,9 @@
 }
 
 # Frontend domain (serves the React app) and also proxies /api/* to backend
-{$FRONTEND_DOMAIN} {
+grandpluscollege.com, www.grandpluscollege.com {
+    tls /etc/caddy/ssl/cf_origin_cert.pem /etc/caddy/ssl/cf_private_key.key
+
     # API routes → backend service (strip /api prefix)
     handle /api/* {
         uri strip_prefix /api
@@ -31,9 +33,9 @@
     }
 }
 
-# Backend domain (optional): proxies *all* traffic to backend.
-# Useful if you want a dedicated API hostname like api.example.com.
-{$BACKEND_DOMAIN} {
+# Backend domain: proxies all traffic to backend.
+api.grandpluscollege.com {
+    tls /etc/caddy/ssl/cf_origin_cert.pem /etc/caddy/ssl/cf_private_key.key
     reverse_proxy backend:{$BACKEND_PORT}
 
     log {
