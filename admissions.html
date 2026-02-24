@@ -12,6 +12,8 @@
     <!-- Use existing styles + isolated tailwind for the specific layout if needed, 
          but simplified to match the site's compact look -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png" type="image/png" />
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { font-family: 'Poppins', sans-serif; }
         .adm-header {
@@ -149,17 +151,53 @@
 </head>
 <body class="bg-light">
 
-    <header class="adm-header">
-        <a href="index.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 4px;">
-            <img src="logo.png" alt="Logo" class="logo-img" style="height: 20px;">
-            <span style="font-size: 11px; font-weight: 600;">Home</span>
-        </a>
-        <nav style="flex: 1; display: flex; justify-content: center; gap: 12px;">
-            <a href="programs.html" style="font-size: 12px; font-weight: 600; color: var(--dark-blue); text-decoration: none;">Programs</a>
-            <a href="admissions.html" style="font-size: 12px; font-weight: 700; color: var(--primary-blue); text-decoration: none;">Admissions</a>
-        </nav>
-        <span class="material-symbols-outlined" style="opacity: 0.5;">share</span>
+    <header class="header">
+        <div class="container header-content">
+            <h1 class="brand">
+                <a href="index.html" class="brand-link">
+                    <img src="logo.png" alt="Grand Plus College Logo" class="logo-img">
+                    Grand Plus College
+                </a>
+            </h1>
+            <button id="hamburger-btn" class="hamburger-btn" aria-label="Open menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+        <div class="mobile-menu-drawer">
+            <div class="mobile-menu-header">
+                <div class="brand">
+                    <a href="index.html" class="brand-link">
+                        <img src="logo.png" alt="Grand Plus College Logo" class="logo-img">
+                        Grand Plus
+                    </a>
+                </div>
+                <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <nav class="mobile-menu-nav">
+                <a href="index.html" class="mobile-menu-link">
+                    Home
+                    <i data-lucide="chevron-right" class="size-4"></i>
+                </a>
+                <a href="programs.html" class="mobile-menu-link">
+                    Programs
+                    <i data-lucide="chevron-right" class="size-4"></i>
+                </a>
+                <a href="admissions.html" class="mobile-menu-link active">
+                    Admissions
+                    <i data-lucide="chevron-right" class="size-4"></i>
+                </a>
+            </nav>
+            <div class="mobile-menu-footer">
+                <a href="apply.html" class="btn btn-primary" style="width: 100%; text-decoration: none;">Apply Now</a>
+            </div>
+        </div>
+    </div>
 
     <main class="container" style="padding-top: 20px; padding-bottom: 100px;">
         
@@ -244,15 +282,17 @@
         </section>
 
         <div class="adm-footer-cta">
-            <button class="btn btn-primary" style="width: 100%; height: 52px; font-size: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 10px 15px -3px rgba(11, 79, 156, 0.3);">
+            <a href="apply.html" class="btn btn-primary" style="width: 100%; height: 52px; font-size: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 10px 15px -3px rgba(11, 79, 156, 0.3); text-decoration: none;">
                 Apply Now
                 <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
+            </a>
         </div>
 
     </main>
 
+    <script src="menu.js"></script>
     <script>
+        lucide.createIcons();
         document.querySelectorAll('.adm-accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 header.parentElement.classList.toggle('active');
