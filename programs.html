@@ -65,44 +65,41 @@
         </section>
 
 
-        <!-- Filters -->
-        <section class="pg-filter-section">
-            <div class="container">
-                <div class="pg-filter-container">
-                    <!-- Segment Pills -->
-                    <div class="pg-segments" id="segment-pills">
+        <!-- Filter + Cards Layout -->
+        <div class="pg-main-layout">
+            <aside class="pg-filter-sidebar">
+                <div class="pg-filter-panel">
+                    <div class="pg-filter-list" id="segment-pills" role="list">
+                        <div class="pg-filter-label">Program type</div>
                         <div class="pg-segment pg-segment-active" data-segment="all">All</div>
                         <div class="pg-segment" data-segment="undergraduate">NCE Programs</div>
                         <div class="pg-segment" data-segment="certificate">Certificate</div>
                     </div>
-
-                    <!-- Premium Dropdown -->
-                    <div class="pg-dropdown" id="dept-dropdown">
-                        <div class="pg-dropdown-trigger">
-                            <span id="selected-dept-label">All Depts</span>
-                            <i data-lucide="chevron-down"></i>
+                    <div class="pg-filter-list pg-filter-dept-list" id="dept-dropdown" role="list">
+                        <div class="pg-filter-dept-header">
+                            <span class="pg-filter-label">Department</span>
+                            <i data-lucide="chevron-down" class="pg-filter-chevron" aria-hidden="true"></i>
                         </div>
                         <div class="pg-dropdown-menu">
                             <div class="pg-dropdown-item active" data-dept="all">All Departments</div>
                             <div class="pg-dropdown-item" data-dept="health">Health Sciences</div>
-                            <div class="pg-dropdown-item" data-dept="technology">Technology & IT</div>
-                            <div class="pg-dropdown-item" data-dept="business">Business & Econ</div>
+                            <div class="pg-dropdown-item" data-dept="technology">Technology &amp; IT</div>
+                            <div class="pg-dropdown-item" data-dept="business">Business &amp; Econ</div>
                             <div class="pg-dropdown-item" data-dept="computer">Computer Education</div>
-                            <div class="pg-dropdown-item" data-dept="languages">Languages & Religion</div>
+                            <div class="pg-dropdown-item" data-dept="languages">Languages &amp; Religion</div>
                             <div class="pg-dropdown-item" data-dept="science">Integrated Science</div>
-                            <div class="pg-dropdown-item" data-dept="math">Math & Physical Sciences</div>
-                            <div class="pg-dropdown-item" data-dept="social">Social & Political Sciences</div>
+                            <div class="pg-dropdown-item" data-dept="math">Math &amp; Physical Sciences</div>
+                            <div class="pg-dropdown-item" data-dept="social">Social &amp; Political Sciences</div>
                             <div class="pg-dropdown-item" data-dept="education">Education Programs</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </aside>
 
-        <!-- Program Cards -->
-        <section class="pg-cards-section">
-            <div class="container">
-                <div class="pg-grid" id="program-grid">
+            <!-- Program Cards -->
+            <section class="pg-cards-section">
+                <div class="pg-cards-inner">
+                    <div class="pg-grid" id="program-grid">
 
                     <!-- Health Sciences Group -->
                     <div class="pg-dept-header" data-dept="health">
@@ -609,9 +606,10 @@
                         </div>
                     </article>
 
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <!-- Pagination -->
         <section class="pg-pagination-section">
@@ -650,9 +648,8 @@
         lucide.createIcons();
 
         // UI Elements
-        const deptDropdown = document.getElementById('dept-dropdown');
-        const deptTrigger = deptDropdown.querySelector('.pg-dropdown-trigger');
-        const deptItems = deptDropdown.querySelectorAll('.pg-dropdown-item');
+        const deptBlock = document.getElementById('dept-dropdown');
+        const deptItems = deptBlock ? deptBlock.querySelectorAll('.pg-dropdown-item') : [];
         const segmentPills = document.querySelectorAll('.pg-segment');
         const cards = document.querySelectorAll('.pg-card');
         const headers = document.querySelectorAll('.pg-dept-header');
@@ -661,13 +658,11 @@
         let currentDept = 'all';
         let currentSegment = 'all';
 
-        // Toggle Dropdown
-        deptTrigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            deptDropdown.classList.toggle('active');
-        });
-
-        document.addEventListener('click', () => deptDropdown.classList.remove('active'));
+        // Optional: toggle department list on mobile (chevron)
+        const deptHeader = document.querySelector('.pg-filter-dept-header');
+        if (deptHeader && deptBlock) {
+            deptHeader.addEventListener('click', () => deptBlock.classList.toggle('active'));
+        }
 
         function applyFilters() {
             headers.forEach(header => {
@@ -705,7 +700,7 @@
                 deptItems.forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
                 currentDept = item.dataset.dept;
-                label.textContent = item.textContent;
+                if (label) label.textContent = item.textContent.trim();
                 applyFilters();
             });
         });

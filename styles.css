@@ -838,145 +838,183 @@ ol {
     max-width: 480px;
 }
 
-/* Filter Bar Refinement */
-.pg-filter-section {
-    padding: 10px 0;
+/* Programs: Main layout (sidebar + cards) */
+.pg-main-layout {
+    display: flex;
+    gap: 32px;
+    padding: 0 0 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+}
+
+.pg-filter-sidebar {
+    flex-shrink: 0;
+    width: 240px;
     position: sticky;
-    top: 52px;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    z-index: 95;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    top: 68px;
+    align-self: flex-start;
 }
 
-.pg-filter-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    flex-wrap: nowrap; /* Ensure no wrapping on mobile */
-}
-
-/* Pills Segment */
-.pg-segments {
-    display: flex;
-    background: rgba(238, 242, 246, 0.7);
-    backdrop-filter: blur(8px);
-    padding: 4px;
+.pg-filter-panel {
+    background: var(--white);
     border-radius: 12px;
+    padding: 20px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.pg-filter-list {
+    display: flex;
+    flex-direction: column;
     gap: 2px;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    flex: 1; /* Take available space */
-    min-width: 0; /* Important for flex-shrink/overflow in flex container */
 }
 
-.pg-segments::-webkit-scrollbar {
-    display: none;
+.pg-filter-list + .pg-filter-list {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
 }
 
-.pg-segment {
-    font-size: 13px;
+.pg-filter-label {
+    font-size: 11px;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: var(--text-muted);
-    padding: 8px 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    white-space: nowrap;
+    margin-bottom: 10px;
+    padding: 0 20px;
 }
 
-.pg-segment-active {
-    background: var(--white);
-    color: var(--primary-blue);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+.pg-filter-sidebar .pg-segment {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark-blue);
+    padding: 10px 20px;
+    border-radius: 0;
+    text-align: left;
+    background: transparent;
+    border-left: 3px solid transparent;
+    margin: 0;
 }
 
-/* Premium Dropdown */
-.pg-dropdown {
-    position: relative;
-    width: 130px;
-    flex-shrink: 0; /* Don't let it shrink */
-}
-
-.pg-dropdown-trigger {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--white);
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 10px 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-}
-
-.pg-dropdown-trigger span {
-    font-size: 13px;
-    font-weight: 600;
+.pg-filter-sidebar .pg-segment:hover {
+    background: #f8fafc;
     color: var(--dark-blue);
 }
 
-.pg-dropdown-trigger i {
+.pg-filter-sidebar .pg-segment-active {
+    background: #f1f7ff;
+    color: var(--primary-blue);
+    font-weight: 600;
+    border-left-color: var(--primary-blue);
+    box-shadow: none;
+}
+
+.pg-filter-dept-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pg-filter-dept-header .pg-filter-label {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.pg-filter-chevron {
     color: var(--text-muted);
+    width: 16px;
+    height: 16px;
     transition: transform 0.2s;
 }
 
-.pg-dropdown.active .pg-dropdown-trigger i {
+.pg-filter-dept-list.active .pg-filter-chevron {
     transform: rotate(180deg);
 }
 
-.pg-dropdown-menu {
-    position: absolute;
-    top: calc(100% + 12px);
-    right: 0;
-    width: 220px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-radius: 18px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    padding: 8px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 100;
-}
-
-.pg-dropdown.active .pg-dropdown-menu {
+.pg-filter-sidebar .pg-dropdown-menu {
+    position: static;
+    width: auto;
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
 }
 
-.pg-dropdown-item {
-    font-size: 13px;
+.pg-filter-sidebar .pg-dropdown-item {
+    font-size: 14px;
     font-weight: 500;
-    color: var(--text-primary);
-    padding: 10px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: background 0.2s;
+    color: var(--dark-blue);
+    padding: 10px 20px 10px 24px;
+    border-radius: 0;
+    border-left: 3px solid transparent;
+    transition: background 0.2s, color 0.2s;
 }
 
-.pg-dropdown-item:hover {
+.pg-filter-sidebar .pg-dropdown-item:hover {
     background: #f8fafc;
 }
 
-.pg-dropdown-item.active {
+.pg-filter-sidebar .pg-dropdown-item.active {
     background: #f1f7ff;
     color: var(--primary-blue);
-    font-weight: 700;
+    font-weight: 600;
+    border-left-color: var(--primary-blue);
+}
+
+.pg-cards-inner {
+    flex: 1;
+    min-width: 0;
+}
+
+.pg-cards-section .pg-grid {
+    margin-top: 0;
+}
+
+/* Mobile: stack filter above cards, collapsible department list */
+@media (max-width: 900px) {
+    .pg-main-layout {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .pg-filter-sidebar {
+        position: static;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .pg-filter-panel {
+        padding: 16px 0;
+    }
+
+    .pg-filter-dept-list .pg-dropdown-menu {
+        display: none;
+    }
+
+    .pg-filter-dept-list.active .pg-dropdown-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .pg-filter-sidebar .pg-segment,
+    .pg-filter-sidebar .pg-dropdown-item {
+        padding-left: 16px;
+    }
+
+    .pg-filter-sidebar .pg-dropdown-item {
+        padding-left: 20px;
+    }
 }
 
 /* Department Group Headers */
