@@ -848,10 +848,6 @@ ol {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0 16px;
-    box-sizing: border-box;
 }
 
 .pg-chips-scroll::-webkit-scrollbar {
