@@ -7,6 +7,8 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -51,11 +53,49 @@
             <img src="logo.png" alt="Logo" class="h-6 w-auto">
             <h1 class="text-lg font-bold tracking-tight text-primary">Grand Plus College</h1>
         </div>
-        <div class="size-10 flex items-center justify-center">
-            <span class="material-symbols-outlined text-primary/40">account_circle</span>
-        </div>
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Open menu">
+            <i data-lucide="menu"></i>
+        </button>
     </div>
 </header>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu-overlay" class="mobile-menu-overlay">
+    <div class="mobile-menu-drawer">
+        <div class="mobile-menu-header">
+            <div class="brand">
+                <a href="index.html" class="brand-link">
+                    <img src="logo.png" alt="Grand Plus College Logo" class="logo-img">
+                    Grand Plus
+                </a>
+            </div>
+            <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <a href="index.html" class="mobile-menu-link">
+                Home
+                <i data-lucide="chevron-right" class="size-4"></i>
+            </a>
+            <a href="programs.html" class="mobile-menu-link">
+                Programs
+                <i data-lucide="chevron-right" class="size-4"></i>
+            </a>
+            <a href="admissions.html" class="mobile-menu-link">
+                Admissions
+                <i data-lucide="chevron-right" class="size-4"></i>
+            </a>
+            <a href="fees.html" class="mobile-menu-link">
+                Fees & Payments
+                <i data-lucide="chevron-right" class="size-4"></i>
+            </a>
+        </nav>
+        <div class="mobile-menu-footer">
+            <a href="apply.html" class="btn btn-primary" style="width: 100%; text-decoration: none;">Apply Now</a>
+        </div>
+    </div>
+</div>
 
 <main class="max-w-xl mx-auto px-4 py-6 pb-40">
     
