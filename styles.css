@@ -354,6 +354,9 @@ section {
   border-radius: 12px;
   font-weight: var(--fw-bold);
   font-family: var(--font-main);
+  height: 48px;
+  padding: 0 24px;
+  font-size: var(--fs-base);
   text-decoration: none !important;
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s;
@@ -383,20 +386,20 @@ section {
 }
 
 .btn-lg {
-  height: 54px;
-  padding: 0 32px;
-  font-size: var(--fs-md);
+  height: 58px;
+  padding: 0 40px;
+  font-size: 16px;
 }
 
 .btn-md {
-  height: 46px;
-  padding: 0 24px;
+  height: 50px;
+  padding: 0 28px;
   font-size: var(--fs-base);
 }
 
 .btn-sm {
-  height: 34px;
-  padding: 0 16px;
+  height: 40px;
+  padding: 0 20px;
   font-size: var(--fs-xs);
   border-radius: 10px;
 }
