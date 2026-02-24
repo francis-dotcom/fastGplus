@@ -1,0 +1,3687 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "EtNGm",
+      "x": 0,
+      "y": 0,
+      "name": "Mobile College Home",
+      "width": 390,
+      "fill": "#F5F7FB",
+      "layout": "vertical",
+      "gap": 10,
+      "children": [
+        {
+          "type": "frame",
+          "id": "m0TFU",
+          "name": "Header",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "padding": [
+            14,
+            16,
+            10,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "9NQD6",
+              "name": "brand",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": 230,
+              "height": 24,
+              "content": "Grand Plus College",
+              "fontFamily": "Poppins",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "vvCAD",
+              "name": "menu",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": 72,
+              "height": 18,
+              "content": "Menu",
+              "textAlign": "right",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Mo03d",
+          "name": "Hero",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": [
+            8,
+            16,
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "MseND",
+              "name": "heroImg",
+              "metadata": {
+                "type": "unsplash",
+                "username": "silverkblack",
+                "link": "https://unsplash.com/@silverkblack",
+                "author": "Vitaly Gariev"
+              },
+              "width": "fill_container",
+              "height": 184,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1758613171813-56eef6b4fc51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE5MDMwOTd8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              },
+              "cornerRadius": 16
+            },
+            {
+              "type": "text",
+              "id": "eCfEP",
+              "name": "heroTitle",
+              "fill": "#0B1F33",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 84,
+              "content": "Start Your College Journey Today",
+              "fontFamily": "Poppins",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "AqCnq",
+              "name": "heroSub",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 34,
+              "content": "Apply in minutes. Explore programs, requirements, and deadlines.",
+              "fontFamily": "Poppins",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "UUMR6",
+              "name": "applyBtn",
+              "width": "fill_container",
+              "height": 46,
+              "fill": "#0B4F9C",
+              "cornerRadius": 12,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "eIvMo",
+                  "name": "applyTxt",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width-height",
+                  "width": 120,
+                  "height": 20,
+                  "content": "Apply Now",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 15,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "yQ4fm",
+          "name": "Program Finder",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "3kHwN",
+              "name": "finderTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Find Your Program",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "8Dvhx",
+              "name": "searchWrap",
+              "width": "fill_container",
+              "height": 42,
+              "fill": "#FFFFFF",
+              "cornerRadius": 12,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "n6OR7",
+                  "name": "searchText",
+                  "fill": "#627D98",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Search programs (Business, Nursing, IT)",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "idF2A",
+              "name": "chips",
+              "width": "fill_container",
+              "height": 34,
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "4HNrB",
+                  "name": "chip1",
+                  "height": 34,
+                  "fill": "#E6F0FF",
+                  "cornerRadius": 999,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gfHoV",
+                      "name": "chip1t",
+                      "fill": "#0B4F9C",
+                      "textGrowth": "fixed-width-height",
+                      "width": 64,
+                      "height": 16,
+                      "content": "Nursing",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "3Z4XA",
+                  "name": "chip2",
+                  "height": 34,
+                  "fill": "#E6F0FF",
+                  "cornerRadius": 999,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "em1sD",
+                      "name": "chip2t",
+                      "fill": "#0B4F9C",
+                      "textGrowth": "fixed-width-height",
+                      "width": 56,
+                      "height": 16,
+                      "content": "Business",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "lgYOb",
+          "name": "Why Choose",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "1bb1o",
+              "name": "whyTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Why Choose Grand Plus",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "frkwu",
+              "name": "whyP1",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "92% graduate employment rate",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "MMHxc",
+              "name": "whyP2",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Industry-aligned programs",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "5jl5v",
+              "name": "whyP3",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Scholarships and flexible payment plans",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "54sAY",
+          "name": "How to Apply",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "hDz8z",
+              "name": "stepsTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "How to Apply",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "UYRR1",
+              "name": "step1",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "1. Choose your program",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "Nlf8h",
+              "name": "step2",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "2. Complete online application",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "mnrKG",
+              "name": "step3",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "3. Submit required documents",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "yMYce",
+          "name": "Entry Requirements",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "zCpY0",
+              "name": "reqTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Entry Requirements",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "XRo64",
+              "name": "req1",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "High school certificate or equivalent",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "9QJHW",
+              "name": "req2",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Valid ID and passport photo",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "XPlMl",
+              "name": "req3",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Program-specific prerequisites",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "S86SE",
+          "name": "Cost & Payment Options",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "SvTkd",
+              "name": "tuitionTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Cost & Payment Options",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "9b84T",
+              "name": "tuition1",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Payment plans available for all major programs",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "pVzUp",
+              "name": "tuition2",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Scholarships available for qualified applicants",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "C3TZO",
+              "name": "tuition3",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Transparent tuition ranges by faculty and level",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "5REDL",
+              "name": "payOptBtn",
+              "width": 164,
+              "height": 34,
+              "fill": "#0B4F9C",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "eFMIQ",
+                  "name": "payOptTxt",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width-height",
+                  "width": 128,
+                  "height": 16,
+                  "content": "See Payment Options",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GC9jU",
+          "name": "Scholarship Highlight",
+          "width": "fill_container",
+          "fill": "#E8F1FF",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "YyZgD",
+              "name": "scholarTitle",
+              "fill": "#0B3A75",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Scholarships Available",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "046ca",
+              "name": "scholarText",
+              "fill": "#1F4F8F",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 36,
+              "content": "Need-based and merit awards are open each intake with dedicated advisor support.",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "4gbdO",
+              "name": "aidBtn",
+              "width": 148,
+              "height": 34,
+              "fill": "#0B4F9C",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "dHDeP",
+                  "name": "aidTxt",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width-height",
+                  "width": 116,
+                  "height": 16,
+                  "content": "See Scholarships",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "kVqWq",
+          "name": "Deadlines",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "WanzT",
+              "name": "datesTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Deadlines & Key Dates",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "uDptA",
+              "name": "date1",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Mar 15: Regular Admission Deadline",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "SAzpu",
+              "name": "date2",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Apr 05: Scholarship Application Deadline",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "916YT",
+          "name": "Testimonial",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "WGZVO",
+              "name": "testTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Student Testimonials",
+              "fontFamily": "Poppins",
+              "fontSize": 13,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "en14P",
+              "name": "testQuote",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 78,
+              "content": "“Grand Plus gave me the confidence, technical skills, and internship access I needed. The faculty mentorship and career office support helped me move from uncertainty to a full-time role right after graduation.”",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "jfzVC",
+              "name": "testBy",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Amina Yusuf, Information Technology Graduate",
+              "fontFamily": "Poppins",
+              "fontSize": 11,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "YiCBZ",
+              "name": "testQuote2",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 54,
+              "content": "“The structured learning path, real industry projects, and strong alumni network opened doors for me far earlier than I expected.”",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "SUrbt",
+              "name": "testBy2",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "David Okoro, Business Administration Graduate",
+              "fontFamily": "Poppins",
+              "fontSize": 11,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OHsIS",
+          "name": "Admissions Support",
+          "width": "fill_container",
+          "fill": "#0B4F9C",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            12,
+            16,
+            20,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "72K5b",
+              "name": "contactTitle",
+              "fill": "#FFFFFF",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Need Help With Admissions?",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "PR6Mn",
+              "name": "contactSub",
+              "fill": "#DCEBFF",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Chat with admissions or request a call.",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "txJpH",
+              "name": "contactBtn",
+              "width": "fill_container",
+              "height": 40,
+              "fill": "#FFFFFF",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lDu5A",
+                  "name": "contactBtnTxt",
+                  "fill": "#0B4F9C",
+                  "textGrowth": "fixed-width-height",
+                  "width": 154,
+                  "height": 18,
+                  "content": "Contact Admissions",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "VACt5",
+          "name": "Marketing Claims",
+          "width": "fill_container",
+          "fill": "#0D1B2A",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "fjzdV",
+              "name": "claimsTitle",
+              "fill": "#FFFFFF",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Why We Stand Out",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "TjPJk",
+              "name": "claimsText",
+              "fill": "#D9E7FF",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 36,
+              "content": "Career-first curriculum. Industry mentors. Global-ready graduates.",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "9OHuS",
+      "x": 470,
+      "y": 0,
+      "name": "Programs Page",
+      "width": 390,
+      "fill": "#F5F7FB",
+      "layout": "vertical",
+      "gap": 10,
+      "padding": [
+        0,
+        16,
+        24,
+        16
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "qN3QK",
+          "name": "TopNav",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "padding": [
+            14,
+            16,
+            10,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "7PTRv",
+              "name": "Logo",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": 190,
+              "height": 20,
+              "content": "Grand Plus College",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "icon_font",
+              "id": "uXrsa",
+              "name": "menu",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "menu",
+              "iconFontFamily": "lucide",
+              "fill": "#102A43"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Fv2Iw",
+          "name": "ProgramsHero",
+          "width": "fill_container",
+          "fill": "#0B4F9C",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            14,
+            16,
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "8AGHk",
+              "name": "heroTitle",
+              "fill": "#FFFFFF",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 34,
+              "content": "Programs",
+              "fontFamily": "Poppins",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "xLLUx",
+              "name": "heroSub",
+              "enabled": false,
+              "fill": "#D9E7FF",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Choose a path and apply in minutes.",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "WxrAg",
+          "name": "ProgramsIntroText",
+          "fill": "#334E68",
+          "textGrowth": "fixed-width-height",
+          "width": "fill_container",
+          "height": 36,
+          "content": "Explore available programs and start your application.",
+          "fontFamily": "Poppins",
+          "fontSize": 14,
+          "fontWeight": "500"
+        },
+        {
+          "type": "frame",
+          "id": "kIN9K",
+          "name": "ProgramSearchBar",
+          "width": "fill_container",
+          "height": 44,
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "padding": 12,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "x6NcR",
+              "name": "searchTxt",
+              "fill": "#7B8794",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Search programs...",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "BlX1Y",
+          "name": "filterRow",
+          "width": "fill_container",
+          "height": 40,
+          "gap": 8,
+          "children": [
+            {
+              "type": "frame",
+              "id": "rVuhL",
+              "name": "ProgramFilterBar",
+              "width": "fill_container",
+              "height": 40,
+              "fill": "#FFFFFF",
+              "cornerRadius": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "4HUcD",
+                  "name": "filterTxt",
+                  "fill": "#486581",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "All Programs | Undergraduate",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "c6f1R",
+              "name": "ProgramSortDropdown",
+              "width": 124,
+              "height": 40,
+              "fill": "#FFFFFF",
+              "cornerRadius": 10,
+              "padding": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "riRWQ",
+                  "name": "sortTxt",
+                  "fill": "#486581",
+                  "textGrowth": "fixed-width-height",
+                  "width": 92,
+                  "height": 18,
+                  "content": "Sort: Popular",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Ff6LY",
+          "name": "ProgramGrid",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "children": [
+            {
+              "type": "frame",
+              "id": "W4Hwz",
+              "name": "ProgramCard",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "cornerRadius": 12,
+              "layout": "vertical",
+              "gap": 6,
+              "padding": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HWzUl",
+                  "name": "AdmissionOpenBadge",
+                  "width": 112,
+                  "height": 24,
+                  "fill": "#E6F4EA",
+                  "cornerRadius": 999,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "A73xl",
+                      "name": "badge1Txt",
+                      "fill": "#1E7A3A",
+                      "textGrowth": "fixed-width-height",
+                      "width": 86,
+                      "height": 16,
+                      "content": "Admission Open",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "gIoRD",
+                  "name": "card1Title",
+                  "fill": "#102A43",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 20,
+                  "content": "BSc Information Technology",
+                  "fontFamily": "Poppins",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "VNAwy",
+                  "name": "card1Meta",
+                  "fill": "#486581",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Duration: 4 years",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "V2oe9",
+                  "name": "card1Btn",
+                  "width": 92,
+                  "height": 30,
+                  "fill": "#0B4F9C",
+                  "cornerRadius": 9,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Pp5Bv",
+                      "name": "card1BtnTxt",
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width-height",
+                      "width": 78,
+                      "height": 16,
+                      "content": "View Program",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 11,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "gjLSy",
+                  "name": "degree1",
+                  "fill": "#486581",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Degree: Bachelor of Science",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "oXCN2",
+              "name": "ProgramCard",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "cornerRadius": 12,
+              "layout": "vertical",
+              "gap": 6,
+              "padding": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "0tYyH",
+                  "name": "AdmissionOpenBadge",
+                  "width": 112,
+                  "height": 24,
+                  "fill": "#E6F4EA",
+                  "cornerRadius": 999,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "BIF7M",
+                      "name": "badge2Txt",
+                      "fill": "#1E7A3A",
+                      "textGrowth": "fixed-width-height",
+                      "width": 86,
+                      "height": 16,
+                      "content": "Admission Open",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "haqWq",
+                  "name": "card2Title",
+                  "fill": "#102A43",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 20,
+                  "content": "BSc Nursing",
+                  "fontFamily": "Poppins",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "GK9lQ",
+                  "name": "card2Meta",
+                  "fill": "#486581",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Duration: 4 years",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "mcUzD",
+                  "name": "card2Btn",
+                  "width": 92,
+                  "height": 30,
+                  "fill": "#0B4F9C",
+                  "cornerRadius": 9,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IbxJ4",
+                      "name": "card2BtnTxt",
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width-height",
+                      "width": 78,
+                      "height": 16,
+                      "content": "View Program",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 11,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "rJM7F",
+                  "name": "degree2",
+                  "fill": "#486581",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Degree: Bachelor of Science",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "FpZHU",
+              "name": "ProgramCard",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "cornerRadius": 12,
+              "layout": "vertical",
+              "gap": 6,
+              "padding": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "B9w29",
+                  "name": "AdmissionOpenBadge",
+                  "width": 112,
+                  "height": 24,
+                  "fill": "#E6F4EA",
+                  "cornerRadius": 999,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "2wsNd",
+                      "name": "badge3Txt",
+                      "fill": "#1E7A3A",
+                      "textGrowth": "fixed-width-height",
+                      "width": 86,
+                      "height": 16,
+                      "content": "Admission Open",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "OYtHi",
+                  "name": "card3Title",
+                  "fill": "#102A43",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 20,
+                  "content": "BBA Business Administration",
+                  "fontFamily": "Poppins",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "q7iG8",
+                  "name": "card3Meta",
+                  "fill": "#486581",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Duration: 4 years",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "MpHG1",
+                  "name": "card3Btn",
+                  "width": 92,
+                  "height": 30,
+                  "fill": "#0B4F9C",
+                  "cornerRadius": 9,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "10MEr",
+                      "name": "card3BtnTxt",
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width-height",
+                      "width": 78,
+                      "height": 16,
+                      "content": "View Program",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 11,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "yPI8n",
+                  "name": "degree3",
+                  "fill": "#486581",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Degree: Bachelor of Business Admin",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oQjFt",
+          "name": "ProgramPagination",
+          "width": "fill_container",
+          "height": 38,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "EqFP3",
+              "name": "prevBtn",
+              "width": 70,
+              "height": 30,
+              "fill": "#FFFFFF",
+              "cornerRadius": 8,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "D7AcH",
+                  "name": "prevTxt",
+                  "fill": "#486581",
+                  "textGrowth": "fixed-width-height",
+                  "width": 42,
+                  "height": 16,
+                  "content": "Prev",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "c79VL",
+              "name": "pageTxt",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": 74,
+              "height": 18,
+              "content": "Page 1 of 8",
+              "textAlign": "center",
+              "fontFamily": "Poppins",
+              "fontSize": 11,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "FagaT",
+              "name": "nextBtn",
+              "width": 70,
+              "height": 30,
+              "fill": "#0B4F9C",
+              "cornerRadius": 8,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Dyptf",
+                  "name": "nextTxt",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width-height",
+                  "width": 42,
+                  "height": 16,
+                  "content": "Next",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "XEhHj",
+          "name": "EmptyState",
+          "enabled": false,
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "0s7m1",
+              "name": "emptyTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "No programs match your filters",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "xviWC",
+              "name": "emptySub",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Try adjusting search keywords or filter options.",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "6pjRf",
+              "name": "emptyBtn",
+              "width": 120,
+              "height": 32,
+              "fill": "#E6F0FF",
+              "cornerRadius": 9,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "4DxaB",
+                  "name": "emptyBtnTxt",
+                  "fill": "#0B4F9C",
+                  "textGrowth": "fixed-width-height",
+                  "width": 92,
+                  "height": 16,
+                  "content": "Reset Filters",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ED6GV",
+          "name": "ApplyNowBanner",
+          "width": "fill_container",
+          "fill": "#0B4F9C",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            12,
+            16,
+            16,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "K6u1k",
+              "name": "bannerTitle",
+              "fill": "#FFFFFF",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Ready to apply?",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "MM95r",
+              "name": "bannerBtn",
+              "width": "fill_container",
+              "height": 38,
+              "fill": "#FFFFFF",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Sx0rz",
+                  "name": "bannerBtnTxt",
+                  "fill": "#0B4F9C",
+                  "textGrowth": "fixed-width-height",
+                  "width": 94,
+                  "height": 18,
+                  "content": "Apply Now",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "3Gm4j",
+      "x": 940,
+      "y": 0,
+      "name": "ProgramDetailPage",
+      "reusable": true,
+      "width": 390,
+      "fill": "#F5F7FB",
+      "layout": "vertical",
+      "gap": 10,
+      "padding": [
+        10,
+        16,
+        24,
+        16
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "wjLJL",
+          "name": "TopNav",
+          "width": "fill_container",
+          "height": 52,
+          "fill": "#FFFFFF",
+          "cornerRadius": 10,
+          "padding": [
+            14,
+            12,
+            10,
+            12
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "w8qOx",
+              "name": "pdBack",
+              "width": 64,
+              "height": 28,
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "HboQH",
+                  "name": "pdBackIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-left",
+                  "iconFontFamily": "lucide",
+                  "fill": "#102A43"
+                },
+                {
+                  "type": "text",
+                  "id": "i6AOH",
+                  "name": "pdBackTxt",
+                  "fill": "#102A43",
+                  "textGrowth": "fixed-width-height",
+                  "width": 38,
+                  "height": 16,
+                  "content": "Back",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "7F9BZ",
+              "name": "pdLogo",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": 150,
+              "height": 18,
+              "content": "Grand Plus College",
+              "textAlign": "center",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "FpWe5",
+              "name": "pdRight",
+              "width": 64,
+              "height": 28,
+              "fill": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rxqlM",
+          "name": "ProgramHeader",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 14,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            16,
+            16,
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "oGeqx",
+              "name": "ptitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 34,
+              "content": "BSc Information Technology",
+              "fontFamily": "Poppins",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "C2M0E",
+              "name": "psummary",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 54,
+              "content": "Build practical software, data, and cloud skills through project-based learning and industry mentorship.",
+              "fontFamily": "Poppins",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "vWHpK",
+              "name": "AdmissionStatusBadge",
+              "width": 128,
+              "height": 26,
+              "fill": "#E6F4EA",
+              "cornerRadius": 999,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "a7dI0",
+                  "name": "badgeTxt",
+                  "fill": "#1E7A3A",
+                  "textGrowth": "fixed-width-height",
+                  "width": 104,
+                  "height": 16,
+                  "content": "Admissions Open",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 10,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pipdT",
+              "name": "applyBtn",
+              "width": "fill_container",
+              "height": 42,
+              "fill": "#0B4F9C",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "4t3KW",
+                  "name": "applyTxt",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width-height",
+                  "width": 96,
+                  "height": 18,
+                  "content": "Apply Now",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "6EjkP",
+          "name": "KeyFacts",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "604At",
+              "name": "keyTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Key Facts",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "5WJe6",
+              "name": "k1",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Duration: 4 years",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "tvwXo",
+              "name": "k2",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Degree Type: Bachelor of Science",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "oM9bP",
+              "name": "k3",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Study Mode: Full-time",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "u3ojD",
+              "name": "k4",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Next Start Date: September 15, 2026",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "2J0Mc",
+          "name": "EntryRequirements",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "NGTKk",
+              "name": "entryTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Entry Requirements",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "SqMpb",
+              "name": "e1",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "High school certificate or equivalent",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "Gwb7Q",
+              "name": "e2",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Math proficiency and basic computer literacy",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "dniEp",
+              "name": "e3",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Valid ID and completed application form",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "jtFPg",
+          "name": "CurriculumOverview",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "1aelY",
+              "name": "currTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Curriculum Overview",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "ZWqd6",
+              "name": "c1",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Core Course: Programming Fundamentals",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "r6dKg",
+              "name": "c2",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Core Course: Data Structures and Algorithms",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "JRdJN",
+              "name": "c3",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Core Course: Database Systems",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "LMVb4",
+              "name": "c4",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Core Course: Software Engineering",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "9Dumy",
+              "name": "c5",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Core Course: Cloud Computing",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "bwCMM",
+              "name": "c6",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Core Course: Cybersecurity Essentials",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "EtIEF",
+              "name": "y1",
+              "width": "fill_container",
+              "height": 32,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "41Hy7",
+                  "name": "y1txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 170,
+                  "height": 16,
+                  "content": "Year 1 Breakdown",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "DWF2m",
+                  "name": "y1chev",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 14,
+                  "height": 16,
+                  "content": "+",
+                  "textAlign": "right",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kRFGG",
+              "name": "y2",
+              "width": "fill_container",
+              "height": 32,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "1LgA8",
+                  "name": "y2txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 170,
+                  "height": 16,
+                  "content": "Year 2 Breakdown",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "shEYv",
+                  "name": "y2chev",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 14,
+                  "height": 16,
+                  "content": "+",
+                  "textAlign": "right",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DaGgT",
+              "name": "y3",
+              "width": "fill_container",
+              "height": 32,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "QJmhc",
+                  "name": "y3txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 170,
+                  "height": 16,
+                  "content": "Year 3-4 Breakdown",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "mcYDt",
+                  "name": "y3chev",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 14,
+                  "height": 16,
+                  "content": "+",
+                  "textAlign": "right",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "r0wes",
+          "name": "CareerOutcomes",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "LHze2",
+              "name": "careerTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Career Outcomes",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "riBR1",
+              "name": "co1",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "- Software Developer",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "zKFXV",
+              "name": "co2",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "- Data Analyst",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "vvCOc",
+              "name": "co3",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "- IT Support Engineer",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "8qoQN",
+              "name": "co4",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "- QA / Test Engineer",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "bXJGL",
+              "name": "co5",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "- Junior Cloud Associate",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ls9ws",
+          "name": "FeesSnapshot",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16,
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "8RBHD",
+              "name": "feesTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Fees Snapshot",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "KGr08",
+              "name": "f1",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Tuition per semester: $3,200",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "qHFcK",
+              "name": "f2",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Estimated total: $25,600",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "C8yIT",
+              "name": "f3",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Payment plan available",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "e3CrG",
+              "name": "payLink",
+              "width": "fill_container",
+              "height": 36,
+              "fill": "#E6F0FF",
+              "cornerRadius": 9,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "T5Bhs",
+                  "name": "payLinkTxt",
+                  "fill": "#0B4F9C",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 16,
+                  "content": "View Payment Options",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "1UiuT",
+          "name": "DeadlinesAndChecklist",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16,
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "iq6C4",
+              "name": "deadTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Deadlines and Checklist",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "OMu55",
+              "name": "deadline",
+              "fill": "#334E68",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Application deadline: August 20, 2026",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "FarfN",
+              "name": "chk1",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "- Completed application form",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "ZsIWX",
+              "name": "chk2",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "- Academic transcripts",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "ZURkx",
+              "name": "chk3",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "- Copy of valid ID or passport",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "VeoLh",
+              "name": "chk4",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "- One passport-size photograph",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ayHZl",
+          "name": "FinalCTASection",
+          "width": "fill_container",
+          "fill": "#0B4F9C",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            12,
+            16,
+            20,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "nVyCL",
+              "name": "finalTitle",
+              "fill": "#FFFFFF",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Ready to start your application?",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "JPt8q",
+              "name": "finalApply",
+              "width": "fill_container",
+              "height": 38,
+              "fill": "#FFFFFF",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FHeoT",
+                  "name": "finalApplyTxt",
+                  "fill": "#0B4F9C",
+                  "textGrowth": "fixed-width-height",
+                  "width": 96,
+                  "height": 18,
+                  "content": "Apply Now",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "V3hOK",
+              "name": "finalContact",
+              "width": "fill_container",
+              "height": 34,
+              "fill": "#1F66B5",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "MwJWL",
+                  "name": "finalContactTxt",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width-height",
+                  "width": 138,
+                  "height": 16,
+                  "content": "Contact Admissions",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "GRksM",
+      "x": 1410,
+      "y": 0,
+      "name": "SupportPage",
+      "width": 390,
+      "fill": "#F5F7FB",
+      "layout": "vertical",
+      "gap": 10,
+      "padding": [
+        10,
+        16,
+        24,
+        16
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "YQs8p",
+          "name": "TopNav",
+          "width": "fill_container",
+          "height": 52,
+          "fill": "#FFFFFF",
+          "cornerRadius": 10,
+          "padding": [
+            14,
+            12,
+            10,
+            12
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "zKTsj",
+              "name": "spBack",
+              "width": 64,
+              "height": 28,
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "6qxHL",
+                  "name": "spBackIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-left",
+                  "iconFontFamily": "lucide",
+                  "fill": "#102A43"
+                },
+                {
+                  "type": "text",
+                  "id": "2gmtx",
+                  "name": "spBackTxt",
+                  "fill": "#102A43",
+                  "textGrowth": "fixed-width-height",
+                  "width": 38,
+                  "height": 16,
+                  "content": "Back",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "2xXUR",
+              "name": "spLogo",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": 150,
+              "height": 18,
+              "content": "Grand Plus College",
+              "textAlign": "center",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "qmUEI",
+              "name": "spRight",
+              "width": 64,
+              "height": 28,
+              "fill": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "vNUYw",
+          "name": "SupportHero",
+          "width": "fill_container",
+          "fill": "#0B4F9C",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            16,
+            16,
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "ZCPlL",
+              "name": "heroTitle",
+              "fill": "#FFFFFF",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 34,
+              "content": "Support",
+              "fontFamily": "Poppins",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "17aax",
+              "name": "heroSub",
+              "fill": "#D9E7FF",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 36,
+              "content": "Get help with admissions, payments, or student services.",
+              "fontFamily": "Poppins",
+              "fontSize": 13,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uaeW7",
+          "name": "QuickHelpOptions",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "kmEks",
+              "name": "quickTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Quick Help Options",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "EodDr",
+              "name": "row1",
+              "width": "fill_container",
+              "height": 58,
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "a2hIL",
+                  "name": "opt1",
+                  "width": "fill_container",
+                  "height": 58,
+                  "fill": "#F5F7FB",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9pzof",
+                      "name": "opt1Txt",
+                      "fill": "#334E68",
+                      "textGrowth": "fixed-width-height",
+                      "width": 104,
+                      "height": 30,
+                      "content": "Admissions Help",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sMLPk",
+                  "name": "opt2",
+                  "width": "fill_container",
+                  "height": 58,
+                  "fill": "#F5F7FB",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ndzjP",
+                      "name": "opt2Txt",
+                      "fill": "#334E68",
+                      "textGrowth": "fixed-width-height",
+                      "width": 104,
+                      "height": 30,
+                      "content": "Payment Issues",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vxgBp",
+              "name": "row2",
+              "width": "fill_container",
+              "height": 58,
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "qta8L",
+                  "name": "opt3",
+                  "width": "fill_container",
+                  "height": 58,
+                  "fill": "#F5F7FB",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Jr2qQ",
+                      "name": "opt3Txt",
+                      "fill": "#334E68",
+                      "textGrowth": "fixed-width-height",
+                      "width": 104,
+                      "height": 30,
+                      "content": "Application Status",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LqvsO",
+                  "name": "opt4",
+                  "width": "fill_container",
+                  "height": 58,
+                  "fill": "#F5F7FB",
+                  "cornerRadius": 10,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SJWTT",
+                      "name": "opt4Txt",
+                      "fill": "#334E68",
+                      "textGrowth": "fixed-width-height",
+                      "width": 104,
+                      "height": 30,
+                      "content": "Technical Support",
+                      "textAlign": "center",
+                      "fontFamily": "Poppins",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "TjbJr",
+          "name": "CommonIssues",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "wnMKw",
+              "name": "faqTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Common Issues",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "bThNl",
+              "name": "q1",
+              "width": "fill_container",
+              "height": 34,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "QtXRP",
+                  "name": "q1Txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 250,
+                  "height": 16,
+                  "content": "How do I pay my fees?",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "DwKYL",
+                  "name": "q1Plus",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 12,
+                  "height": 16,
+                  "content": "+",
+                  "textAlign": "right",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "M7FFL",
+              "name": "q2",
+              "width": "fill_container",
+              "height": 34,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "RYbWo",
+                  "name": "q2Txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 250,
+                  "height": 16,
+                  "content": "How do I track my application?",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "Djaeq",
+                  "name": "q2Plus",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 12,
+                  "height": 16,
+                  "content": "+",
+                  "textAlign": "right",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "37eHO",
+              "name": "q3",
+              "width": "fill_container",
+              "height": 34,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mAl9b",
+                  "name": "q3Txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 250,
+                  "height": 16,
+                  "content": "I didn’t receive my receipt.",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "eJN3K",
+                  "name": "q3Plus",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 12,
+                  "height": 16,
+                  "content": "+",
+                  "textAlign": "right",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Xt8nk",
+              "name": "q4",
+              "width": "fill_container",
+              "height": 34,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GKo92",
+                  "name": "q4Txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 250,
+                  "height": 16,
+                  "content": "How long does admission review take?",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "C57Jm",
+                  "name": "q4Plus",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 12,
+                  "height": 16,
+                  "content": "+",
+                  "textAlign": "right",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "FcxdF",
+              "name": "q5",
+              "width": "fill_container",
+              "height": 34,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "YQy3D",
+                  "name": "q5Txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 250,
+                  "height": 16,
+                  "content": "I forgot my student ID.",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "8sQva",
+                  "name": "q5Plus",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": 12,
+                  "height": 16,
+                  "content": "+",
+                  "textAlign": "right",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "y97JR",
+          "name": "ContactForm",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "znj91",
+              "name": "formTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Contact Form",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "s9Go9",
+              "name": "nameField",
+              "width": "fill_container",
+              "height": 38,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wBCmD",
+                  "name": "nameTxt",
+                  "fill": "#627D98",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 16,
+                  "content": "Name",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "dx70p",
+              "name": "emailField",
+              "width": "fill_container",
+              "height": 38,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "4P4jn",
+                  "name": "emailTxt",
+                  "fill": "#627D98",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 16,
+                  "content": "Email",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "07YZA",
+              "name": "phoneField",
+              "width": "fill_container",
+              "height": 38,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yIfcl",
+                  "name": "phoneTxt",
+                  "fill": "#627D98",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 16,
+                  "content": "Phone (optional)",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jH7US",
+              "name": "catField",
+              "width": "fill_container",
+              "height": 38,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "x9fjC",
+                  "name": "catTxt",
+                  "fill": "#627D98",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 16,
+                  "content": "Category",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wEJe5",
+              "name": "msgField",
+              "width": "fill_container",
+              "height": 64,
+              "fill": "#F5F7FB",
+              "cornerRadius": 8,
+              "padding": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rgaiT",
+                  "name": "msgTxt",
+                  "fill": "#627D98",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 16,
+                  "content": "Message",
+                  "fontFamily": "Poppins",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Fnqkr",
+              "name": "submit",
+              "width": "fill_container",
+              "height": 38,
+              "fill": "#0B4F9C",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "pPlat",
+                  "name": "submitTxt",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width-height",
+                  "width": 70,
+                  "height": 16,
+                  "content": "Submit",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "3uUvn",
+          "name": "DirectContactInfo",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "UzbDI",
+              "name": "directTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Direct Contact Info",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "voHXB",
+              "name": "phone",
+              "fill": "#0B4F9C",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Phone: +1 202 555 0183",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "3kH0I",
+              "name": "email",
+              "fill": "#0B4F9C",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Email: support@grandpluscollege.edu",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "SDWZ4",
+              "name": "wa",
+              "fill": "#0B4F9C",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "WhatsApp: Chat Now",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bnHgv",
+          "name": "OfficeHours",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            16,
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "xv8jJ",
+              "name": "officeTitle",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 20,
+              "content": "Office Hours",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "qCOHg",
+              "name": "office1",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Mon-Fri, 9am-5pm",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "W3JL3",
+              "name": "office2",
+              "fill": "#486581",
+              "textGrowth": "fixed-width-height",
+              "width": "fill_container",
+              "height": 18,
+              "content": "Typical response: within 24 hours",
+              "fontFamily": "Poppins",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "RqZJ9",
+      "x": 1880,
+      "y": 0,
+      "name": "Hamburger Menu Open Preview",
+      "width": 390,
+      "fill": "#F5F7FB",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "9WyYE",
+          "name": "TopNav",
+          "width": "fill_container",
+          "height": 56,
+          "fill": "#FFFFFF",
+          "padding": [
+            16,
+            16,
+            12,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "WyhOj",
+              "name": "logo",
+              "fill": "#102A43",
+              "textGrowth": "fixed-width-height",
+              "width": 190,
+              "height": 20,
+              "content": "Grand Plus College",
+              "fontFamily": "Poppins",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "icon_font",
+              "id": "asBwF",
+              "name": "closeIcon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "x",
+              "iconFontFamily": "lucide",
+              "fill": "#102A43"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "yGOwN",
+          "name": "MenuDrawer",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            12,
+            16,
+            20,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "6Sp5k",
+              "name": "utility",
+              "width": "fill_container",
+              "height": 34,
+              "justifyContent": "end",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wyGvj",
+                  "name": "portal",
+                  "fill": "#0B4F9C",
+                  "textGrowth": "fixed-width-height",
+                  "width": 92,
+                  "height": 18,
+                  "content": "Portal/Login",
+                  "textAlign": "right",
+                  "fontFamily": "Poppins",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bqbh7",
+              "name": "item1",
+              "width": "fill_container",
+              "height": 44,
+              "fill": "#F5F7FB",
+              "cornerRadius": 10,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "8QhBw",
+                  "name": "item1Txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Home",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rVi2Q",
+              "name": "item2",
+              "width": "fill_container",
+              "height": 44,
+              "fill": "#F5F7FB",
+              "cornerRadius": 10,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "1SnWy",
+                  "name": "item2Txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Programs",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "opH39",
+              "name": "item3",
+              "width": "fill_container",
+              "height": 44,
+              "fill": "#F5F7FB",
+              "cornerRadius": 10,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mdGYC",
+                  "name": "item3Txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Admissions",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "3sT7U",
+              "name": "item4",
+              "width": "fill_container",
+              "height": 44,
+              "fill": "#F5F7FB",
+              "cornerRadius": 10,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SwZUt",
+                  "name": "item4Txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Fees & Payments",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YB1K5",
+              "name": "item5",
+              "width": "fill_container",
+              "height": 44,
+              "fill": "#F5F7FB",
+              "cornerRadius": 10,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "uaopJ",
+                  "name": "item5Txt",
+                  "fill": "#334E68",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 18,
+                  "content": "Support",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n9xaY",
+              "name": "applyBtn",
+              "width": "fill_container",
+              "height": 46,
+              "fill": "#0B4F9C",
+              "cornerRadius": 12,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "a6y1v",
+                  "name": "applyTxt",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width-height",
+                  "width": 98,
+                  "height": 18,
+                  "content": "Apply Now",
+                  "textAlign": "center",
+                  "fontFamily": "Poppins",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
