@@ -838,11 +838,17 @@ ol {
     max-width: 480px;
 }
 
-/* Programs: Filter bar with single dropdown */
+/* Programs: Filter box – label, trigger and dropdown list all inside one box */
 .pg-filter-bar-section {
     padding: 12px 0 20px;
+}
+
+.pg-filter-box {
     background: var(--white);
-    border-bottom: 1px solid #e2e8f0;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .pg-filter-bar {
@@ -853,43 +859,38 @@ ol {
 }
 
 .pg-filter-bar-label {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--dark-blue);
     margin: 0;
-}
-
-.pg-filter-bar-dropdown {
-    position: relative;
-    min-width: 200px;
 }
 
 .pg-filter-bar-trigger {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    min-width: 200px;
     padding: 10px 14px;
-    background: var(--white);
+    background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 14px;
     font-weight: 500;
     color: var(--dark-blue);
     cursor: pointer;
     font-family: var(--font-main);
     text-align: left;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s, background 0.2s;
 }
 
 .pg-filter-bar-trigger:hover {
+    background: #f1f5f9;
     border-color: #cbd5e1;
 }
 
-.pg-filter-bar-dropdown.active .pg-filter-bar-trigger {
+.pg-filter-box.active .pg-filter-bar-trigger {
     border-color: var(--primary-blue);
-    box-shadow: 0 0 0 2px rgba(11, 79, 156, 0.15);
+    background: #f1f7ff;
 }
 
 .pg-filter-bar-value {
@@ -905,40 +906,30 @@ ol {
     transition: transform 0.2s;
 }
 
-.pg-filter-bar-dropdown.active .pg-filter-bar-chevron {
+.pg-filter-box.active .pg-filter-bar-chevron {
     transform: rotate(180deg);
 }
 
+/* Menu lives inside the box, below the trigger */
 .pg-filter-bar-menu {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    min-width: 260px;
-    max-height: 320px;
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+    max-height: 280px;
     overflow-y: auto;
-    background: var(--white);
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-    padding: 6px 0;
-    z-index: 100;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-4px);
-    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
 }
 
-.pg-filter-bar-dropdown.active .pg-filter-bar-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+.pg-filter-box.active .pg-filter-bar-menu {
+    display: block;
 }
 
 .pg-filter-bar-option {
     font-size: 14px;
     font-weight: 500;
     color: var(--dark-blue);
-    padding: 10px 16px;
+    padding: 8px 12px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background 0.15s;
 }
@@ -956,7 +947,7 @@ ol {
 .pg-filter-bar-divider {
     height: 1px;
     background: #e2e8f0;
-    margin: 6px 12px;
+    margin: 8px 0;
 }
 
 /* Department Group Headers */

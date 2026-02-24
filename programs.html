@@ -65,31 +65,31 @@
         </section>
 
 
-        <!-- Filter bar: single dropdown (All, NCE, Certificate + each department) -->
+        <!-- Filter box: everything inside one box -->
         <section class="pg-filter-bar-section">
             <div class="container">
-                <div class="pg-filter-bar">
-                    <label for="pg-filter-select" class="pg-filter-bar-label">Filter by</label>
-                    <div class="pg-filter-bar-dropdown" id="pg-filter-dropdown">
-                        <button type="button" class="pg-filter-bar-trigger" id="pg-filter-trigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="pg-filter-trigger pg-filter-bar-label">
+                <div class="pg-filter-box" id="pg-filter-dropdown">
+                    <div class="pg-filter-bar">
+                        <span class="pg-filter-bar-label">Filter by</span>
+                        <button type="button" class="pg-filter-bar-trigger" id="pg-filter-trigger" aria-haspopup="listbox" aria-expanded="false">
                             <span class="pg-filter-bar-value" id="pg-filter-value">All</span>
                             <i data-lucide="chevron-down" class="pg-filter-bar-chevron" aria-hidden="true"></i>
                         </button>
-                        <div class="pg-filter-bar-menu" id="pg-filter-menu" role="listbox" aria-label="Filter programs">
-                            <div class="pg-filter-bar-option pg-filter-option-active" data-filter="all" role="option" tabindex="0">All</div>
-                            <div class="pg-filter-bar-option" data-filter="segment:undergraduate" role="option" tabindex="0">NCE Programs</div>
-                            <div class="pg-filter-bar-option" data-filter="segment:certificate" role="option" tabindex="0">Certificate</div>
-                            <div class="pg-filter-bar-divider" role="separator"></div>
-                            <div class="pg-filter-bar-option" data-filter="dept:health" role="option" tabindex="0">Health Sciences</div>
-                            <div class="pg-filter-bar-option" data-filter="dept:technology" role="option" tabindex="0">Technology &amp; IT</div>
-                            <div class="pg-filter-bar-option" data-filter="dept:business" role="option" tabindex="0">Business &amp; Econ</div>
-                            <div class="pg-filter-bar-option" data-filter="dept:computer" role="option" tabindex="0">Computer Education</div>
-                            <div class="pg-filter-bar-option" data-filter="dept:languages" role="option" tabindex="0">Languages &amp; Religion</div>
-                            <div class="pg-filter-bar-option" data-filter="dept:science" role="option" tabindex="0">Integrated Science</div>
-                            <div class="pg-filter-bar-option" data-filter="dept:math" role="option" tabindex="0">Math &amp; Physical Sciences</div>
-                            <div class="pg-filter-bar-option" data-filter="dept:social" role="option" tabindex="0">Social &amp; Political Sciences</div>
-                            <div class="pg-filter-bar-option" data-filter="dept:education" role="option" tabindex="0">Education Programs</div>
-                        </div>
+                    </div>
+                    <div class="pg-filter-bar-menu" id="pg-filter-menu" role="listbox">
+                        <div class="pg-filter-bar-option pg-filter-option-active" data-filter="all" role="option">All</div>
+                        <div class="pg-filter-bar-option" data-filter="segment:undergraduate" role="option">NCE Programs</div>
+                        <div class="pg-filter-bar-option" data-filter="segment:certificate" role="option">Certificate</div>
+                        <div class="pg-filter-bar-divider" role="separator"></div>
+                        <div class="pg-filter-bar-option" data-filter="dept:health" role="option">Health Sciences</div>
+                        <div class="pg-filter-bar-option" data-filter="dept:technology" role="option">Technology &amp; IT</div>
+                        <div class="pg-filter-bar-option" data-filter="dept:business" role="option">Business &amp; Econ</div>
+                        <div class="pg-filter-bar-option" data-filter="dept:computer" role="option">Computer Education</div>
+                        <div class="pg-filter-bar-option" data-filter="dept:languages" role="option">Languages &amp; Religion</div>
+                        <div class="pg-filter-bar-option" data-filter="dept:science" role="option">Integrated Science</div>
+                        <div class="pg-filter-bar-option" data-filter="dept:math" role="option">Math &amp; Physical Sciences</div>
+                        <div class="pg-filter-bar-option" data-filter="dept:social" role="option">Social &amp; Political Sciences</div>
+                        <div class="pg-filter-bar-option" data-filter="dept:education" role="option">Education Programs</div>
                     </div>
                 </div>
             </div>
