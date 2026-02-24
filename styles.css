@@ -1037,7 +1037,7 @@ ol {
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     border: 1px solid #f1f5f9;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s, visibility 0.3s;
 }
 
 .pg-card:hover {
