@@ -86,14 +86,29 @@
               >
             </div>
           </div>
-          <div class="chips">
-            <a href="programs.html" class="chip">Languages &amp; Religious Studies</a>
-            <a href="programs.html" class="chip">Computer &amp; Science Education</a>
-            <a href="programs.html" class="chip">Integrated Science</a>
-            <a href="programs.html" class="chip">Mathematics &amp; Physical Sciences</a>
-            <a href="programs.html" class="chip">Social &amp; Political Sciences</a>
-            <a href="programs.html" class="chip">Education Programs</a>
+          <div class="program-dropdown-wrap">
+            <select id="program-select" class="program-select">
+              <option value="" disabled selected>Choose a Department</option>
+              <option value="languages">Languages &amp; Religious Studies</option>
+              <option value="computer">Computer &amp; Science Education</option>
+              <option value="science">Integrated Science</option>
+              <option value="math">Mathematics &amp; Physical Sciences</option>
+              <option value="social">Social &amp; Political Sciences</option>
+              <option value="education">Education Programs</option>
+            </select>
+            <button id="go-btn" class="btn btn-primary btn-sm">View Programs</button>
           </div>
+
+          <script>
+            document.getElementById('go-btn').addEventListener('click', () => {
+              const select = document.getElementById('program-select');
+              if (select.value) {
+                window.location.href = 'programs.html?dept=' + select.value;
+              } else {
+                window.location.href = 'programs.html';
+              }
+            });
+          </script>
         </div>
       </section>
 
