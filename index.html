@@ -66,12 +66,12 @@
             />
           </div>
           <div class="hero-text">
-            <h2 class="hero-title">Start Your Journey Today</h2>
-            <p class="hero-sub">
-              Apply in minutes. Explore programs, requirements, and deadlines.
-            </p>
-            <a href="apply.html" class="btn btn-primary btn-md btn-block">Apply Now</a>
-          </div>
+          <h1 class="hero-title">Start Your Journey Today</h1>
+          <p class="hero-sub">
+            Apply in minutes. Explore programs, requirements, and deadlines.
+          </p>
+          <a href="apply.html" class="btn btn-primary">Apply Now</a>
+        </div>
         </div>
       </section>
 
@@ -86,24 +86,54 @@
               >
             </div>
           </div>
-          <div class="program-dropdown-wrap">
-            <select id="program-select" class="program-select">
-              <option value="" disabled selected>Choose a Department</option>
-              <option value="languages">Languages &amp; Religious Studies</option>
-              <option value="computer">Computer &amp; Science Education</option>
-              <option value="science">Integrated Science</option>
-              <option value="math">Mathematics &amp; Physical Sciences</option>
-              <option value="social">Social &amp; Political Sciences</option>
-              <option value="education">Education Programs</option>
-            </select>
-            <button id="go-btn" class="btn btn-primary btn-sm">View Programs</button>
+          <div class="custom-dropdown" id="dept-dropdown">
+            <button class="dropdown-trigger" id="dropdown-trigger">
+              <span id="trigger-text">Select department</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="drop-icon"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="dropdown-list" id="dropdown-list">
+              <div class="dropdown-row" data-value="languages">Languages &amp; Religious Studies</div>
+              <div class="dropdown-row" data-value="computer">Computer &amp; Science Education</div>
+              <div class="dropdown-row" data-value="science">Integrated Science</div>
+              <div class="dropdown-row" data-value="math">Mathematics &amp; Physical Sciences</div>
+              <div class="dropdown-row" data-value="social">Social &amp; Political Sciences</div>
+              <div class="dropdown-row" data-value="education">Education Programs</div>
+            </div>
           </div>
+          <button id="go-btn" class="btn btn-primary btn-sm" style="margin-top: 12px; width: 100%;">View Programs</button>
 
           <script>
-            document.getElementById('go-btn').addEventListener('click', () => {
-              const select = document.getElementById('program-select');
-              if (select.value) {
-                window.location.href = 'programs.html?dept=' + select.value;
+            const trigger = document.getElementById('dropdown-trigger');
+            const list = document.getElementById('dropdown-list');
+            const rows = document.querySelectorAll('.dropdown-row');
+            const triggerText = document.getElementById('trigger-text');
+            const goBtn = document.getElementById('go-btn');
+            let selectedDept = '';
+
+            trigger.addEventListener('click', (e) => {
+              e.stopPropagation();
+              list.classList.toggle('active');
+              trigger.classList.toggle('active');
+            });
+
+            rows.forEach(row => {
+              row.addEventListener('click', () => {
+                selectedDept = row.dataset.value;
+                triggerText.innerText = row.innerText;
+                list.classList.remove('active');
+                trigger.classList.remove('active');
+                trigger.style.color = 'var(--dark-blue)';
+              });
+            });
+
+            document.addEventListener('click', () => {
+              list.classList.remove('active');
+              trigger.classList.remove('active');
+            });
+
+            goBtn.addEventListener('click', () => {
+              if (selectedDept) {
+                window.location.href = 'programs.html?dept=' + selectedDept;
               } else {
                 window.location.href = 'programs.html';
               }
