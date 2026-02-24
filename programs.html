@@ -175,7 +175,7 @@
             var dept = pair[0], items = pair[1];
             html += '<div class="pg-dept-header" data-dept="'+dept+'"><h3 class="pg-dept-title">'+DEPT_LABELS[dept]+' <span class="pg-dept-count">('+items.length+')</span></h3></div>';
             items.forEach(function(p) {
-                html += '<article class="pg-card" data-dept="'+p.dept+'" data-segment="'+p.segment+'"><div class="pg-card-img-wrap"><span class="pg-badge pg-badge-green">Admission Open</span><img src="'+p.img+'" alt="'+p.title+'" class="pg-card-img" loading="lazy"></div><div class="pg-card-body"><h3 class="pg-card-title">'+p.title+'</h3><div class="pg-card-meta"><span>'+p.meta+'</span></div><a href="apply.html" class="btn btn-primary pg-btn">Apply Now</a></div></article>';
+                html += '<article class="pg-card" data-dept="'+p.dept+'" data-segment="'+p.segment+'"><div class="pg-card-img-wrap"><span class="pg-status-dot" title="Admission Open"></span><img src="'+p.img+'" alt="'+p.title+'" class="pg-card-img" loading="lazy"></div><div class="pg-card-body"><h3 class="pg-card-title">'+p.title+'</h3><div class="pg-card-meta"><span>'+p.meta+'</span></div><a href="apply.html" class="btn btn-primary pg-btn">Apply Now</a></div></article>';
             });
         });
         document.getElementById('program-grid').innerHTML = html || '<p class="text-muted">No programs match this filter.</p>';
