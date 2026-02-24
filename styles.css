@@ -1,5 +1,6 @@
 :root {
   /* Colors */
+  /* Colors from gpc.pen */
   --primary-blue: #0b4f9c;
   --dark-blue: #102a43;
   --hero-dark: #0b1f33;
@@ -11,10 +12,8 @@
   --highlight-title: #0b3a75;
   --highlight-text: #1f4f8f;
   --footer-dark: #0d1b2a;
-  --search-text: #627d98;
-  --chip-bg: #e6f0ff;
-  --success-bg: #e6f4ea;
-  --success-text: #1e7a3a;
+  --border-color: #d9e2ec;
+  --border-light: #e6ecf2;
 
   /* Typography Tokens */
   --font-main: "Poppins", sans-serif;
@@ -64,13 +63,13 @@ h1, h2, h3, h4, h5, h6 {
   line-height: var(--lh-tight);
 }
 
-h1 { font-size: var(--fs-3xl); }
-h2 { font-size: var(--fs-2xl); }
-h3 { font-size: var(--fs-xl); }
-h4 { font-size: var(--fs-lg); }
+h1 { font-size: 24px; }
+h2 { font-size: 22px; }
+h3 { font-size: 14px; }
+h4 { font-size: 13px; }
 
 p {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 /* Typography Utilities */
@@ -434,17 +433,17 @@ section {
 
 .dropdown-trigger {
   width: 100%;
-  height: 48px;
+  height: 42px;
   background-color: var(--white);
   border: 1px solid #e2e8f0;
   border-radius: 12px;
-  padding: 0 16px;
+  padding: 0 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   font-family: var(--font-main);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--text-muted);
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -467,11 +466,11 @@ section {
 
 .dropdown-list {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 4px);
   left: 0;
   width: 100%;
   background-color: var(--white);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -484,8 +483,11 @@ section {
 }
 
 .dropdown-row {
-  padding: 12px 16px;
-  font-size: 13px;
+  height: 40px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
   font-weight: 500;
   color: var(--dark-blue);
   cursor: pointer;
@@ -493,12 +495,28 @@ section {
 }
 
 .dropdown-row:not(:first-child) {
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid var(--border-light);
 }
 
 .dropdown-row:hover {
   background-color: #f8fafc;
   color: var(--primary-blue);
+}
+
+.section-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.btn-cta {
+  width: auto;
+  min-width: 140px;
+  height: 34px;
+  font-size: 11px;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 .chips {
