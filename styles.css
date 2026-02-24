@@ -269,30 +269,33 @@ p {
 
 /* Main Sections */
 section {
-  padding: 24px 0;
+  padding: 20px 0;
 }
 
 .section-title {
   color: var(--dark-blue);
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 16px;
+  letter-spacing: 0.01em;
+  margin-bottom: 12px;
 }
 
 /* Hero Section */
+.hero {
+  padding: 12px 0 8px;
+}
+
 .hero-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding-top: 12px;
+  gap: 14px;
 }
 
 .hero-image-wrap {
   width: 100%;
-  height: 160px;
+  height: 184px;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .hero-img {
@@ -304,23 +307,24 @@ section {
 .hero-text {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 12px;
+  align-items: flex-start;
+  text-align: left;
+  gap: 8px;
 }
 
 .hero-title {
   color: var(--hero-dark);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
   line-height: 1.25;
 }
 
 .hero-sub {
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.5;
+  margin-bottom: 4px;
 }
 
 /* Layout Utilities */
@@ -507,16 +511,25 @@ section {
   font-size: 12px;
   font-weight: 500;
   color: var(--text-primary);
-  margin-bottom: 6px;
+  line-height: 1.5;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.section-text:last-of-type {
+  border-bottom: none;
 }
 
 .btn-cta {
-  width: auto;
-  min-width: 140px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 148px;
   height: 34px;
   font-size: 11px;
+  font-weight: 700;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .chips {
@@ -616,31 +629,30 @@ ol {
 
 /* Scholarship Highlight */
 .scholarship-highlight {
-    padding: 24px 0;
+  padding: 0;
 }
 
-.scholarship-highlight .highlight-box {
+.scholarship-box {
   background-color: var(--highlight-bg);
   border-radius: 16px;
-  padding: 24px 16px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .highlight-title {
   color: var(--highlight-title);
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 0px; /* Reset margin as gap handles it */
 }
 
 .highlight-text {
   color: var(--highlight-text);
   font-size: 12px;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 /* Section Layouts */
@@ -724,14 +736,13 @@ ol {
 .support-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 6px;
 }
 
 .support-title {
   color: var(--white);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -739,24 +750,32 @@ ol {
   color: #dcebff;
   font-size: 12px;
   font-weight: 500;
+  margin-bottom: 6px;
 }
 
 .support .btn-secondary {
-  width: 100%;
-  height: 40px;
+  height: 38px;
   font-size: 13px;
   border-radius: 10px;
+  padding: 0 20px;
+  background: rgba(255,255,255,0.15);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.support .btn-secondary:hover {
+  background: rgba(255,255,255,0.25);
 }
 
 /* Marketing Footer */
 .marketing-footer {
   background-color: var(--footer-dark);
-  padding: 12px 0 24px;
+  padding: 16px 0 24px;
 }
 
 .marketing-title {
   color: var(--white);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   margin-bottom: 6px;
 }
@@ -764,7 +783,8 @@ ol {
 .marketing-text {
   color: #d9e7ff;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 /* =========================================
