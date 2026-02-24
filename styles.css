@@ -424,6 +424,37 @@ section {
   font-weight: 500;
 }
 
+.program-dropdown-wrap {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.program-select {
+  flex: 1;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  padding: 0 16px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark-blue);
+  background-color: var(--white);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23627d98' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s;
+}
+
+.program-select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+}
+
 .chips {
   display: flex;
   gap: 10px;
