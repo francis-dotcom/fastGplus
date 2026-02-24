@@ -848,6 +848,10 @@ ol {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
 }
 
 .pg-chips-scroll::-webkit-scrollbar {
@@ -859,7 +863,7 @@ ol {
     align-items: center;
     flex-wrap: nowrap;
     gap: 8px;
-    padding: 4px 16px 8px;
+    padding: 4px 0 8px;
 }
 
 .pg-chip {
