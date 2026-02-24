@@ -60,30 +60,20 @@
         </section>
 
         <section class="pg-filter-bar-section">
-            <div class="container">
-                <div class="pg-filter-box" id="pg-filter-box">
-                    <div class="pg-filter-bar">
-                        <span class="pg-filter-bar-label">Filter by</span>
-                        <button type="button" class="pg-filter-bar-trigger" id="pg-filter-trigger" aria-expanded="false">
-                            <span class="pg-filter-bar-value" id="pg-filter-value">All</span>
-                            <svg class="pg-filter-bar-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </button>
-                    </div>
-                    <div class="pg-filter-bar-menu" id="pg-filter-menu" role="listbox">
-                        <div class="pg-filter-bar-option pg-filter-option-active" data-filter="all">All</div>
-                        <div class="pg-filter-bar-option" data-filter="segment:undergraduate">NCE Programs</div>
-                        <div class="pg-filter-bar-option" data-filter="segment:certificate">Certificate</div>
-                        <div class="pg-filter-bar-divider"></div>
-                        <div class="pg-filter-bar-option" data-filter="dept:health">Health Sciences</div>
-                        <div class="pg-filter-bar-option" data-filter="dept:technology">Technology & IT</div>
-                        <div class="pg-filter-bar-option" data-filter="dept:business">Business & Econ</div>
-                        <div class="pg-filter-bar-option" data-filter="dept:computer">Computer Education</div>
-                        <div class="pg-filter-bar-option" data-filter="dept:languages">Languages & Religion</div>
-                        <div class="pg-filter-bar-option" data-filter="dept:science">Integrated Science</div>
-                        <div class="pg-filter-bar-option" data-filter="dept:math">Math & Physical Sciences</div>
-                        <div class="pg-filter-bar-option" data-filter="dept:social">Social & Political Sciences</div>
-                        <div class="pg-filter-bar-option" data-filter="dept:education">Education Programs</div>
-                    </div>
+            <div class="pg-chips-scroll">
+                <div class="pg-chips" id="pg-chips">
+                    <button type="button" class="pg-chip pg-chip-active" data-filter="all">All</button>
+                    <button type="button" class="pg-chip" data-filter="segment:undergraduate">NCE Programs</button>
+                    <span class="pg-chips-sep" aria-hidden="true"></span>
+                    <button type="button" class="pg-chip" data-filter="dept:health">Health Sciences</button>
+                    <button type="button" class="pg-chip" data-filter="dept:technology">Technology &amp; IT</button>
+                    <button type="button" class="pg-chip" data-filter="dept:business">Business &amp; Econ</button>
+                    <button type="button" class="pg-chip" data-filter="dept:computer">Computer Education</button>
+                    <button type="button" class="pg-chip" data-filter="dept:languages">Languages &amp; Religion</button>
+                    <button type="button" class="pg-chip" data-filter="dept:science">Integrated Science</button>
+                    <button type="button" class="pg-chip" data-filter="dept:math">Math &amp; Physical Sciences</button>
+                    <button type="button" class="pg-chip" data-filter="dept:social">Social &amp; Political Sciences</button>
+                    <button type="button" class="pg-chip" data-filter="dept:education">Education Programs</button>
                 </div>
             </div>
         </section>
@@ -192,38 +182,23 @@
     }
 
     var currentFilter = 'all';
-    var box = document.getElementById('pg-filter-box');
-    var trigger = document.getElementById('pg-filter-trigger');
-    var valueEl = document.getElementById('pg-filter-value');
-    var options = document.querySelectorAll('.pg-filter-bar-option');
+    var chips = document.querySelectorAll('.pg-chip');
 
-    trigger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        box.classList.toggle('active');
-        trigger.setAttribute('aria-expanded', box.classList.contains('active'));
-    });
-    document.addEventListener('click', function() {
-        box.classList.remove('active');
-        trigger.setAttribute('aria-expanded', 'false');
-    });
-
-    options.forEach(function(opt) {
-        if (!opt.dataset.filter) return;
-        opt.addEventListener('click', function() {
-            currentFilter = opt.dataset.filter;
-            valueEl.textContent = opt.textContent.trim();
-            options.forEach(function(o){ o.classList.remove('pg-filter-option-active'); });
-            opt.classList.add('pg-filter-option-active');
-            box.classList.remove('active');
-            trigger.setAttribute('aria-expanded', 'false');
+    chips.forEach(function(chip) {
+        chip.addEventListener('click', function() {
+            currentFilter = chip.dataset.filter;
+            chips.forEach(function(c){ c.classList.remove('pg-chip-active'); });
+            chip.classList.add('pg-chip-active');
+            // Scroll active chip into view
+            chip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             renderCards(currentFilter);
         });
     });
 
     var params = new URLSearchParams(window.location.search);
     var dept = params.get('dept');
-    if (dept && document.querySelector('.pg-filter-bar-option[data-filter="dept:'+dept+'"]')) {
-        document.querySelector('.pg-filter-bar-option[data-filter="dept:'+dept+'"]').click();
+    if (dept && document.querySelector('.pg-chip[data-filter="dept:'+dept+'"]')) {
+        document.querySelector('.pg-chip[data-filter="dept:'+dept+'"]').click();
     } else {
         renderCards('all');
     }

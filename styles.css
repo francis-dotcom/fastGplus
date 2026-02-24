@@ -838,116 +838,69 @@ ol {
     max-width: 480px;
 }
 
-/* Programs: Filter box – label, trigger and dropdown list all inside one box */
+/* Programs: Filter chips – horizontal scrollable row */
 .pg-filter-bar-section {
-    padding: 12px 0 20px;
+    padding: 12px 0 16px;
 }
 
-.pg-filter-box {
+.pg-chips-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 16px;
+}
+
+.pg-chips-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.pg-chips {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: max-content;
+    padding: 4px 0 8px;
+}
+
+.pg-chip {
+    display: inline-flex;
+    align-items: center;
+    height: 38px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1.5px solid #e2e8f0;
     background: var(--white);
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-}
-
-.pg-filter-bar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.pg-filter-bar-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--dark-blue);
-    margin: 0;
-}
-
-.pg-filter-bar-trigger {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 200px;
-    padding: 10px 14px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    color: var(--dark-blue);
+    color: var(--text-muted);
     cursor: pointer;
     font-family: var(--font-main);
-    text-align: left;
-    transition: border-color 0.2s, background 0.2s;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.pg-filter-bar-trigger:hover {
+.pg-chip:hover {
     background: #f1f5f9;
     border-color: #cbd5e1;
-}
-
-.pg-filter-box.active .pg-filter-bar-trigger {
-    border-color: var(--primary-blue);
-    background: #f1f7ff;
-}
-
-.pg-filter-bar-value {
-    flex: 1;
-}
-
-.pg-filter-bar-chevron {
-    color: var(--text-muted);
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    margin-left: 8px;
-    transition: transform 0.2s;
-}
-
-.pg-filter-box.active .pg-filter-bar-chevron {
-    transform: rotate(180deg);
-}
-
-/* Menu lives inside the box, below the trigger */
-.pg-filter-bar-menu {
-    display: none;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #e2e8f0;
-    max-height: 280px;
-    overflow-y: auto;
-}
-
-.pg-filter-box.active .pg-filter-bar-menu {
-    display: block;
-}
-
-.pg-filter-bar-option {
-    font-size: 14px;
-    font-weight: 500;
     color: var(--dark-blue);
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.15s;
 }
 
-.pg-filter-bar-option:hover {
-    background: #f1f5f9;
-}
-
-.pg-filter-bar-option.pg-filter-option-active {
-    background: #f1f7ff;
-    color: var(--primary-blue);
+.pg-chip.pg-chip-active {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: var(--white);
     font-weight: 600;
 }
 
-.pg-filter-bar-divider {
-    height: 1px;
+.pg-chips-sep {
+    display: inline-block;
+    width: 1px;
+    height: 24px;
     background: #e2e8f0;
-    margin: 8px 0;
+    flex-shrink: 0;
+    margin: 0 4px;
 }
 
 /* Department Group Headers */
