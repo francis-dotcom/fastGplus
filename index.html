@@ -100,15 +100,12 @@
               <div class="dropdown-row" data-value="education">Education Programs</div>
             </div>
           </div>
-          <button id="go-btn" class="btn btn-primary btn-sm" style="margin-top: 12px; width: 100%;">View Programs</button>
 
           <script>
             const trigger = document.getElementById('dropdown-trigger');
             const list = document.getElementById('dropdown-list');
             const rows = document.querySelectorAll('.dropdown-row');
             const triggerText = document.getElementById('trigger-text');
-            const goBtn = document.getElementById('go-btn');
-            let selectedDept = '';
 
             trigger.addEventListener('click', (e) => {
               e.stopPropagation();
@@ -118,25 +115,19 @@
 
             rows.forEach(row => {
               row.addEventListener('click', () => {
-                selectedDept = row.dataset.value;
+                const selectedDept = row.dataset.value;
                 triggerText.innerText = row.innerText;
                 list.classList.remove('active');
                 trigger.classList.remove('active');
-                trigger.style.color = 'var(--dark-blue)';
+                
+                // Navigate immediately
+                window.location.href = 'programs.html?dept=' + selectedDept;
               });
             });
 
             document.addEventListener('click', () => {
               list.classList.remove('active');
               trigger.classList.remove('active');
-            });
-
-            goBtn.addEventListener('click', () => {
-              if (selectedDept) {
-                window.location.href = 'programs.html?dept=' + selectedDept;
-              } else {
-                window.location.href = 'programs.html';
-              }
             });
           </script>
         </div>
