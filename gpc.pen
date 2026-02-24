@@ -179,6 +179,7 @@
               "fill": "#FFFFFF",
               "cornerRadius": 12,
               "padding": 12,
+              "justifyContent": "space_between",
               "alignItems": "center",
               "children": [
                 {
@@ -189,205 +190,207 @@
                   "textGrowth": "fixed-width-height",
                   "width": "fill_container",
                   "height": 18,
-                  "content": "Search programs...",
+                  "content": "Select department",
                   "fontFamily": "Poppins",
                   "fontSize": 12,
                   "fontWeight": "500"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "uDFmL",
+                  "name": "dropIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-down",
+                  "iconFontFamily": "lucide",
+                  "fill": "#627D98"
                 }
               ]
             },
             {
               "type": "frame",
-              "id": "idF2A",
-              "name": "chips",
+              "id": "EuRNJ",
+              "name": "departmentDropdownList",
               "width": "fill_container",
-              "gap": 8,
+              "fill": "#FFFFFF",
+              "cornerRadius": 12,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#D9E2EC"
+              },
+              "layout": "vertical",
               "children": [
                 {
                   "type": "frame",
-                  "id": "mNJJS",
-                  "name": "chipsCol1",
+                  "id": "7rExZ",
+                  "name": "dept1Row",
                   "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 6,
+                  "height": 40,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "4HNrB",
-                      "name": "chip1",
-                      "width": "fill_container",
-                      "height": 34,
-                      "fill": "#E6F0FF",
-                      "cornerRadius": 999,
-                      "padding": [
-                        8,
-                        12
-                      ],
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "gfHoV",
-                          "name": "chip1t",
-                          "fill": "#0B4F9C",
-                          "content": "Languages & Religious Studies",
-                          "textAlign": "center",
-                          "fontFamily": "Poppins",
-                          "fontSize": 11,
-                          "fontWeight": "600"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "PYGTu",
-                      "name": "chip3",
-                      "width": "fill_container",
-                      "height": 34,
-                      "fill": "#E6F0FF",
-                      "cornerRadius": 999,
-                      "padding": [
-                        8,
-                        12
-                      ],
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "d5nyz",
-                          "name": "chip3t",
-                          "fill": "#0B4F9C",
-                          "content": "Integrated Science",
-                          "textAlign": "center",
-                          "fontFamily": "Poppins",
-                          "fontSize": 11,
-                          "fontWeight": "600"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "LuJmf",
-                      "name": "chip5",
-                      "width": "fill_container",
-                      "height": 34,
-                      "fill": "#E6F0FF",
-                      "cornerRadius": 999,
-                      "padding": [
-                        8,
-                        12
-                      ],
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "mG7AH",
-                          "name": "chip5t",
-                          "fill": "#0B4F9C",
-                          "content": "Social & Political Sciences",
-                          "textAlign": "center",
-                          "fontFamily": "Poppins",
-                          "fontSize": 11,
-                          "fontWeight": "600"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "L7Vpn",
+                      "fill": "#102A43",
+                      "content": "Languages & Religious Studies",
+                      "fontFamily": "Poppins",
+                      "fontSize": 12,
+                      "fontWeight": "500"
                     }
                   ]
                 },
                 {
                   "type": "frame",
-                  "id": "9rgCz",
-                  "name": "chipsCol2",
+                  "id": "MrSN0",
+                  "name": "dept2Row",
                   "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 6,
+                  "height": 40,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "top": 1
+                    },
+                    "fill": "#E6ECF2"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "3Z4XA",
-                      "name": "chip2",
-                      "width": "fill_container",
-                      "height": 34,
-                      "fill": "#E6F0FF",
-                      "cornerRadius": 999,
-                      "padding": [
-                        8,
-                        12
-                      ],
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "em1sD",
-                          "name": "chip2t",
-                          "fill": "#0B4F9C",
-                          "content": "Computer & Science Education",
-                          "textAlign": "center",
-                          "fontFamily": "Poppins",
-                          "fontSize": 11,
-                          "fontWeight": "600"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "Ou75n",
+                      "fill": "#102A43",
+                      "content": "Computer & Science Education",
+                      "fontFamily": "Poppins",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pOxy6",
+                  "name": "dept3Row",
+                  "width": "fill_container",
+                  "height": 40,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "top": 1
                     },
+                    "fill": "#E6ECF2"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
                     {
-                      "type": "frame",
-                      "id": "tEmfT",
-                      "name": "chip4",
-                      "width": "fill_container",
-                      "height": 34,
-                      "fill": "#E6F0FF",
-                      "cornerRadius": 999,
-                      "padding": [
-                        8,
-                        12
-                      ],
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "hUCZu",
-                          "name": "chip4t",
-                          "fill": "#0B4F9C",
-                          "content": "Mathematics & Physical Sciences",
-                          "textAlign": "center",
-                          "fontFamily": "Poppins",
-                          "fontSize": 11,
-                          "fontWeight": "600"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "50pQI",
+                      "fill": "#102A43",
+                      "content": "Integrated Science",
+                      "fontFamily": "Poppins",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jAiNi",
+                  "name": "dept4Row",
+                  "width": "fill_container",
+                  "height": 40,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "top": 1
                     },
+                    "fill": "#E6ECF2"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
                     {
-                      "type": "frame",
-                      "id": "vuqIF",
-                      "name": "chip6",
-                      "width": "fill_container",
-                      "height": 34,
-                      "fill": "#E6F0FF",
-                      "cornerRadius": 999,
-                      "padding": [
-                        8,
-                        12
-                      ],
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "Id1zV",
-                          "name": "chip6t",
-                          "fill": "#0B4F9C",
-                          "content": "Education Programs",
-                          "textAlign": "center",
-                          "fontFamily": "Poppins",
-                          "fontSize": 11,
-                          "fontWeight": "600"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "bi3eg",
+                      "fill": "#102A43",
+                      "content": "Mathematics & Physical Sciences",
+                      "fontFamily": "Poppins",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xm7Kc",
+                  "name": "dept5Row",
+                  "width": "fill_container",
+                  "height": 40,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "top": 1
+                    },
+                    "fill": "#E6ECF2"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "k9UXm",
+                      "fill": "#102A43",
+                      "content": "Social & Political Sciences",
+                      "fontFamily": "Poppins",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gBtzo",
+                  "name": "dept6Row",
+                  "width": "fill_container",
+                  "height": 40,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "top": 1
+                    },
+                    "fill": "#E6ECF2"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "z5t8P",
+                      "fill": "#102A43",
+                      "content": "Education Programs",
+                      "fontFamily": "Poppins",
+                      "fontSize": 12,
+                      "fontWeight": "500"
                     }
                   ]
                 }
