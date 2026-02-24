@@ -6,6 +6,11 @@ REMOTE_DIR="/var/www/html/grandpluscollege"
 
 echo "🚀 Deploying grandpluscollege.com..."
 
+# Auto-bump CSS cache buster with current timestamp so phones always get fresh styles
+TIMESTAMP=$(date +%s)
+sed -i '' "s/styles\.css?v=[^\"']*/styles.css?v=${TIMESTAMP}/" index.html
+echo "🔄 Cache buster updated to v=${TIMESTAMP}"
+
 rsync -az --progress \
   --exclude='.git' \
   --exclude='.DS_Store' \
