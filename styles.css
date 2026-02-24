@@ -838,31 +838,19 @@ ol {
     max-width: 480px;
 }
 
-/* Programs: Main layout (sidebar + cards) */
-.pg-main-layout {
-    display: flex;
-    gap: 32px;
-    padding: 0 0 24px;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
-}
-
-.pg-filter-sidebar {
-    flex-shrink: 0;
-    width: 240px;
-    position: sticky;
-    top: 68px;
-    align-self: flex-start;
+/* Programs: Filter section only (all filters in one block) */
+.pg-filter-section {
+    padding: 16px 0 24px;
+    background: var(--white);
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .pg-filter-panel {
-    background: var(--white);
+    background: var(--bg-light);
     border-radius: 12px;
-    padding: 20px 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    padding: 20px 20px 24px;
     border: 1px solid rgba(0, 0, 0, 0.06);
+    max-width: 360px;
 }
 
 .pg-filter-list {
@@ -872,7 +860,7 @@ ol {
 }
 
 .pg-filter-list + .pg-filter-list {
-    margin-top: 24px;
+    margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid #e2e8f0;
 }
@@ -884,46 +872,45 @@ ol {
     letter-spacing: 0.04em;
     color: var(--text-muted);
     margin-bottom: 10px;
-    padding: 0 20px;
+    padding: 0;
 }
 
-.pg-filter-sidebar .pg-segment {
+.pg-filter-section .pg-segment {
     font-size: 14px;
     font-weight: 500;
     color: var(--dark-blue);
-    padding: 10px 20px;
-    border-radius: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
     text-align: left;
     background: transparent;
     border-left: 3px solid transparent;
     margin: 0;
+    cursor: pointer;
 }
 
-.pg-filter-sidebar .pg-segment:hover {
-    background: #f8fafc;
+.pg-filter-section .pg-segment:hover {
+    background: rgba(255, 255, 255, 0.8);
     color: var(--dark-blue);
 }
 
-.pg-filter-sidebar .pg-segment-active {
+.pg-filter-section .pg-segment-active {
     background: #f1f7ff;
     color: var(--primary-blue);
     font-weight: 600;
     border-left-color: var(--primary-blue);
-    box-shadow: none;
 }
 
 .pg-filter-dept-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px 10px;
+    margin-bottom: 10px;
     cursor: pointer;
     user-select: none;
 }
 
 .pg-filter-dept-header .pg-filter-label {
     margin-bottom: 0;
-    padding: 0;
 }
 
 .pg-filter-chevron {
@@ -937,7 +924,7 @@ ol {
     transform: rotate(180deg);
 }
 
-.pg-filter-sidebar .pg-dropdown-menu {
+.pg-filter-section .pg-dropdown-menu {
     position: static;
     width: auto;
     opacity: 1;
@@ -950,70 +937,36 @@ ol {
     border-radius: 0;
 }
 
-.pg-filter-sidebar .pg-dropdown-item {
+.pg-filter-section .pg-dropdown-item {
     font-size: 14px;
     font-weight: 500;
     color: var(--dark-blue);
-    padding: 10px 20px 10px 24px;
-    border-radius: 0;
+    padding: 10px 12px 10px 16px;
+    border-radius: 8px;
     border-left: 3px solid transparent;
     transition: background 0.2s, color 0.2s;
+    cursor: pointer;
 }
 
-.pg-filter-sidebar .pg-dropdown-item:hover {
-    background: #f8fafc;
+.pg-filter-section .pg-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.8);
 }
 
-.pg-filter-sidebar .pg-dropdown-item.active {
+.pg-filter-section .pg-dropdown-item.active {
     background: #f1f7ff;
     color: var(--primary-blue);
     font-weight: 600;
     border-left-color: var(--primary-blue);
 }
 
-.pg-cards-inner {
-    flex: 1;
-    min-width: 0;
-}
-
-.pg-cards-section .pg-grid {
-    margin-top: 0;
-}
-
-/* Mobile: stack filter above cards, collapsible department list */
-@media (max-width: 900px) {
-    .pg-main-layout {
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .pg-filter-sidebar {
-        position: static;
-        width: 100%;
-        margin-bottom: 16px;
-    }
-
-    .pg-filter-panel {
-        padding: 16px 0;
-    }
-
+/* Mobile: collapse department list behind chevron */
+@media (max-width: 600px) {
     .pg-filter-dept-list .pg-dropdown-menu {
         display: none;
     }
 
     .pg-filter-dept-list.active .pg-dropdown-menu {
         display: block;
-    }
-}
-
-@media (max-width: 600px) {
-    .pg-filter-sidebar .pg-segment,
-    .pg-filter-sidebar .pg-dropdown-item {
-        padding-left: 16px;
-    }
-
-    .pg-filter-sidebar .pg-dropdown-item {
-        padding-left: 20px;
     }
 }
 
