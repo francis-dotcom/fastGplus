@@ -42,6 +42,7 @@
 
         <nav class="mobile-menu-nav">
           <a href="index.html" class="mobile-menu-link active">Home</a>
+          <a href="about.html" class="mobile-menu-link">About Us</a>
           <a href="programs.html" class="mobile-menu-link">Programs</a>
           <a href="admissions.html" class="mobile-menu-link">Admissions</a>
           <a href="fees.html" class="mobile-menu-link">Fees & Payments</a>
@@ -186,7 +187,7 @@
           
           async function fetchTestimonials() {
             try {
-              const response = await fetch('http://localhost:8001/tables/testimonials/rows', {
+              const response = await fetch('/api/tables/testimonials/rows', {
                 headers: { 
                   'Accept': 'application/json',
                   'X-API-Key': 'selfdb-bd66637d-60dc-cf8a-a1aa-037f1b37d7b9'

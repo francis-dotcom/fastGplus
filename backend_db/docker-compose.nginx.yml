@@ -1,0 +1,214 @@
+name: selfdb
+
+services:
+  # Database Services
+  db:
+    image: postgres:18
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_FIRST_NAME: ${ADMIN_FIRST_NAME}
+      ADMIN_LAST_NAME: ${ADMIN_LAST_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql
+      - ./database:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - selfdb-network
+
+  pgbouncer:
+    build:
+      context: ./pgbouncer-1.25.1
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASES_HOST: db
+      DATABASES_PORT: ${DB_PORT}
+      DATABASES_USER: ${POSTGRES_USER}
+      DATABASES_PASSWORD: ${POSTGRES_PASSWORD}
+      DATABASES_DBNAME: ${POSTGRES_DB}
+      LISTEN_ADDR: "0.0.0.0"
+      LISTEN_PORT: ${PGBOUNCER_PORT}
+      AUTH_TYPE: trust
+      POOL_MODE: ${POOL_MODE}
+      MAX_CLIENT_CONN: ${MAX_CLIENT_CONN}
+      DEFAULT_POOL_SIZE: ${DEFAULT_POOL_SIZE}
+      RESERVE_POOL_SIZE: ${RESERVE_POOL_SIZE}
+      SERVER_LIFETIME: ${SERVER_LIFETIME}
+      SERVER_IDLE_TIMEOUT: ${SERVER_IDLE_TIMEOUT}
+      QUERY_WAIT_TIMEOUT: ${QUERY_WAIT_TIMEOUT}
+      CLIENT_IDLE_TIMEOUT: ${CLIENT_IDLE_TIMEOUT}
+      ADMIN_USERS: ${POSTGRES_USER}
+      STATS_USERS: ${POSTGRES_USER}
+    healthcheck:
+      test:
+        ["CMD-SHELL", "netstat -ln | grep -q ':${PGBOUNCER_PORT}' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - selfdb-network
+
+  # Application Services
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8001:8001" # Exposed for Nginx proxy
+    depends_on:
+      pgbouncer:
+        condition: service_healthy
+      functions:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pgbouncer:${PGBOUNCER_PORT}/${POSTGRES_DB}
+      SECRET_KEY: ${SECRET_KEY}
+      ALGORITHM: ${ALGORITHM}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES}
+      API_KEY: ${API_KEY}
+      BACKUP_RETENTION_DAYS: ${BACKUP_RETENTION_DAYS}
+      BACKUP_SCHEDULE_CRON: ${BACKUP_SCHEDULE_CRON}
+      APP_NAME: ${APP_NAME}
+      APP_DESCRIPTION: ${APP_DESCRIPTION}
+      APP_VERSION: ${APP_VERSION}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: ${DB_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      BACKEND_PORT_CONTAINER: ${BACKEND_PORT}
+      BACKEND_WORKERS: ${BACKEND_WORKERS}
+      REALTIME_INTERNAL_PORT: ${REALTIME_INTERNAL_PORT}
+      STORAGE_HOST: ${STORAGE_HOST}
+      STORAGE_INTERNAL_PORT: ${STORAGE_INTERNAL_PORT}
+      FUNCTIONS_HOST: functions
+      FUNCTIONS_INTERNAL_PORT: ${FUNCTIONS_INTERNAL_PORT}
+    volumes:
+      - ./backups:/backups
+      - ./.env:/app/.env.backup:ro
+      - storage_data:/storage_data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f -H 'X-API-Key: ${API_KEY}' http://localhost:${BACKEND_PORT}/health || exit 1",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - selfdb-network
+
+  realtime:
+    build:
+      context: ./realtime
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: ${DB_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PORT: ${REALTIME_INTERNAL_PORT}
+      SECRET_KEY_BASE: ${SECRET_KEY}
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://localhost:${REALTIME_INTERNAL_PORT}/health || exit 1",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - selfdb-network
+
+  storage:
+    build:
+      context: ./storage
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      pgbouncer:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pgbouncer:${PGBOUNCER_PORT}/${POSTGRES_DB}
+      STORAGE_PATH: /data
+      STORAGE_INTERNAL_PORT: ${STORAGE_INTERNAL_PORT}
+      STORAGE_WORKERS: ${STORAGE_WORKERS}
+    volumes:
+      - storage_data:/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://localhost:${STORAGE_INTERNAL_PORT}/health || exit 1",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - selfdb-network
+
+  functions:
+    build:
+      context: ./functions
+      dockerfile: Dockerfile
+      args:
+        - BACKEND_URL=http://backend:${BACKEND_PORT}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: ${DB_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      FUNCTIONS_INTERNAL_PORT: ${FUNCTIONS_INTERNAL_PORT}
+      FUNCTIONS_DIR: /functions
+      EXECUTION_TIMEOUT_MS: ${EXECUTION_TIMEOUT_MS}
+      MAX_CONCURRENT_EXECUTIONS: ${MAX_CONCURRENT_EXECUTIONS}
+      API_KEY: ${API_KEY}
+    volumes:
+      - functions_data:/functions
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://localhost:${FUNCTIONS_INTERNAL_PORT}/health || exit 1",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - selfdb-network
+
+networks:
+  selfdb-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  storage_data:
+  functions_data:

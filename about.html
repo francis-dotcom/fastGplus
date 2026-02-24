@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us | Grand Plus College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="logo.png" type="image/png" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-content">
+        <h1 class="brand">
+          <a href="index.html" class="brand-link">
+            <img src="logo.png" alt="Grand Plus College Logo" class="logo-img" />
+            Grand Plus College
+          </a>
+        </h1>
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Open menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </header>
+
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+      <div class="mobile-menu-drawer">
+        <div class="mobile-menu-header">
+          <div class="brand">Grand Plus College</div>
+          <button
+            id="mobile-menu-close"
+            class="mobile-menu-close"
+            aria-label="Close menu"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <a href="https://gpceportal.com" class="portal-login-link">Portal/Login</a>
+
+        <nav class="mobile-menu-nav">
+          <a href="index.html" class="mobile-menu-link">Home</a>
+          <a href="about.html" class="mobile-menu-link active">About Us</a>
+          <a href="programs.html" class="mobile-menu-link">Programs</a>
+          <a href="admissions.html" class="mobile-menu-link">Admissions</a>
+          <a href="fees.html" class="mobile-menu-link">Fees & Payments</a>
+          <a href="support.html" class="mobile-menu-link">Support</a>
+        </nav>
+        <div class="mobile-menu-footer">
+          <a
+            href="apply.html"
+            class="btn btn-primary"
+            style="width: 100%; height: 54px; font-size: 16px; text-decoration: none;"
+            >Apply Now</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!-- About Hero Section -->
+      <section class="about-hero" style="background-image: linear-gradient(rgba(11, 79, 156, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1523050853064-dbad350e0225?auto=format&fit=crop&q=80&w=1200'); background-size: cover; background-position: center; padding: 100px 0; text-align: center; color: white;">
+        <div class="container">
+          <span style="display: inline-block; background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Est. 1924</span>
+          <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 20px;">Empowering Future Leaders</h2>
+          <p style="font-size: 18px; max-width: 700px; margin: 0 auto; opacity: 0.9; line-height: 1.6;">
+            Our mission is to foster academic excellence and cultivate the next generation of global innovators through a transformative educational experience.
+          </p>
+        </div>
+      </section>
+
+      <!-- Our Story Section -->
+      <section class="our-story" style="padding: 80px 0; background-color: #f8fafc;">
+        <div class="container" style="max-width: 800px;">
+          <h3 class="section-title" style="text-align: left; margin-bottom: 30px;">Our Story</h3>
+          <div style="font-size: 16px; color: #334e68; line-height: 1.8;">
+            <p style="margin-bottom: 20px;">
+              Founded a century ago, Grand Plus College has remained steadfast in its commitment to academic integrity and inclusive community. We believe that diversity of thought and background is the cornerstone of a world-class education.
+            </p>
+            <p>
+              What started as a small teaching institute has evolved into a leading research university, pioneering new methodologies in technology, social sciences, and the arts. Our values are built on the bedrock of transparency, innovation, and social responsibility.
+            </p>
+          </div>
+
+          <div style="margin-top: 50px; display: grid; grid-template-columns: 1fr; gap: 20px;">
+            <div style="display: flex; gap: 20px; background: white; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0; align-items: flex-start;">
+              <div style="background: rgba(11, 79, 156, 0.1); padding: 10px; border-radius: 10px; color: #0b4f9c;">
+                <i data-lucide="check-circle" style="width: 24px; height: 24px;"></i>
+              </div>
+              <div>
+                <h4 style="font-weight: 700; color: #102a43; margin-bottom: 5px;">Academic Integrity</h4>
+                <p style="font-size: 14px; color: #627d98;">Upholding the highest standards of honesty and ethical behavior in research and learning.</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 20px; background: white; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0; align-items: flex-start;">
+              <div style="background: rgba(11, 79, 156, 0.1); padding: 10px; border-radius: 10px; color: #0b4f9c;">
+                <i data-lucide="users" style="width: 24px; height: 24px;"></i>
+              </div>
+              <div>
+                <h4 style="font-weight: 700; color: #102a43; margin-bottom: 5px;">Inclusive Community</h4>
+                <p style="font-size: 14px; color: #627d98;">Creating an environment where every individual feels valued, heard, and empowered to succeed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leadership Team Section -->
+      <section class="leadership" style="padding: 80px 0;">
+        <div class="container">
+          <h3 class="section-title">Leadership Team</h3>
+          <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 40px;">
+            
+            <!-- President -->
+            <div style="display: flex; gap: 30px; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 40px;">
+              <div style="width: 120px; height: 120px; flex-shrink: 0; border-radius: 15px; overflow: hidden; border: 3px solid #f1f5f9;">
+                <img src="profile_ademola.jpg" alt="Dr. Ademola Abidoye" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div>
+                <h4 style="font-size: 20px; font-weight: 700; color: #102a43;">Dr. Ademola Abidoye</h4>
+                <p style="color: #0b4f9c; font-weight: 600; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">President</p>
+                <p style="font-size: 15px; color: #486581; line-height: 1.6; max-width: 600px;">
+                  Dr. Abidoye has led the college for over a decade, focusing on global partnerships and expanding research facilities to record heights.
+                </p>
+              </div>
+            </div>
+
+            <!-- VP -->
+            <div style="display: flex; gap: 30px; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 40px;">
+              <div style="width: 120px; height: 120px; flex-shrink: 0; border-radius: 15px; overflow: hidden; border: 3px solid #f1f5f9;">
+                <img src="profile_ademola.jpg" alt="Marcus Thorne" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div>
+                <h4 style="font-size: 20px; font-weight: 700; color: #102a43;">Marcus Thorne</h4>
+                <p style="color: #0b4f9c; font-weight: 600; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">VP of Academic Affairs</p>
+                <p style="font-size: 15px; color: #486581; line-height: 1.6; max-width: 600px;">
+                  Marcus oversees the curriculum development and ensures our academic programs remain competitive and industry-relevant.
+                </p>
+              </div>
+            </div>
+
+            <!-- Dean -->
+            <div style="display: flex; gap: 30px; align-items: center;">
+              <div style="width: 120px; height: 120px; flex-shrink: 0; border-radius: 15px; overflow: hidden; border: 3px solid #f1f5f9;">
+                <img src="profile_ademola.jpg" alt="Sarah Jenkins" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div>
+                <h4 style="font-size: 20px; font-weight: 700; color: #102a43;">Sarah Jenkins</h4>
+                <p style="color: #0b4f9c; font-weight: 600; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">Dean of Admissions</p>
+                <p style="font-size: 15px; color: #486581; line-height: 1.6; max-width: 600px;">
+                  Sarah is dedicated to creating a seamless enrollment experience and fostering a diverse student body from across the globe.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Links Section -->
+      <section class="marketing-footer" style="padding: 60px 0; background: #102a43; color: white;">
+        <div class="container" style="text-align: center;">
+          <h3 style="margin-bottom: 10px;">Start Your Future Today</h3>
+          <p style="opacity: 0.8; margin-bottom: 30px;">Join a community of builders, thinkers, and leaders.</p>
+          <div style="display: flex; justify-items: center; gap: 20px; max-width: 400px; margin: 0 auto;">
+          <a href="programs.html" class="btn btn-primary" style="flex: 1; text-decoration: none; display: flex; align-items: center; justify-content: center;">Explore Programs</a>
+          <a href="apply.html" class="btn btn-secondary" style="flex: 1; text-decoration: none; display: flex; align-items: center; justify-content: center;">Apply Now</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="menu.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
