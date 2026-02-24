@@ -148,15 +148,13 @@
                     <option value="Business & Economics">Business & Economics</option>
                     <option value="Technology & Computing">Technology & Computing</option>
                     <option value="Health Sciences">Health Sciences</option>
+                    <option value="Languages & Religious Studies">Languages & Religious Studies</option>
                 </select>
             </div>
             <div class="space-y-2">
                 <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">Select Program</label>
                 <select class="w-full h-14 px-4 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-base" id="program">
-                    <option value="">Select a program...</option>
-                    <option value="BSc Information Technology">BSc Information Technology</option>
-                    <option value="BBA">Bachelor of Business Administration (BBA)</option>
-                    <option value="Nursing">BSc Nursing</option>
+                    <option value="">Select a faculty first...</option>
                 </select>
             </div>
             <div class="space-y-3">
@@ -304,8 +302,54 @@
 </footer>
 
 <script>
-    // Hamburger Menu Logic
-    const hamburgerBtn = document.getElementById('hamburger-btn');
+    // Dynamic Program Filtering
+        const programsData = {
+            "Business & Economics": [
+                "Bachelor of Business Administration (BBA)",
+                "Accounting",
+                "Economics"
+            ],
+            "Technology & Computing": [
+                "BSc Information Technology",
+                "Computer Science",
+                "Software Engineering"
+            ],
+            "Health Sciences": [
+                "BSc Nursing",
+                "Public Health",
+                "Medical Laboratory Science"
+            ],
+            "Languages & Religious Studies": [
+                "Arabic / Islamic Studies",
+                "CRS / Social Studies",
+                "English / CRS",
+                "English / Islamic Studies",
+                "Yoruba / CRS",
+                "Yoruba / Islamic Studies"
+            ]
+        };
+
+        const facultySelect = document.getElementById('faculty');
+        const programSelect = document.getElementById('program');
+
+        facultySelect.addEventListener('change', function() {
+            const selectedFaculty = this.value;
+            programSelect.innerHTML = '<option value="">Select a program...</option>';
+            
+            if (selectedFaculty && programsData[selectedFaculty]) {
+                programsData[selectedFaculty].forEach(prog => {
+                    const opt = document.createElement('option');
+                    opt.value = prog;
+                    opt.textContent = prog;
+                    programSelect.appendChild(opt);
+                });
+            } else {
+                programSelect.innerHTML = '<option value="">Select a faculty first...</option>';
+            }
+        });
+
+        // Hamburger Menu Logic
+        const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const closeMenu = document.getElementById('close-menu');
 
