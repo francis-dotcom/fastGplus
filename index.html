@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1771976546" />
+    <link rel="stylesheet" href="styles.css?v=1771976719" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
@@ -84,19 +84,21 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="drop-icon"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="dropdown-list" id="dropdown-list">
-              <div class="pf-option" data-dept="languages">Languages & Religion</div>
-              <div class="pf-option" data-dept="computer">Comp. Ed & Science</div>
-              <div class="pf-option" data-dept="science">Integrated Science</div>
-              <div class="pf-option" data-dept="math">Math & Physical Sciences</div>
-              <div class="pf-option" data-dept="social">Social & Political Sciences</div>
-              <div class="pf-option" data-dept="education">Education Programs</div>
+              <button type="button" class="pf-option chip" data-dept="health">Health Sciences</button>
+              <button type="button" class="pf-option chip" data-dept="technology">Technology &amp; IT</button>
+              <button type="button" class="pf-option chip" data-dept="business">Business &amp; Econ</button>
+              <button type="button" class="pf-option chip" data-dept="computer">Computer Education</button>
+              <button type="button" class="pf-option chip" data-dept="languages">Languages &amp; Religion</button>
+              <button type="button" class="pf-option chip" data-dept="science">Integrated Science</button>
+              <button type="button" class="pf-option chip" data-dept="math">Math &amp; Physical Sciences</button>
+              <button type="button" class="pf-option chip" data-dept="social">Social &amp; Political Sciences</button>
+              <button type="button" class="pf-option chip" data-dept="education">Education Programs</button>
             </div>
           </div>
 
           <script>
             const trigger = document.getElementById('dropdown-trigger');
             const list = document.getElementById('dropdown-list');
-            const rows = document.querySelectorAll('.dropdown-row');
             const triggerText = document.getElementById('trigger-text');
 
             trigger.addEventListener('click', (e) => {
@@ -105,16 +107,15 @@
               trigger.classList.toggle('active');
             });
 
-            rows.forEach(row => {
-              row.addEventListener('click', () => {
-                const selectedDept = row.dataset.value;
-                triggerText.innerText = row.innerText;
-                list.classList.remove('active');
-                trigger.classList.remove('active');
-                
-                // Navigate immediately
-                window.location.href = 'programs.html?dept=' + selectedDept;
-              });
+            list.addEventListener('click', (e) => {
+              const option = e.target.closest('.pf-option');
+              if (!option) return;
+              const selectedDept = option.dataset.dept;
+              if (!selectedDept) return;
+              triggerText.innerText = option.innerText;
+              list.classList.remove('active');
+              trigger.classList.remove('active');
+              window.location.href = 'programs.html?dept=' + selectedDept;
             });
 
             document.addEventListener('click', () => {
