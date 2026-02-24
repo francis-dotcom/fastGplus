@@ -305,6 +305,8 @@ section {
 .hero-text {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 12px;
 }
 
@@ -352,7 +354,7 @@ section {
   border-radius: 12px;
   font-weight: var(--fw-bold);
   font-family: var(--font-main);
-  text-decoration: none;
+  text-decoration: none !important;
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s;
 }
@@ -525,10 +527,11 @@ ol {
 .scholarship-highlight .highlight-box {
   background-color: var(--highlight-bg);
   border-radius: 16px;
-  padding: 24px 16px; /* Horizontal padding matches .container padding for alignment */
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Prevent button/text stretching */
+  align-items: center;
+  text-align: center;
   gap: 12px;
 }
 
@@ -626,6 +629,8 @@ ol {
 .support-box {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 8px;
 }
 
