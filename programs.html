@@ -78,13 +78,22 @@
         <section class="pg-filter-section">
             <div class="container">
                 <div class="pg-filter-row">
-                    <div class="pg-tabs">
-                        <span class="pg-tab pg-tab-active">All Programs</span>
-                        <span class="pg-tab">Undergraduate</span>
-                        <span class="pg-tab">Certificate</span>
+                    <div class="pg-tabs" id="type-tabs">
+                        <span class="pg-tab pg-tab-active" data-type="all">All Programs</span>
+                        <span class="pg-tab" data-type="undergraduate">Undergraduate</span>
+                        <span class="pg-tab" data-type="certificate">Certificate</span>
                     </div>
-                    <div class="pg-sort">
-                        <span>Sort: Recommended ▾</span>
+                </div>
+                <!-- Department Filters -->
+                <div class="pg-filter-row" style="margin-top: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 5px;">
+                    <div class="pg-tabs" id="dept-tabs" style="gap: 8px;">
+                        <span class="pg-tab pg-tab-active" data-dept="all">All Depts</span>
+                        <span class="pg-tab" data-dept="languages">Languages</span>
+                        <span class="pg-tab" data-dept="computer">Comp. Ed</span>
+                        <span class="pg-tab" data-dept="science">Science</span>
+                        <span class="pg-tab" data-dept="math">Math</span>
+                        <span class="pg-tab" data-dept="social">Social</span>
+                        <span class="pg-tab" data-dept="education">Education</span>
                     </div>
                 </div>
             </div>
@@ -96,7 +105,7 @@
                 <div class="pg-grid">
 
                     <!-- Card 1: Nursing -->
-                    <article class="pg-card">
+                    <article class="pg-card" data-dept="health">
                         <div class="pg-card-img-wrap">
                             <span class="pg-badge pg-badge-green">Admission Open</span>
                             <img
@@ -112,7 +121,103 @@
                                 <span>🎓 Undergraduate</span>
                                 <span>⏱ 4 Years</span>
                             </div>
-                            <a href="program-detail.html" class="btn btn-primary pg-btn">View Program</a>
+                            <a href="apply.html" class="btn btn-primary pg-btn">Apply Now</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: IT -->
+                    <article class="pg-card" data-dept="technology">
+                        <div class="pg-card-img-wrap">
+                            <span class="pg-badge pg-badge-green">Admission Open</span>
+                            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80" alt="BSc Information Technology" class="pg-card-img" loading="lazy">
+                        </div>
+                        <div class="pg-card-body">
+                            <h3 class="pg-card-title">BSc Information Technology</h3>
+                            <div class="pg-card-meta">
+                                <span>🎓 Undergraduate</span>
+                                <span>⏱ 4 Years</span>
+                            </div>
+                            <a href="apply.html" class="btn btn-primary pg-btn">Apply Now</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: Business -->
+                    <article class="pg-card" data-dept="business">
+                        <div class="pg-card-img-wrap">
+                            <span class="pg-badge pg-badge-green">Admission Open</span>
+                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&q=80" alt="BBA Business Administration" class="pg-card-img" loading="lazy">
+                        </div>
+                        <div class="pg-card-body">
+                            <h3 class="pg-card-title">BBA Business Administration</h3>
+                            <div class="pg-card-meta">
+                                <span>🎓 Undergraduate</span>
+                                <span>⏱ 3 Years</span>
+                            </div>
+                            <a href="apply.html" class="btn btn-primary pg-btn">Apply Now</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 10: Computer Education / Biology -->
+                    <article class="pg-card" data-dept="computer">
+                        <div class="pg-card-img-wrap">
+                            <span class="pg-badge pg-badge-green">Admission Open</span>
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&q=80" alt="Computer Education / Biology" class="pg-card-img" loading="lazy">
+                        </div>
+                        <div class="pg-card-body">
+                            <h3 class="pg-card-title">Computer Education / Biology</h3>
+                            <div class="pg-card-meta">
+                                <span>🎓 NCE / Degree</span>
+                                <span>⏱ 3-4 Years</span>
+                            </div>
+                            <a href="apply.html" class="btn btn-primary pg-btn">Apply Now</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 11: Computer Education / Mathematics -->
+                    <article class="pg-card" data-dept="computer">
+                        <div class="pg-card-img-wrap">
+                            <span class="pg-badge pg-badge-green">Admission Open</span>
+                            <img src="https://images.unsplash.com/photo-1509228468518-180dd486490e?w=400&q=80" alt="Computer Education / Mathematics" class="pg-card-img" loading="lazy">
+                        </div>
+                        <div class="pg-card-body">
+                            <h3 class="pg-card-title">Computer Education / Mathematics</h3>
+                            <div class="pg-card-meta">
+                                <span>🎓 NCE / Degree</span>
+                                <span>⏱ 3-4 Years</span>
+                            </div>
+                            <a href="apply.html" class="btn btn-primary pg-btn">Apply Now</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 12: Computer Science / Integrated Science -->
+                    <article class="pg-card" data-dept="computer">
+                        <div class="pg-card-img-wrap">
+                            <span class="pg-badge pg-badge-green">Admission Open</span>
+                            <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?w=400&q=80" alt="Computer Science / Integrated Science" class="pg-card-img" loading="lazy">
+                        </div>
+                        <div class="pg-card-body">
+                            <h3 class="pg-card-title">Computer Science / Integrated Science</h3>
+                            <div class="pg-card-meta">
+                                <span>🎓 NCE / Degree</span>
+                                <span>⏱ 3-4 Years</span>
+                            </div>
+                            <a href="apply.html" class="btn btn-primary pg-btn">Apply Now</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 13: Computer Science / Physics -->
+                    <article class="pg-card" data-dept="computer">
+                        <div class="pg-card-img-wrap">
+                            <span class="pg-badge pg-badge-green">Admission Open</span>
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80" alt="Computer Science / Physics" class="pg-card-img" loading="lazy">
+                        </div>
+                        <div class="pg-card-body">
+                            <h3 class="pg-card-title">Computer Science / Physics</h3>
+                            <div class="pg-card-meta">
+                                <span>🎓 NCE / Degree</span>
+                                <span>⏱ 3-4 Years</span>
+                            </div>
+                            <a href="apply.html" class="btn btn-primary pg-btn">Apply Now</a>
                         </div>
                     </article>
 
@@ -251,6 +356,42 @@
     <script src="menu.js"></script>
     <script>
         lucide.createIcons();
+
+        // Filtering Logic
+        const deptTabs = document.querySelectorAll('#dept-tabs .pg-tab');
+        const cards = document.querySelectorAll('.pg-card');
+
+        function filterPrograms(dept) {
+            // Update UI
+            deptTabs.forEach(tab => {
+                tab.classList.toggle('pg-tab-active', tab.dataset.dept === dept);
+            });
+
+            // Filter Cards
+            cards.forEach(card => {
+                const cardDept = card.dataset.dept;
+                if (dept === 'all' || cardDept === dept) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        deptTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                filterPrograms(tab.dataset.dept);
+            });
+        });
+
+        // Handle URL Params (?dept=languages)
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            const dept = params.get('dept');
+            if (dept) {
+                filterPrograms(dept);
+            }
+        });
     </script>
 </body>
 </html>
