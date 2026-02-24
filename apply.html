@@ -331,6 +331,9 @@
 
     let currentStep = 1;
     const totalSteps = 5;
+    const APPLICATIONS_ENDPOINT = '/api/tables/applications/rows';
+    const API_KEY = 'selfdb-bd66637d-60dc-cf8a-a1aa-037f1b37d7b9';
+    let isSubmitting = false;
 
     const stages = [
         { title: "Personal Information", head: "Apply Now" },
@@ -376,15 +379,98 @@
         document.getElementById('rv-gpa').textContent = "GPA: " + (document.getElementById('gpa').value || "N/A");
     }
 
-    document.getElementById('btnNext').addEventListener('click', () => {
+    function buildApplicationPayload() {
+        return {
+            full_name: document.getElementById('full-name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim() || null,
+            date_of_birth: document.getElementById('dob').value || null,
+            permanent_address: document.getElementById('address').value.trim() || null,
+            faculty: document.getElementById('faculty').value || null,
+            program_applied: document.getElementById('program').value,
+            study_mode: document.querySelector('input[name="study_mode"]:checked')?.value || null,
+            intake: document.querySelector('input[name="intake"]:checked')?.value || null,
+            highest_qualification: document.getElementById('qualification').value || null,
+            institution_name: document.getElementById('institution').value.trim() || null,
+            graduation_year: document.getElementById('grad-year').value ? Number(document.getElementById('grad-year').value) : null,
+            gpa: document.getElementById('gpa').value.trim() || null,
+            metadata: {
+                source: 'website_apply_form',
+                submitted_at: new Date().toISOString()
+            }
+        };
+    }
+
+    function validateSubmission(payload) {
+        if (!payload.full_name || !payload.email || !payload.program_applied) {
+            alert('Please complete Full Name, Email Address, and Program before submitting.');
+            return false;
+        }
+
+        if (!document.getElementById('certify').checked) {
+            alert('Please certify your application details before submitting.');
+            return false;
+        }
+
+        return true;
+    }
+
+    async function submitApplication() {
+        if (isSubmitting) return;
+
+        const payload = buildApplicationPayload();
+        if (!validateSubmission(payload)) return;
+
+        const nextBtn = document.getElementById('btnNext');
+        const previousLabel = nextBtn.innerHTML;
+
+        try {
+            isSubmitting = true;
+            nextBtn.disabled = true;
+            nextBtn.innerHTML = 'Submitting... <span class="material-symbols-outlined">hourglass_top</span>';
+
+            const response = await fetch(APPLICATIONS_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-API-Key': API_KEY
+                },
+                body: JSON.stringify(payload)
+            });
+
+            let responseData = null;
+            try {
+                responseData = await response.json();
+            } catch (e) {
+                responseData = null;
+            }
+
+            if (!response.ok) {
+                const errorMessage = responseData?.message || responseData?.error || `Submission failed (${response.status}).`;
+                throw new Error(errorMessage);
+            }
+
+            const applicationId = responseData?.data?.id || responseData?.id || '';
+            window.location.href = applicationId
+                ? `status.html?application_id=${encodeURIComponent(applicationId)}`
+                : 'status.html';
+        } catch (error) {
+            alert(error.message || 'Could not submit application. Please try again.');
+            nextBtn.disabled = false;
+            nextBtn.innerHTML = previousLabel;
+            isSubmitting = false;
+        }
+    }
+
+    document.getElementById('btnNext').addEventListener('click', async () => {
         if (currentStep < totalSteps) {
             currentStep++;
             updateProgressBar();
             toggleStages();
             window.scrollTo(0, 0);
         } else {
-            // alert("Application Submitted Successfully!"); // Removed as design suggests a success page
-            window.location.href = "status.html";
+            await submitApplication();
         }
     });
 

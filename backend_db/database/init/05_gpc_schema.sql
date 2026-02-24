@@ -8,15 +8,20 @@
 -- ─────────────────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS applications (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
+    full_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(20),
     date_of_birth DATE,
-    nationality VARCHAR(100),
-    program_applied VARCHAR(255) NOT NULL, -- The specific program name
-    academic_history JSONB DEFAULT '[]'::jsonb, -- Array of prior school objects
-    status VARCHAR(50) NOT NULL DEFAULT 'PENDING', -- PENDING, UNDER_REVIEW, APPROVED, REJECTED
+    permanent_address TEXT,
+    faculty VARCHAR(255),
+    program_applied VARCHAR(255) NOT NULL,
+    study_mode VARCHAR(50),
+    intake VARCHAR(50),
+    highest_qualification VARCHAR(255),
+    institution_name VARCHAR(255),
+    graduation_year INTEGER,
+    gpa VARCHAR(50),
+    status VARCHAR(50) NOT NULL DEFAULT 'PENDING',
     metadata JSONB DEFAULT '{}'::jsonb,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
