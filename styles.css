@@ -838,136 +838,125 @@ ol {
     max-width: 480px;
 }
 
-/* Programs: Filter section only (all filters in one block) */
-.pg-filter-section {
-    padding: 16px 0 24px;
+/* Programs: Filter bar with single dropdown */
+.pg-filter-bar-section {
+    padding: 12px 0 20px;
     background: var(--white);
     border-bottom: 1px solid #e2e8f0;
 }
 
-.pg-filter-panel {
-    background: var(--bg-light);
-    border-radius: 12px;
-    padding: 20px 20px 24px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    max-width: 360px;
-}
-
-.pg-filter-list {
+.pg-filter-bar {
     display: flex;
-    flex-direction: column;
-    gap: 2px;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
-.pg-filter-list + .pg-filter-list {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #e2e8f0;
-}
-
-.pg-filter-label {
-    font-size: 11px;
+.pg-filter-bar-label {
+    font-size: 13px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-    padding: 0;
-}
-
-.pg-filter-section .pg-segment {
-    font-size: 14px;
-    font-weight: 500;
     color: var(--dark-blue);
-    padding: 10px 12px;
-    border-radius: 8px;
-    text-align: left;
-    background: transparent;
-    border-left: 3px solid transparent;
     margin: 0;
-    cursor: pointer;
 }
 
-.pg-filter-section .pg-segment:hover {
-    background: rgba(255, 255, 255, 0.8);
-    color: var(--dark-blue);
+.pg-filter-bar-dropdown {
+    position: relative;
+    min-width: 200px;
 }
 
-.pg-filter-section .pg-segment-active {
-    background: #f1f7ff;
-    color: var(--primary-blue);
-    font-weight: 600;
-    border-left-color: var(--primary-blue);
-}
-
-.pg-filter-dept-header {
+.pg-filter-bar-trigger {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
-    cursor: pointer;
-    user-select: none;
-}
-
-.pg-filter-dept-header .pg-filter-label {
-    margin-bottom: 0;
-}
-
-.pg-filter-chevron {
-    color: var(--text-muted);
-    width: 16px;
-    height: 16px;
-    transition: transform 0.2s;
-}
-
-.pg-filter-dept-list.active .pg-filter-chevron {
-    transform: rotate(180deg);
-}
-
-.pg-filter-section .pg-dropdown-menu {
-    position: static;
-    width: auto;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    border-radius: 0;
-}
-
-.pg-filter-section .pg-dropdown-item {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--white);
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 500;
     color: var(--dark-blue);
-    padding: 10px 12px 10px 16px;
-    border-radius: 8px;
-    border-left: 3px solid transparent;
-    transition: background 0.2s, color 0.2s;
     cursor: pointer;
+    font-family: var(--font-main);
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.pg-filter-section .pg-dropdown-item:hover {
-    background: rgba(255, 255, 255, 0.8);
+.pg-filter-bar-trigger:hover {
+    border-color: #cbd5e1;
 }
 
-.pg-filter-section .pg-dropdown-item.active {
+.pg-filter-bar-dropdown.active .pg-filter-bar-trigger {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(11, 79, 156, 0.15);
+}
+
+.pg-filter-bar-value {
+    flex: 1;
+}
+
+.pg-filter-bar-chevron {
+    color: var(--text-muted);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    transition: transform 0.2s;
+}
+
+.pg-filter-bar-dropdown.active .pg-filter-bar-chevron {
+    transform: rotate(180deg);
+}
+
+.pg-filter-bar-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 260px;
+    max-height: 320px;
+    overflow-y: auto;
+    background: var(--white);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    padding: 6px 0;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+}
+
+.pg-filter-bar-dropdown.active .pg-filter-bar-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.pg-filter-bar-option {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark-blue);
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pg-filter-bar-option:hover {
+    background: #f1f5f9;
+}
+
+.pg-filter-bar-option.pg-filter-option-active {
     background: #f1f7ff;
     color: var(--primary-blue);
     font-weight: 600;
-    border-left-color: var(--primary-blue);
 }
 
-/* Mobile: collapse department list behind chevron */
-@media (max-width: 600px) {
-    .pg-filter-dept-list .pg-dropdown-menu {
-        display: none;
-    }
-
-    .pg-filter-dept-list.active .pg-dropdown-menu {
-        display: block;
-    }
+.pg-filter-bar-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 6px 12px;
 }
 
 /* Department Group Headers */

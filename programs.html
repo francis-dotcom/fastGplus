@@ -65,32 +65,30 @@
         </section>
 
 
-        <!-- Filter Section (all filters in one block) -->
-        <section class="pg-filter-section">
+        <!-- Filter bar: single dropdown (All, NCE, Certificate + each department) -->
+        <section class="pg-filter-bar-section">
             <div class="container">
-                <div class="pg-filter-panel">
-                    <div class="pg-filter-list" id="segment-pills" role="list">
-                        <div class="pg-filter-label">Program type</div>
-                        <div class="pg-segment pg-segment-active" data-segment="all">All</div>
-                        <div class="pg-segment" data-segment="undergraduate">NCE Programs</div>
-                        <div class="pg-segment" data-segment="certificate">Certificate</div>
-                    </div>
-                    <div class="pg-filter-list pg-filter-dept-list" id="dept-dropdown" role="list">
-                        <div class="pg-filter-dept-header">
-                            <span class="pg-filter-label">Department</span>
-                            <i data-lucide="chevron-down" class="pg-filter-chevron" aria-hidden="true"></i>
-                        </div>
-                        <div class="pg-dropdown-menu">
-                            <div class="pg-dropdown-item active" data-dept="all">All Departments</div>
-                            <div class="pg-dropdown-item" data-dept="health">Health Sciences</div>
-                            <div class="pg-dropdown-item" data-dept="technology">Technology &amp; IT</div>
-                            <div class="pg-dropdown-item" data-dept="business">Business &amp; Econ</div>
-                            <div class="pg-dropdown-item" data-dept="computer">Computer Education</div>
-                            <div class="pg-dropdown-item" data-dept="languages">Languages &amp; Religion</div>
-                            <div class="pg-dropdown-item" data-dept="science">Integrated Science</div>
-                            <div class="pg-dropdown-item" data-dept="math">Math &amp; Physical Sciences</div>
-                            <div class="pg-dropdown-item" data-dept="social">Social &amp; Political Sciences</div>
-                            <div class="pg-dropdown-item" data-dept="education">Education Programs</div>
+                <div class="pg-filter-bar">
+                    <label for="pg-filter-select" class="pg-filter-bar-label">Filter by</label>
+                    <div class="pg-filter-bar-dropdown" id="pg-filter-dropdown">
+                        <button type="button" class="pg-filter-bar-trigger" id="pg-filter-trigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="pg-filter-trigger pg-filter-bar-label">
+                            <span class="pg-filter-bar-value" id="pg-filter-value">All</span>
+                            <i data-lucide="chevron-down" class="pg-filter-bar-chevron" aria-hidden="true"></i>
+                        </button>
+                        <div class="pg-filter-bar-menu" id="pg-filter-menu" role="listbox" aria-label="Filter programs">
+                            <div class="pg-filter-bar-option pg-filter-option-active" data-filter="all" role="option" tabindex="0">All</div>
+                            <div class="pg-filter-bar-option" data-filter="segment:undergraduate" role="option" tabindex="0">NCE Programs</div>
+                            <div class="pg-filter-bar-option" data-filter="segment:certificate" role="option" tabindex="0">Certificate</div>
+                            <div class="pg-filter-bar-divider" role="separator"></div>
+                            <div class="pg-filter-bar-option" data-filter="dept:health" role="option" tabindex="0">Health Sciences</div>
+                            <div class="pg-filter-bar-option" data-filter="dept:technology" role="option" tabindex="0">Technology &amp; IT</div>
+                            <div class="pg-filter-bar-option" data-filter="dept:business" role="option" tabindex="0">Business &amp; Econ</div>
+                            <div class="pg-filter-bar-option" data-filter="dept:computer" role="option" tabindex="0">Computer Education</div>
+                            <div class="pg-filter-bar-option" data-filter="dept:languages" role="option" tabindex="0">Languages &amp; Religion</div>
+                            <div class="pg-filter-bar-option" data-filter="dept:science" role="option" tabindex="0">Integrated Science</div>
+                            <div class="pg-filter-bar-option" data-filter="dept:math" role="option" tabindex="0">Math &amp; Physical Sciences</div>
+                            <div class="pg-filter-bar-option" data-filter="dept:social" role="option" tabindex="0">Social &amp; Political Sciences</div>
+                            <div class="pg-filter-bar-option" data-filter="dept:education" role="option" tabindex="0">Education Programs</div>
                         </div>
                     </div>
                 </div>
@@ -647,80 +645,73 @@
     <script>
         lucide.createIcons();
 
-        // UI Elements
-        const deptBlock = document.getElementById('dept-dropdown');
-        const deptItems = deptBlock ? deptBlock.querySelectorAll('.pg-dropdown-item') : [];
-        const segmentPills = document.querySelectorAll('.pg-segment');
+        // Filter bar: one dropdown (All, NCE, Certificate + each department)
+        const filterDropdown = document.getElementById('pg-filter-dropdown');
+        const filterTrigger = document.getElementById('pg-filter-trigger');
+        const filterValueEl = document.getElementById('pg-filter-value');
+        const filterMenu = document.getElementById('pg-filter-menu');
+        const filterOptions = document.querySelectorAll('.pg-filter-bar-option');
         const cards = document.querySelectorAll('.pg-card');
         const headers = document.querySelectorAll('.pg-dept-header');
-        const label = document.getElementById('selected-dept-label');
 
-        let currentDept = 'all';
-        let currentSegment = 'all';
+        let currentFilter = 'all'; // 'all' | 'segment:undergraduate' | 'segment:certificate' | 'dept:health' | ...
 
-        // Optional: toggle department list on mobile (chevron)
-        const deptHeader = document.querySelector('.pg-filter-dept-header');
-        if (deptHeader && deptBlock) {
-            deptHeader.addEventListener('click', () => deptBlock.classList.toggle('active'));
+        function getSegmentAndDept() {
+            if (currentFilter === 'all') return { segment: 'all', dept: 'all' };
+            if (currentFilter === 'segment:undergraduate') return { segment: 'undergraduate', dept: 'all' };
+            if (currentFilter === 'segment:certificate') return { segment: 'certificate', dept: 'all' };
+            if (currentFilter.startsWith('dept:')) return { segment: 'all', dept: currentFilter.replace('dept:', '') };
+            return { segment: 'all', dept: 'all' };
         }
 
         function applyFilters() {
+            const { segment: currentSegment, dept: currentDept } = getSegmentAndDept();
+
             headers.forEach(header => {
                 const dept = header.dataset.dept;
                 const matchesDept = currentDept === 'all' || currentDept === dept;
-                
-                // Check if any card in this dept matches segment
-                const visibleCardsInDept = Array.from(cards).filter(card => 
-                    card.dataset.dept === dept && 
+                const visibleCardsInDept = Array.from(cards).filter(card =>
+                    card.dataset.dept === dept &&
                     (currentSegment === 'all' || card.dataset.segment === currentSegment)
                 );
-
-                if (matchesDept && visibleCardsInDept.length > 0) {
-                    header.style.display = 'block';
-                } else {
-                    header.style.display = 'none';
-                }
+                header.style.display = matchesDept && visibleCardsInDept.length > 0 ? 'block' : 'none';
             });
 
             cards.forEach(card => {
                 const matchesDept = currentDept === 'all' || card.dataset.dept === currentDept;
                 const matchesSegment = currentSegment === 'all' || card.dataset.segment === currentSegment;
-
-                if (matchesDept && matchesSegment) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = matchesDept && matchesSegment ? 'block' : 'none';
             });
         }
 
-        // Dept Selection
-        deptItems.forEach(item => {
-            item.addEventListener('click', () => {
-                deptItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-                currentDept = item.dataset.dept;
-                if (label) label.textContent = item.textContent.trim();
+        filterTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            filterDropdown.classList.toggle('active');
+            filterTrigger.setAttribute('aria-expanded', filterDropdown.classList.contains('active'));
+        });
+
+        document.addEventListener('click', () => {
+            filterDropdown.classList.remove('active');
+            filterTrigger.setAttribute('aria-expanded', 'false');
+        });
+
+        filterOptions.forEach(opt => {
+            opt.addEventListener('click', () => {
+                currentFilter = opt.dataset.filter || 'all';
+                filterValueEl.textContent = opt.textContent.trim();
+                filterOptions.forEach(o => o.classList.remove('pg-filter-option-active'));
+                opt.classList.add('pg-filter-option-active');
+                filterDropdown.classList.remove('active');
+                filterTrigger.setAttribute('aria-expanded', 'false');
                 applyFilters();
             });
         });
 
-        // Segment Selection
-        segmentPills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                segmentPills.forEach(p => p.classList.remove('pg-segment-active'));
-                pill.classList.add('pg-segment-active');
-                currentSegment = pill.dataset.segment;
-                applyFilters();
-            });
-        });
-
-        // Handle URL Params
         window.addEventListener('load', () => {
             const params = new URLSearchParams(window.location.search);
             const dept = params.get('dept');
             if (dept) {
-                const target = Array.from(deptItems).find(i => i.dataset.dept === dept);
+                const target = Array.from(filterOptions).find(o => o.dataset.filter === 'dept:' + dept);
                 if (target) target.click();
             } else {
                 applyFilters();
