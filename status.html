@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Application Status | Grand Plus College</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="logo.png" type="image/png" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0b4f9c",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+            min-height: 100dvh;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+    
+    <!-- Header with Hamburger -->
+    <header class="header bg-white shadow-sm sticky top-0 z-50">
+        <div class="container header-content">
+            <h1 class="brand">
+                <a href="index.html" class="brand-link flex items-center gap-2">
+                    <img src="logo.png" alt="Grand Plus College Logo" class="logo-img h-6 w-auto">
+                    <span class="font-bold text-lg">Grand Plus College</span>
+                </a>
+            </h1>
+            <button id="hamburger-btn" class="hamburger-btn" aria-label="Open menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+        <div class="mobile-menu-drawer">
+            <div class="mobile-menu-header">
+                <div class="brand">
+                    <a href="index.html" class="brand-link">
+                        <img src="logo.png" alt="Grand Plus College Logo" class="logo-img">
+                        Grand Plus
+                    </a>
+                </div>
+                <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <nav class="mobile-menu-nav">
+                <a href="index.html" class="mobile-menu-link">
+                    Home
+                    <i data-lucide="chevron-right" class="size-4"></i>
+                </a>
+                <a href="programs.html" class="mobile-menu-link">
+                    Programs
+                    <i data-lucide="chevron-right" class="size-4"></i>
+                </a>
+                <a href="admissions.html" class="mobile-menu-link">
+                    Admissions
+                    <i data-lucide="chevron-right" class="size-4"></i>
+                </a>
+            </nav>
+            <div class="mobile-menu-footer">
+                <a href="apply.html" class="btn btn-primary" style="width: 100%; text-decoration: none;">Apply Now</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-md mx-auto">
+        <!-- Success Visual Section -->
+        <div class="px-4 py-8 flex flex-col items-center">
+            <div class="w-24 h-24 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-primary text-6xl" style="font-variation-settings: 'FILL' 1">check_circle</span>
+            </div>
+            <h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-3xl font-bold leading-tight text-center pb-3">Application Submitted!</h1>
+            <p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-relaxed text-center px-4">
+                Thank you for applying to Grand Plus College. Your application is now being reviewed by our admissions team.
+            </p>
+        </div>
+
+        <!-- Details Card -->
+        <div class="px-4 pb-6">
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-5 border border-primary/10 shadow-sm">
+                <h3 class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight tracking-tight mb-4 uppercase text-xs opacity-60">Application Details</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
+                        <span class="text-slate-500 dark:text-slate-400 text-sm">Reference ID</span>
+                        <span class="text-slate-900 dark:text-slate-100 font-semibold text-sm">#GPC-2026-8829</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-500 dark:text-slate-400 text-sm">Date Submitted</span>
+                        <span class="text-slate-900 dark:text-slate-100 font-semibold text-sm">October 24, 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="px-4 pb-8">
+            <h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight mb-4 px-1">Next Steps</h3>
+            <div class="space-y-3">
+                <div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700">
+                    <div class="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm">1</div>
+                    <p class="text-slate-700 dark:text-slate-300 text-sm leading-normal pt-1">Check your email for a confirmation message with your login credentials.</p>
+                </div>
+                <div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700">
+                    <div class="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm">2</div>
+                    <p class="text-slate-700 dark:text-slate-300 text-sm leading-normal pt-1">Log in to the portal to track your status and upload any missing documents.</p>
+                </div>
+                <div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700">
+                    <div class="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm">3</div>
+                    <p class="text-slate-700 dark:text-slate-300 text-sm leading-normal pt-1">Keep an eye on the decision timeline for your specific program.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="p-4 space-y-4 pb-10">
+            <button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                Go to Dashboard
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+            <button class="w-full flex items-center justify-center gap-2 text-primary font-semibold py-2">
+                <span class="material-symbols-outlined text-xl">print</span>
+                Print Application Summary
+            </button>
+        </div>
+    </main>
+
+    <footer class="h-2 bg-primary/5"></footer>
+
+    <script src="menu.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

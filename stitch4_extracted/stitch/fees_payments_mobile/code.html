@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Grand Plus College - Fees &amp; Payments</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#195eb3",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Lexend', sans-serif; }
+        .custom-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen pb-24">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+<button class="p-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">school</span>
+</div>
+<span class="font-bold text-lg tracking-tight">Grand Plus</span>
+</div>
+<button class="p-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">account_circle</span>
+</button>
+</header>
+<main class="max-w-md mx-auto p-4 space-y-6">
+<!-- Section 1: Payer Identification -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold">Payer Identification</h2>
+<div class="bg-slate-200/50 dark:bg-slate-800/50 p-1 rounded-xl flex gap-1">
+<button class="flex-1 py-2 px-1 text-xs font-semibold rounded-lg bg-white dark:bg-slate-700 shadow-sm text-primary">Existing Student</button>
+<button class="flex-1 py-2 px-1 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400">New Applicant</button>
+<button class="flex-1 py-2 px-1 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400">Third Party</button>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium px-1">Student ID or Email Address</label>
+<input class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" placeholder="e.g. 2024-00123" type="text"/>
+</div>
+</section>
+<!-- Section 2: Fee Type Selector -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold">Select Fee</h2>
+<div class="relative">
+<select class="custom-select w-full h-16 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-lg font-medium focus:ring-primary focus:border-primary appearance-none">
+<option>Tuition Fees (Fall 2024)</option>
+<option>Technology &amp; Resource Fee</option>
+<option>Application Fee</option>
+<option>Library Fines / Misc</option>
+</select>
+</div>
+</section>
+<!-- Section 3: Fee Summary Card -->
+<section class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-2xl p-5 space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="font-bold text-lg">Fee Summary</h3>
+<span class="bg-primary/20 text-primary text-[10px] uppercase font-bold px-2 py-1 rounded">Pending</span>
+</div>
+<div class="space-y-2 border-b border-slate-200 dark:border-slate-700 pb-4">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Base Tuition</span>
+<span>$4,200.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Processing Charges</span>
+<span>$25.50</span>
+</div>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="font-bold">Total Amount</span>
+<span class="font-bold text-2xl text-primary">$4,225.50</span>
+</div>
+<div class="flex items-center justify-between bg-white dark:bg-slate-800 p-3 rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<div>
+<p class="text-sm font-bold">Pay in Installments</p>
+<p class="text-[10px] text-slate-500">3 monthly payments of $1,408.50</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</section>
+<!-- Section 4: Payment Method -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold">Payment Method</h2>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center p-4 rounded-xl border-2 border-primary bg-primary/5 text-primary">
+<span class="material-symbols-outlined text-3xl mb-1">credit_card</span>
+<span class="text-[10px] font-bold">Card</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-3xl mb-1 text-slate-400">account_balance</span>
+<span class="text-[10px] font-bold text-slate-500">Bank</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-3xl mb-1 text-slate-400">payments</span>
+<span class="text-[10px] font-bold text-slate-500">ACH</span>
+</button>
+</div>
+</section>
+<!-- Section 5: Card Details -->
+<section class="space-y-4">
+<div class="space-y-2">
+<label class="text-sm font-medium px-1">Cardholder Name</label>
+<input class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" placeholder="Full name on card" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium px-1">Card Number</label>
+<div class="relative">
+<input class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary pr-12" placeholder="0000 0000 0000 0000" type="text"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 flex gap-1">
+<div class="w-6 h-4 bg-slate-200 dark:bg-slate-700 rounded-sm" data-alt="Small credit card logo placeholder"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-sm font-medium px-1">Expiry Date</label>
+<input class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" placeholder="MM/YY" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium px-1">CVC</label>
+<input class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary" placeholder="123" type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2 px-1 pt-2">
+<input class="rounded text-primary focus:ring-primary border-slate-300" id="save-card" type="checkbox"/>
+<label class="text-xs text-slate-500" for="save-card">Save card details for future payments</label>
+</div>
+</section>
+</main>
+<!-- Sticky Footer -->
+<footer class="fixed bottom-0 left-0 right-0 p-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 z-50">
+<div class="max-w-md mx-auto">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
+<span>Pay Total Amount ($4,225.50)</span>
+<span class="material-symbols-outlined">lock</span>
+</button>
+<p class="text-center text-[10px] text-slate-400 mt-2 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[12px]">verified_user</span>
+                Encrypted and Secure PCI-DSS Compliant Payment
+            </p>
+</div>
+</footer>
+</body></html>

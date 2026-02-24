@@ -330,12 +330,8 @@
             toggleStages();
             window.scrollTo(0, 0);
         } else {
-            if (!document.getElementById('certify').checked) {
-                alert("Please certify the information before submitting.");
-                return;
-            }
-            alert("Application Submitted Successfully!");
-            window.location.href = "index.html";
+            // alert("Application Submitted Successfully!"); // Removed as design suggests a success page
+            window.location.href = "status.html";
         }
     });
 
