@@ -53,6 +53,21 @@ CREATE TABLE IF NOT EXISTS payments (
 );
 
 -- ─────────────────────────────────────────────────────────────────────────────
+-- Testimonials Table
+-- Stores student testimonials for the home page
+-- ─────────────────────────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS testimonials (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    student_name VARCHAR(255) NOT NULL,
+    program_graduated VARCHAR(255),
+    quote TEXT NOT NULL,
+    image_url TEXT,
+    is_active BOOLEAN DEFAULT TRUE,
+    display_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ─────────────────────────────────────────────────────────────────────────────
 -- Realtime & Security Configuration
 -- Enable realtime for state updates and security for public access (per project needs)
 -- ─────────────────────────────────────────────────────────────────────────────
@@ -80,5 +95,16 @@ SELECT
     true, 
     (SELECT id FROM users LIMIT 1), 
     'Student payment records', 
+    true
+ON CONFLICT (name) DO NOTHING;
+
+INSERT INTO tables (id, name, table_schema, public, owner_id, description, realtime_enabled)
+SELECT 
+    gen_random_uuid(), 
+    'testimonials', 
+    '{}'::jsonb, 
+    true, 
+    (SELECT id FROM users LIMIT 1), 
+    'Student testimonials for home page', 
     true
 ON CONFLICT (name) DO NOTHING;

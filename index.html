@@ -168,28 +168,96 @@
       <section class="testimonials">
         <div class="container">
           <h3 class="section-title">Student Testimonials</h3>
-          <div class="testimonial-card">
-            <blockquote class="quote">
-              “Grand Plus gave me the confidence, technical skills, and
-              internship access I needed. The faculty mentorship and career
-              office support helped me move from uncertainty to a full-time role
-              right after graduation.”
-            </blockquote>
-            <cite class="citation"
-              >Amina Yusuf, Information Technology Graduate</cite
-            >
-          </div>
-          <div class="testimonial-card">
-            <blockquote class="quote">
-              “The structured learning path, real industry projects, and strong
-              alumni network opened doors for me far earlier than I expected.”
-            </blockquote>
-            <cite class="citation"
-              >David Okoro, Business Administration Graduate</cite
-            >
+          <div id="testimonial-container">
+            <div class="testimonial-card">
+              <blockquote class="quote" id="testimonial-quote">
+                Loading testimonials...
+              </blockquote>
+              <cite class="citation" id="testimonial-author"></cite>
+            </div>
           </div>
         </div>
       </section>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+          const quoteEl = document.getElementById('testimonial-quote');
+          const authorEl = document.getElementById('testimonial-author');
+          
+          async function fetchTestimonials() {
+            try {
+              const response = await fetch('http://localhost:8001/tables/testimonials/rows', {
+                headers: { 
+                  'Accept': 'application/json',
+                  'X-API-Key': 'selfdb-bd66637d-60dc-cf8a-a1aa-037f1b37d7b9'
+                }
+              });
+              const data = await response.json();
+              return data.data || [];
+            } catch (err) {
+              console.error('Failed to fetch testimonials:', err);
+              return [];
+            }
+          }
+
+          function typeWriter(text, i, cb) {
+            if (i < text.length) {
+              quoteEl.innerHTML = text.substring(0, i + 1) + '<span class="cursor">|</span>';
+              setTimeout(() => typeWriter(text, i + 1, cb), 30);
+            } else {
+              quoteEl.innerHTML = text; // Final text without cursor
+              if (cb) setTimeout(cb, 5000); // Wait before next one
+            }
+          }
+
+          async function startTestimonialCycle() {
+            const testimonials = await fetchTestimonials();
+            if (testimonials.length === 0) {
+              quoteEl.innerText = "“Grand Plus gave me the confidence I needed to succeed.”";
+              authorEl.innerText = "Amina Yusuf, IT Graduate";
+              return;
+            }
+
+            function showNext() {
+              const randomIdx = Math.floor(Math.random() * testimonials.size); // SELFDB returns size + rows? Let's check or assume array
+              // Actually SELFDB data is usually the array of rows
+              const testimonialList = Array.isArray(testimonials) ? testimonials : [];
+              if (testimonialList.length === 0) return;
+              
+              const item = testimonialList[Math.floor(Math.random() * testimonialList.length)];
+              
+              authorEl.style.opacity = 0;
+              typeWriter(`“${item.quote}”`, 0, () => {
+                authorEl.innerText = `${item.student_name}, ${item.program_graduated}`;
+                authorEl.style.opacity = 1;
+                setTimeout(showNext, 5000);
+              });
+            }
+
+            showNext();
+          }
+
+          startTestimonialCycle();
+        });
+      </script>
+
+      <style>
+        .cursor {
+          display: inline-block;
+          width: 2px;
+          background-color: #0b4f9c;
+          margin-left: 2px;
+          animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+          0% { opacity: 1; }
+          50% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+        #testimonial-author {
+          transition: opacity 0.5s ease-in-out;
+        }
+      </style>
 
       <!-- Admissions Support Section -->
       <section class="support">

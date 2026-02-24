@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#195eb3",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>About Us | Grand Plus College</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<!-- Header / TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md p-4 justify-between border-b border-primary/10">
+<div class="flex items-center gap-2">
+<div class="bg-primary text-white p-1.5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Grand Plus College</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">search</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">menu</span>
+</button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="@container">
+<div class="p-0 @[480px]:p-4">
+<div class="flex min-h-[400px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:rounded-xl items-center justify-center p-6 text-center relative overflow-hidden" data-alt="Modern university campus building with students walking" style='background-image: linear-gradient(rgba(25, 94, 179, 0.8), rgba(17, 24, 33, 0.9)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDCxoQ1MwWZGzYKdoQLszvBwQfcVMEBhzE-0y5j9yOp7fq5GHpLQ4VW49TUm89brcEo17YjcF1OXVv0_EK3BifW1Lsl434xMX7TDe9hvWf7l3g12hPHwpTVk9fQ0azZB3zoLUbl5jInkxLzCrWJ8xNXObJ58_rWNKVPGLXfnEnDNCZ7vTQSTdbe7ljoIJluT-9FslDxVjqygCmHssyEjNXfQGrUJuZHbrFLoPFOgm1ckoTh7YBpGsp8dzbeNkFOd-ddiCD81YPFRhs");'>
+<div class="flex flex-col gap-3 max-w-xl">
+<span class="text-primary/20 bg-white/10 self-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-white">Est. 1924</span>
+<h1 class="text-white text-4xl font-black leading-tight tracking-tight @[480px]:text-5xl">
+                            Empowering Future Leaders
+                        </h1>
+<p class="text-white/90 text-base font-normal leading-relaxed">
+                            Our mission is to foster academic excellence and cultivate the next generation of global innovators through a transformative educational experience.
+                        </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 w-full max-w-xs sm:max-w-none justify-center mt-4">
+<button class="flex items-center justify-center rounded-lg h-12 px-6 bg-white text-primary text-base font-bold transition-transform active:scale-95 shadow-lg">
+                            Explore Programs
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Impact Stats -->
+<!-- Our Story -->
+<section class="px-4 py-6 bg-white dark:bg-slate-900/50">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold leading-tight tracking-tight mb-4">Our Story</h2>
+<div class="space-y-4 text-slate-700 dark:text-slate-300 text-base leading-relaxed">
+<p>
+                        Founded a century ago, Grand Plus College has remained steadfast in its commitment to academic integrity and inclusive community. We believe that diversity of thought and background is the cornerstone of a world-class education.
+                    </p>
+<p>
+                        What started as a small teaching institute has evolved into a leading research university, pioneering new methodologies in technology, social sciences, and the arts. Our values are built on the bedrock of transparency, innovation, and social responsibility.
+                    </p>
+</div>
+<div class="mt-8 grid grid-cols-1 gap-4">
+<div class="flex items-start gap-4 p-4 rounded-lg bg-background-light dark:bg-background-dark border border-primary/5">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-slate-100">Academic Integrity</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400">Upholding the highest standards of honesty and ethical behavior in research and learning.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-lg bg-background-light dark:bg-background-dark border border-primary/5">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">diversity_3</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-slate-100">Inclusive Community</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400">Creating an environment where every individual feels valued, heard, and empowered to succeed.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Leadership Team -->
+<section class="px-4 py-12">
+<h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold leading-tight tracking-tight mb-8">Leadership Team</h2>
+<div class="flex flex-col gap-8">
+<!-- Dr. Helena Vance -->
+<div class="flex flex-col @[480px]:flex-row gap-4 items-center @[480px]:items-start">
+<img alt="Dr. Ademola Abidoye" class="size-24 @[480px]:size-32 rounded-xl object-cover shadow-md border-2 border-primary/10" data-alt="Professional headshot of Dr. Ademola Abidoye" src="{{DATA:IMAGE:IMAGE_22}}"/>
+<div class="text-center @[480px]:text-left">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Dr. Ademola Abidoye</h3>
+<p class="text-primary font-medium text-sm mb-2 uppercase tracking-wide">President</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-md">
+                            Dr. Vance has led the college for over a decade, focusing on global partnerships and expanding research facilities to record heights.
+                        </p>
+</div>
+</div>
+<!-- Marcus Thorne -->
+<div class="flex flex-col @[480px]:flex-row gap-4 items-center @[480px]:items-start">
+<img alt="Marcus Thorne" class="size-24 @[480px]:size-32 rounded-xl object-cover shadow-md border-2 border-primary/10" data-alt="Professional headshot of Marcus Thorne" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcdq1BVUR2codb7958QNesIBz06YF6Z4j3D-lcecrkX6Umo6BKronnNqwJAcZ-wsqmChA7MGWfL3eEWLO6-yRHQbegJRj26Ftswy1Hl14OTz33NnjB1ZrwzZjk5a25AkOoNUEp40WxNXSmlTXSy3vk_X3wqPAEizcnHXDwtHKBRnZ8LLybHWtvwVkjLJXVKStGT0VhXFpEQgqhDg0cl6Ne68KPaCgSsGN9vlNtcLFxrevJJaeqcZxtaS5rppP4bclw7l3jDi4z3ys"/>
+<div class="text-center @[480px]:text-left">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Marcus Thorne</h3>
+<p class="text-primary font-medium text-sm mb-2 uppercase tracking-wide">VP of Academic Affairs</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-md">
+                            Marcus oversees the curriculum development and ensures our academic programs remain competitive and industry-relevant.
+                        </p>
+</div>
+</div>
+<!-- Sarah Jenkins -->
+<div class="flex flex-col @[480px]:flex-row gap-4 items-center @[480px]:items-start">
+<img alt="Sarah Jenkins" class="size-24 @[480px]:size-32 rounded-xl object-cover shadow-md border-2 border-primary/10" data-alt="Professional headshot of Sarah Jenkins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhA1ZqU26sfjVvV-dG_hHwAZ78u_f5SjmDP41asMP2Bhksr_ZTto1Ca8KCfV4cXgGc9qbajNMIyjP8o4-2lZ5-3pmjnv8rT2FR8tPnRnojgFTEAgCe-Xt2O1ZtM0-5WVNCspVDDO0JAJVKxjuJZGkzMUB0NWg6qtWYC1zAWCHgyd5xfhvEFfQZmastMPoMThwaz-5libuvTBUeqMSiPpw3aEsjRT8qU6Hb85OEd6cnXv3_D5XiTFJvRFkHWT-F6neWpwODRmfQNHk"/>
+<div class="text-center @[480px]:text-left">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Sarah Jenkins</h3>
+<p class="text-primary font-medium text-sm mb-2 uppercase tracking-wide">Dean of Admissions</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-md">
+                            Sarah is dedicated to creating a seamless enrollment experience and fostering a diverse student body from across the globe.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-900 border-t border-primary/10 px-4 py-10">
+<div class="flex flex-col items-center gap-6">
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+</div>
+<nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Privacy Policy</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Terms of Service</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Contact Us</a>
+</nav>
+<p class="text-xs text-slate-500 dark:text-slate-500 text-center">
+                © 2024 Grand Plus College. All rights reserved. <br/>
+                Building leaders for a brighter tomorrow.
+            </p>
+</div>
+</footer>
+</body></html>
