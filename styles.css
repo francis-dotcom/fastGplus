@@ -57,8 +57,22 @@ body {
 
 .brand {
   color: var(--dark-blue);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
+}
+
+.brand-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
 }
 
 .menu-btn {
@@ -864,6 +878,10 @@ ol {
     color: var(--dark-blue);
     text-align: center;
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
 
 /* Header Section */

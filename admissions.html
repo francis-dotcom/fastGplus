@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | Grand Plus College</title>
+    <!-- Branding Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Use existing styles + isolated tailwind for the specific layout if needed, 
+         but simplified to match the site's compact look -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .adm-header {
+            background: rgba(246, 247, 248, 0.8);
+            backdrop-filter: blur(8px);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .adm-hero {
+            height: 160px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+            background: var(--primary-blue);
+        }
+        .adm-hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        .adm-hero-content {
+            position: absolute;
+            bottom: 12px;
+            left: 16px;
+            color: var(--white);
+        }
+        .adm-timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 24px 0;
+        }
+        .adm-timeline::before {
+            content: "";
+            position: absolute;
+            top: 16px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: 1;
+        }
+        .adm-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            width: 33%;
+        }
+        .adm-step-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+        .adm-step.active .adm-step-icon {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+        .adm-step-label { font-size: 11px; font-weight: 700; }
+        .adm-step-date { font-size: 10px; color: var(--text-muted); }
+
+        /* Unified Accordion to match Program Detail */
+        .adm-accordion {
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .adm-accordion-header {
+            width: 100%;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+        .adm-accordion-title { font-size: 14px; font-weight: 700; color: var(--dark-blue); }
+        .adm-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 16px;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        .adm-accordion.active .adm-accordion-content {
+            max-height: 500px;
+            padding-bottom: 16px;
+        }
+
+        .adm-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .adm-contact-btn {
+            background: rgba(25, 94, 179, 0.1);
+            color: var(--primary-blue);
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        
+        .adm-footer-cta {
+            position: fixed;
+            bottom: 20px;
+            left: 16px;
+            right: 16px;
+            z-index: 40;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <header class="adm-header">
+        <a href="index.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+            <img src="logo.png" alt="Logo" class="logo-img" style="height: 20px;">
+            <span style="font-size: 11px; font-weight: 600;">Home</span>
+        </a>
+        <nav style="flex: 1; display: flex; justify-content: center; gap: 12px;">
+            <a href="programs.html" style="font-size: 12px; font-weight: 600; color: var(--dark-blue); text-decoration: none;">Programs</a>
+            <a href="admissions.html" style="font-size: 12px; font-weight: 700; color: var(--primary-blue); text-decoration: none;">Admissions</a>
+        </nav>
+        <span class="material-symbols-outlined" style="opacity: 0.5;">share</span>
+    </header>
+
+    <main class="container" style="padding-top: 20px; padding-bottom: 100px;">
+        
+        <div class="adm-hero">
+            <img src="01.jpg" alt="Campus Life" class="adm-hero-img">
+            <div class="adm-hero-content">
+                <span class="pg-badge pg-badge-blue" style="position: static; font-size: 9px; padding: 2px 8px;">FALL 2026</span>
+                <h2 style="font-size: 20px; font-weight: 700; margin-top: 4px;">Grand Plus College</h2>
+            </div>
+        </div>
+
+        <section>
+            <h3 style="font-size: 12px; font-weight: 700; color: var(--primary-blue); letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase;">Application Timeline</h3>
+            <div class="adm-timeline">
+                <div class="adm-step active">
+                    <div class="adm-step-icon"><span class="material-symbols-outlined" style="font-size: 18px;">upload</span></div>
+                    <span class="adm-step-label">Apply</span>
+                    <span class="adm-step-date">Oct 1 - Jan 15</span>
+                </div>
+                <div class="adm-step">
+                    <div class="adm-step-icon"><span class="material-symbols-outlined" style="font-size: 18px;">search</span></div>
+                    <span class="adm-step-label">Review</span>
+                    <span class="adm-step-date">Feb - Mar</span>
+                </div>
+                <div class="adm-step">
+                    <div class="adm-step-icon"><span class="material-symbols-outlined" style="font-size: 18px;">mail</span></div>
+                    <span class="adm-step-label">Decision</span>
+                    <span class="adm-step-date">Late March</span>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 32px;">
+            <div class="adm-accordion">
+                <button class="adm-accordion-header">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="material-symbols-outlined" style="color: var(--primary-blue);">assignment_turned_in</span>
+                        <span class="adm-accordion-title">General Requirements</span>
+                    </div>
+                    <span class="material-symbols-outlined" style="color: #94a3b8;">expand_more</span>
+                </button>
+                <div class="adm-accordion-content">
+                    <ul style="font-size: 13px; color: var(--text-muted); line-height: 1.6; padding-left: 20px;">
+                        <li>Minimum GPA: 3.5 on a 4.0 scale</li>
+                        <li>Official High School Transcripts</li>
+                        <li>Two Letters of Recommendation</li>
+                        <li>Personal Statement (600 words)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="adm-accordion">
+                <button class="adm-accordion-header">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="material-symbols-outlined" style="color: var(--primary-blue);">checklist</span>
+                        <span class="adm-accordion-title">Application Checklist</span>
+                    </div>
+                    <span class="material-symbols-outlined" style="color: #94a3b8;">expand_more</span>
+                </button>
+                <div class="adm-accordion-content">
+                    <ul style="font-size: 13px; color: var(--text-muted); line-height: 1.6; padding-left: 20px;">
+                        <li>English Proficiency Proof</li>
+                        <li>Valid Identity Document</li>
+                        <li>Application Fee Receipt</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 32px; text-align: center;">
+            <h3 style="font-size: 12px; font-weight: 700; color: var(--primary-blue); text-transform: uppercase;">Need Assistance?</h3>
+            <div class="adm-contact-grid">
+                <a href="tel:+123456789" class="adm-contact-btn">
+                    <span class="material-symbols-outlined">call</span>
+                    Call Us
+                </a>
+                <a href="mailto:admissions@grandplus.edu" class="adm-contact-btn">
+                    <span class="material-symbols-outlined">mail</span>
+                    Email Us
+                </a>
+            </div>
+        </section>
+
+        <div class="adm-footer-cta">
+            <button class="btn btn-primary" style="width: 100%; height: 52px; font-size: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 10px 15px -3px rgba(11, 79, 156, 0.3);">
+                Apply Now
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        document.querySelectorAll('.adm-accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.parentElement.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
