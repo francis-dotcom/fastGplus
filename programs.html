@@ -77,23 +77,28 @@
         <!-- Filters -->
         <section class="pg-filter-section">
             <div class="container">
-                <div class="pg-filter-row">
-                    <div class="pg-tabs" id="type-tabs">
-                        <span class="pg-tab pg-tab-active" data-type="all">All Programs</span>
-                        <span class="pg-tab" data-type="undergraduate">Undergraduate</span>
-                        <span class="pg-tab" data-type="certificate">Certificate</span>
+                <div class="pg-filter-container">
+                    <!-- Segment Pills -->
+                    <div class="pg-segments" id="segment-pills">
+                        <div class="pg-segment pg-segment-active" data-segment="all">All</div>
+                        <div class="pg-segment" data-segment="undergraduate">Degrees</div>
+                        <div class="pg-segment" data-segment="certificate">Certificate</div>
                     </div>
-                </div>
-                <!-- Department Filters -->
-                <div class="pg-filter-row" style="margin-top: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 5px;">
-                    <div class="pg-tabs" id="dept-tabs" style="gap: 8px;">
-                        <span class="pg-tab pg-tab-active" data-dept="all">All Depts</span>
-                        <span class="pg-tab" data-dept="languages">Languages</span>
-                        <span class="pg-tab" data-dept="computer">Comp. Ed</span>
-                        <span class="pg-tab" data-dept="science">Science</span>
-                        <span class="pg-tab" data-dept="math">Math</span>
-                        <span class="pg-tab" data-dept="social">Social</span>
-                        <span class="pg-tab" data-dept="education">Education</span>
+
+                    <!-- Premium Dropdown -->
+                    <div class="pg-dropdown" id="dept-dropdown">
+                        <div class="pg-dropdown-trigger">
+                            <span id="selected-dept-label">All Depts</span>
+                            <i data-lucide="chevron-down"></i>
+                        </div>
+                        <div class="pg-dropdown-menu">
+                            <div class="pg-dropdown-item active" data-dept="all">All Departments</div>
+                            <div class="pg-dropdown-item" data-dept="health">Health Sciences</div>
+                            <div class="pg-dropdown-item" data-dept="technology">Technology & IT</div>
+                            <div class="pg-dropdown-item" data-dept="business">Business & Econ</div>
+                            <div class="pg-dropdown-item" data-dept="computer">Computer Education</div>
+                            <div class="pg-dropdown-item" data-dept="languages">Languages & Religion</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,10 +107,14 @@
         <!-- Program Cards -->
         <section class="pg-cards-section">
             <div class="container">
-                <div class="pg-grid">
+                <div class="pg-grid" id="program-grid">
 
+                    <!-- Health Sciences Group -->
+                    <div class="pg-dept-header" data-dept="health">
+                        <h3 class="pg-dept-title">Health Sciences <span class="pg-dept-count">(1)</span></h3>
+                    </div>
                     <!-- Card 1: Nursing -->
-                    <article class="pg-card" data-dept="health">
+                    <article class="pg-card" data-dept="health" data-segment="undergraduate">
                         <div class="pg-card-img-wrap">
                             <span class="pg-badge pg-badge-green">Admission Open</span>
                             <img
@@ -125,8 +134,12 @@
                         </div>
                     </article>
 
+                    <!-- Tech Group -->
+                    <div class="pg-dept-header" data-dept="technology">
+                        <h3 class="pg-dept-title">Technology &amp; IT <span class="pg-dept-count">(1)</span></h3>
+                    </div>
                     <!-- Card 2: IT -->
-                    <article class="pg-card" data-dept="technology">
+                    <article class="pg-card" data-dept="technology" data-segment="undergraduate">
                         <div class="pg-card-img-wrap">
                             <span class="pg-badge pg-badge-green">Admission Open</span>
                             <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80" alt="BSc Information Technology" class="pg-card-img" loading="lazy">
@@ -141,8 +154,12 @@
                         </div>
                     </article>
 
+                    <!-- Business Group -->
+                    <div class="pg-dept-header" data-dept="business">
+                        <h3 class="pg-dept-title">Business &amp; Economics <span class="pg-dept-count">(1)</span></h3>
+                    </div>
                     <!-- Card 3: Business -->
-                    <article class="pg-card" data-dept="business">
+                    <article class="pg-card" data-dept="business" data-segment="undergraduate">
                         <div class="pg-card-img-wrap">
                             <span class="pg-badge pg-badge-green">Admission Open</span>
                             <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&q=80" alt="BBA Business Administration" class="pg-card-img" loading="lazy">
@@ -157,8 +174,12 @@
                         </div>
                     </article>
 
+                    <!-- Comp Ed Group -->
+                    <div class="pg-dept-header" data-dept="computer">
+                        <h3 class="pg-dept-title">Computer &amp; Science Education <span class="pg-dept-count">(4)</span></h3>
+                    </div>
                     <!-- Card 10: Computer Education / Biology -->
-                    <article class="pg-card" data-dept="computer">
+                    <article class="pg-card" data-dept="computer" data-segment="undergraduate">
                         <div class="pg-card-img-wrap">
                             <span class="pg-badge pg-badge-green">Admission Open</span>
                             <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&q=80" alt="Computer Education / Biology" class="pg-card-img" loading="lazy">
@@ -173,8 +194,8 @@
                         </div>
                     </article>
 
-                    <!-- Card 11: Computer Education / Mathematics -->
-                    <article class="pg-card" data-dept="computer">
+                    <!-- Card 11 -->
+                    <article class="pg-card" data-dept="computer" data-segment="undergraduate">
                         <div class="pg-card-img-wrap">
                             <span class="pg-badge pg-badge-green">Admission Open</span>
                             <img src="https://images.unsplash.com/photo-1509228468518-180dd486490e?w=400&q=80" alt="Computer Education / Mathematics" class="pg-card-img" loading="lazy">
@@ -189,8 +210,8 @@
                         </div>
                     </article>
 
-                    <!-- Card 12: Computer Science / Integrated Science -->
-                    <article class="pg-card" data-dept="computer">
+                    <!-- Card 12 -->
+                    <article class="pg-card" data-dept="computer" data-segment="undergraduate">
                         <div class="pg-card-img-wrap">
                             <span class="pg-badge pg-badge-green">Admission Open</span>
                             <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?w=400&q=80" alt="Computer Science / Integrated Science" class="pg-card-img" loading="lazy">
@@ -205,8 +226,8 @@
                         </div>
                     </article>
 
-                    <!-- Card 13: Computer Science / Physics -->
-                    <article class="pg-card" data-dept="computer">
+                    <!-- Card 13 -->
+                    <article class="pg-card" data-dept="computer" data-segment="undergraduate">
                         <div class="pg-card-img-wrap">
                             <span class="pg-badge pg-badge-green">Admission Open</span>
                             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80" alt="Computer Science / Physics" class="pg-card-img" loading="lazy">
@@ -221,8 +242,12 @@
                         </div>
                     </article>
 
+                    <!-- Languages Group -->
+                    <div class="pg-dept-header" data-dept="languages">
+                        <h3 class="pg-dept-title">Languages &amp; Religious Studies <span class="pg-dept-count">(6)</span></h3>
+                    </div>
                     <!-- Card 4: Arabic / Islamic Studies -->
-                    <article class="pg-card" data-dept="languages">
+                    <article class="pg-card" data-dept="languages" data-segment="undergraduate">
                         <div class="pg-card-img-wrap">
                             <span class="pg-badge pg-badge-green">Admission Open</span>
                             <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=400&q=80" alt="Arabic / Islamic Studies" class="pg-card-img" loading="lazy">
@@ -357,20 +382,49 @@
     <script>
         lucide.createIcons();
 
-        // Filtering Logic
-        const deptTabs = document.querySelectorAll('#dept-tabs .pg-tab');
+        // UI Elements
+        const deptDropdown = document.getElementById('dept-dropdown');
+        const deptTrigger = deptDropdown.querySelector('.pg-dropdown-trigger');
+        const deptItems = deptDropdown.querySelectorAll('.pg-dropdown-item');
+        const segmentPills = document.querySelectorAll('.pg-segment');
         const cards = document.querySelectorAll('.pg-card');
+        const headers = document.querySelectorAll('.pg-dept-header');
+        const label = document.getElementById('selected-dept-label');
 
-        function filterPrograms(dept) {
-            // Update UI
-            deptTabs.forEach(tab => {
-                tab.classList.toggle('pg-tab-active', tab.dataset.dept === dept);
+        let currentDept = 'all';
+        let currentSegment = 'all';
+
+        // Toggle Dropdown
+        deptTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            deptDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => deptDropdown.classList.remove('active'));
+
+        function applyFilters() {
+            headers.forEach(header => {
+                const dept = header.dataset.dept;
+                const matchesDept = currentDept === 'all' || currentDept === dept;
+                
+                // Check if any card in this dept matches segment
+                const visibleCardsInDept = Array.from(cards).filter(card => 
+                    card.dataset.dept === dept && 
+                    (currentSegment === 'all' || card.dataset.segment === currentSegment)
+                );
+
+                if (matchesDept && visibleCardsInDept.length > 0) {
+                    header.style.display = 'block';
+                } else {
+                    header.style.display = 'none';
+                }
             });
 
-            // Filter Cards
             cards.forEach(card => {
-                const cardDept = card.dataset.dept;
-                if (dept === 'all' || cardDept === dept) {
+                const matchesDept = currentDept === 'all' || card.dataset.dept === currentDept;
+                const matchesSegment = currentSegment === 'all' || card.dataset.segment === currentSegment;
+
+                if (matchesDept && matchesSegment) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
@@ -378,18 +432,36 @@
             });
         }
 
-        deptTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                filterPrograms(tab.dataset.dept);
+        // Dept Selection
+        deptItems.forEach(item => {
+            item.addEventListener('click', () => {
+                deptItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                currentDept = item.dataset.dept;
+                label.textContent = item.textContent;
+                applyFilters();
             });
         });
 
-        // Handle URL Params (?dept=languages)
+        // Segment Selection
+        segmentPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                segmentPills.forEach(p => p.classList.remove('pg-segment-active'));
+                pill.classList.add('pg-segment-active');
+                currentSegment = pill.dataset.segment;
+                applyFilters();
+            });
+        });
+
+        // Handle URL Params
         window.addEventListener('load', () => {
             const params = new URLSearchParams(window.location.search);
             const dept = params.get('dept');
             if (dept) {
-                filterPrograms(dept);
+                const target = Array.from(deptItems).find(i => i.dataset.dept === dept);
+                if (target) target.click();
+            } else {
+                applyFilters();
             }
         });
     </script>
