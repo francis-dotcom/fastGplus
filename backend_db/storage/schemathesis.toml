@@ -1,0 +1,16 @@
+# Schemathesis Configuration File
+# This configures test data and behavior for API testing
+
+# Load custom hooks for deserializers
+hooks = "hooks"
+
+# Disable informational warnings (not errors)
+# - missing_test_data: Expected - random bucket names won't exist
+# - validation_mismatch: Expected - schema has strict bucket name pattern
+warnings = false
+
+[generation]
+# Allow unique inputs to avoid duplicate bucket names causing issues
+unique-inputs = true
+# Use deterministic mode for reproducible tests  
+deterministic = true

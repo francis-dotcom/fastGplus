@@ -1,0 +1,82 @@
+{
+  "": {
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/master.swiftdeps"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Auth.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Auth.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Auth.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Auth~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Auth.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Auth.dia"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Errors.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Errors.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Errors.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Errors~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Errors.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Errors.dia"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/HTTPClient.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/HTTPClient.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/HTTPClient.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/HTTPClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/HTTPClient.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/HTTPClient.dia"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/AnyCodable.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/AnyCodable.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/AnyCodable.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/AnyCodable~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/AnyCodable.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/AnyCodable.dia"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/StorageModels.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/StorageModels.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/StorageModels.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/StorageModels~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/StorageModels.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/StorageModels.dia"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/Table.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Table.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Table.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Table~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Table.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Table.dia"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/User.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/User.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/User.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/User~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/User.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/User.dia"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Realtime.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Realtime.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Realtime.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Realtime~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Realtime.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Realtime.dia"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/SelfDB.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/SelfDB.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/SelfDB.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/SelfDB~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/SelfDB.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/SelfDB.dia"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Storage.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Storage.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Storage.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Storage~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Storage.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Storage.dia"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Tables.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Tables.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Tables.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Tables~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Tables.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Tables.dia"
+  }
+}

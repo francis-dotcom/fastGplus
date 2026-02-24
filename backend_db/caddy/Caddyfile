@@ -1,0 +1,43 @@
+# SelfDB Production Caddyfile
+# Auto HTTPS is enabled when using real domain names (not ":80").
+
+{
+    # Email used for Let's Encrypt / ACME account registration.
+    # Provided via docker-compose-production.yml (CADDY_EMAIL).
+    email {$CADDY_EMAIL}
+}
+
+# Frontend domain (serves the React app) and also proxies /api/* to backend
+{$FRONTEND_DOMAIN} {
+    # API routes → backend service (strip /api prefix)
+    handle /api/* {
+        uri strip_prefix /api
+        reverse_proxy backend:{$BACKEND_PORT}
+    }
+
+    # Health check endpoint for the proxy itself
+    handle /caddy-health {
+        respond "OK" 200
+    }
+
+    # Everything else → frontend (React/nginx)
+    handle {
+        reverse_proxy frontend:80
+    }
+
+    log {
+        output stdout
+        format console
+    }
+}
+
+# Backend domain (optional): proxies *all* traffic to backend.
+# Useful if you want a dedicated API hostname like api.example.com.
+{$BACKEND_DOMAIN} {
+    reverse_proxy backend:{$BACKEND_PORT}
+
+    log {
+        output stdout
+        format console
+    }
+}

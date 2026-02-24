@@ -1,0 +1,322 @@
+name: selfdb
+
+services:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Database Services
+  # ─────────────────────────────────────────────────────────────────────────────
+  
+  db:
+    image: postgres:18
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      # Admin user seeding configuration
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_FIRST_NAME: ${ADMIN_FIRST_NAME}
+      ADMIN_LAST_NAME: ${ADMIN_LAST_NAME}
+    # NO external ports - internal Docker network only
+    # Other services connect via db:5432 on selfdb-network
+    volumes:
+      - postgres_data:/var/lib/postgresql
+      # Mount database initialization and migrations scripts
+      - ./database:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - selfdb-network
+  
+  # PgBouncer Connection Pooler
+  pgbouncer:
+    build:
+      context: ./pgbouncer-1.25.1
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # Connection to PostgreSQL (internal network)
+      DATABASES_HOST: db
+      DATABASES_PORT: ${DB_PORT}
+      DATABASES_USER: ${POSTGRES_USER}
+      DATABASES_PASSWORD: ${POSTGRES_PASSWORD}
+      DATABASES_DBNAME: ${POSTGRES_DB}
+      # PgBouncer listen settings
+      LISTEN_ADDR: "0.0.0.0"
+      LISTEN_PORT: ${PGBOUNCER_PORT}
+      AUTH_TYPE: trust
+      # Pool settings
+      POOL_MODE: ${POOL_MODE}
+      MAX_CLIENT_CONN: ${MAX_CLIENT_CONN}
+      DEFAULT_POOL_SIZE: ${DEFAULT_POOL_SIZE}
+      RESERVE_POOL_SIZE: ${RESERVE_POOL_SIZE}
+      SERVER_LIFETIME: ${SERVER_LIFETIME}
+      SERVER_IDLE_TIMEOUT: ${SERVER_IDLE_TIMEOUT}
+      QUERY_WAIT_TIMEOUT: ${QUERY_WAIT_TIMEOUT}
+      CLIENT_IDLE_TIMEOUT: ${CLIENT_IDLE_TIMEOUT}
+      ADMIN_USERS: ${POSTGRES_USER}
+      STATS_USERS: ${POSTGRES_USER}
+    # NO external ports - internal Docker network only
+    # Backend connects via pgbouncer:${PGBOUNCER_PORT} on selfdb-network
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ln | grep -q ':${PGBOUNCER_PORT}' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - selfdb-network
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Application Services
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      pgbouncer:
+        condition: service_healthy
+      functions:
+        condition: service_healthy
+    environment:
+      # Database URL built dynamically (connects to pgbouncer on internal network)
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pgbouncer:${PGBOUNCER_PORT}/${POSTGRES_DB}
+      # Security
+      SECRET_KEY: ${SECRET_KEY}
+      ALGORITHM: ${ALGORITHM}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES}
+      API_KEY: ${API_KEY}
+      # Backup
+      BACKUP_RETENTION_DAYS: ${BACKUP_RETENTION_DAYS}
+      BACKUP_SCHEDULE_CRON: ${BACKUP_SCHEDULE_CRON}
+      # App metadata
+      APP_NAME: ${APP_NAME}
+      APP_DESCRIPTION: ${APP_DESCRIPTION}
+      APP_VERSION: ${APP_VERSION}
+      # Database connection for pg_dump/pg_restore (direct to db)
+      POSTGRES_HOST: db
+      POSTGRES_PORT: ${DB_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      # CORS - configured in .env file
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      # Port for dynamic binding
+      BACKEND_PORT_CONTAINER: ${BACKEND_PORT}
+      # Workers for uvicorn
+      BACKEND_WORKERS: ${BACKEND_WORKERS}
+      # Internal service URLs (for proxying to realtime and storage)
+      REALTIME_INTERNAL_PORT: ${REALTIME_INTERNAL_PORT}
+      STORAGE_HOST: ${STORAGE_HOST}
+      STORAGE_INTERNAL_PORT: ${STORAGE_INTERNAL_PORT}
+      # Functions service connection
+      FUNCTIONS_HOST: functions
+      FUNCTIONS_INTERNAL_PORT: ${FUNCTIONS_INTERNAL_PORT}
+    # NO external ports in production - Caddy handles all traffic
+    volumes:
+      - ./backups:/backups
+      - ./.env:/app/.env.backup:ro
+      - storage_data:/storage_data  # Shared storage volume for backup/restore
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f -H 'X-API-Key: ${API_KEY}' http://localhost:${BACKEND_PORT}/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - selfdb-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_APP_NAME=${APP_NAME}
+        - VITE_APP_VERSION=${APP_VERSION}
+        - VITE_PUBLIC_WEBHOOK_URL=${PUBLIC_WEBHOOK_BASE_URL}
+      secrets:
+        - VITE_API_KEY
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      # Nginx always listens on port 80 inside container
+      NGINX_PORT: 80
+      # Backend port for nginx proxy_pass
+      BACKEND_PORT_CONTAINER: ${BACKEND_PORT}
+    # NO external ports in production - Caddy handles all traffic
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:80/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - selfdb-network
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Realtime Service (Phoenix/Elixir) - INTERNAL ONLY
+  # Direct PostgreSQL LISTEN/NOTIFY for WebSocket broadcasts
+  # Backend proxies WebSocket connections to this service
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  realtime:
+    build:
+      context: ./realtime
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # Connect directly to PostgreSQL (not PgBouncer) for LISTEN support
+      POSTGRES_HOST: db
+      POSTGRES_PORT: ${DB_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      # Phoenix configuration - internal port from env
+      PORT: ${REALTIME_INTERNAL_PORT}
+      SECRET_KEY_BASE: ${SECRET_KEY}
+    # NO external ports - internal Docker network only
+    # Backend proxies WebSocket connections to realtime:${REALTIME_INTERNAL_PORT}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:${REALTIME_INTERNAL_PORT}/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    networks:
+      - selfdb-network
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Storage Service (FastAPI) - INTERNAL ONLY
+  # Blob storage for files, accessed via backend proxy
+  # S3-compatible bucket/file operations with metadata in PostgreSQL
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  storage:
+    build:
+      context: ./storage
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      pgbouncer:
+        condition: service_healthy
+    environment:
+      # Database URL (connects to pgbouncer for metadata operations)
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pgbouncer:${PGBOUNCER_PORT}/${POSTGRES_DB}
+      # Storage configuration
+      STORAGE_PATH: /data
+      STORAGE_INTERNAL_PORT: ${STORAGE_INTERNAL_PORT}
+      STORAGE_WORKERS: ${STORAGE_WORKERS}
+    volumes:
+      - storage_data:/data
+    # NO external ports - internal Docker network only
+    # Backend proxies storage requests to storage:${STORAGE_INTERNAL_PORT}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:${STORAGE_INTERNAL_PORT}/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - selfdb-network
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Functions Service (Deno Runtime) - INTERNAL ONLY
+  # Serverless function execution engine with PostgreSQL LISTEN/NOTIFY for triggers
+  # Backend proxies function requests and manages CRUD operations
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  functions:
+    build:
+      context: ./functions
+      dockerfile: Dockerfile
+      args:
+        - BACKEND_URL=http://backend:${BACKEND_PORT}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # Connect directly to PostgreSQL (not PgBouncer) for LISTEN/NOTIFY support
+      POSTGRES_HOST: db
+      POSTGRES_PORT: ${DB_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      # Functions runtime configuration
+      FUNCTIONS_INTERNAL_PORT: ${FUNCTIONS_INTERNAL_PORT}
+      FUNCTIONS_DIR: /functions
+      EXECUTION_TIMEOUT_MS: ${EXECUTION_TIMEOUT_MS}
+      MAX_CONCURRENT_EXECUTIONS: ${MAX_CONCURRENT_EXECUTIONS}
+      # Security
+      API_KEY: ${API_KEY}
+    volumes:
+      - functions_data:/functions
+    # NO external ports - internal Docker network only
+    # Backend proxies function requests to functions:${FUNCTIONS_INTERNAL_PORT}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:${FUNCTIONS_INTERNAL_PORT}/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    networks:
+      - selfdb-network
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Caddy Reverse Proxy - PRODUCTION ONLY
+  # Single entry point for all HTTP traffic on port 80
+  # Routes /api/* to backend, everything else to frontend
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - frontend
+      - backend
+    environment:
+      # Used by caddy/Caddyfile for ACME and site addresses
+      CADDY_EMAIL: ${CADDY_EMAIL}
+      FRONTEND_DOMAIN: ${FRONTEND_DOMAIN}
+      BACKEND_DOMAIN: ${BACKEND_DOMAIN}
+      BACKEND_PORT: ${BACKEND_PORT}
+    ports:
+      - "80:80"
+      - "443:443"  # Reserved for future SSL
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - selfdb-network
+
+secrets:
+  VITE_API_KEY:
+    environment: API_KEY
+
+networks:
+  selfdb-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  storage_data:
+  functions_data:
+  caddy_data:
+  caddy_config:

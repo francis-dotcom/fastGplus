@@ -1,0 +1,834 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.xctest/Contents/MacOS/SelfDBPackageTests",
+      "packagePath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift",
+      "productName" : "SelfDBPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.SelfDB-arm64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/sources",
+      "importPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Auth.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Errors.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/HTTPClient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/AnyCodable.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/StorageModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/Table.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/User.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Realtime.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/SelfDB.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Storage.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Tables.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "SelfDB",
+      "moduleOutputPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules/SelfDB.swiftmodule",
+      "objects" : [
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Auth.swift.o",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Errors.swift.o",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/HTTPClient.swift.o",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/AnyCodable.swift.o",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/StorageModels.swift.o",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Table.swift.o",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/User.swift.o",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Realtime.swift.o",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/SelfDB.swift.o",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Storage.swift.o",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Tables.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx12.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/include/SelfDB-Swift.h",
+        "-color-diagnostics",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "swift"
+      ],
+      "outputFileMapPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Auth.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Errors.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/HTTPClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/AnyCodable.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/StorageModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Table.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/User.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Realtime.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/SelfDB.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Storage.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Tables.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules/SelfDB.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Auth.swift",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Errors.swift",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/HTTPClient.swift",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/AnyCodable.swift",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/StorageModels.swift",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/Table.swift",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/User.swift",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Realtime.swift",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/SelfDB.swift",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Storage.swift",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Tables.swift"
+      ],
+      "tempsPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.SelfDBPackageTests-arm64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/sources",
+      "importPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.derived/runner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules/SelfDBTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "SelfDBPackageTests",
+      "moduleOutputPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules/SelfDBPackageTests.swiftmodule",
+      "objects" : [
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/runner.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx12.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/include/SelfDBPackageTests-Swift.h",
+        "-color-diagnostics",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "swift"
+      ],
+      "outputFileMapPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules/SelfDBPackageTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.derived/runner.swift"
+      ],
+      "tempsPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.SelfDBTests-arm64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBTests.build/sources",
+      "importPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Tests/SelfDBTests/SelfDBIntegrationTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules/SelfDB.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "SelfDBTests",
+      "moduleOutputPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules/SelfDBTests.swiftmodule",
+      "objects" : [
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBTests.build/SelfDBIntegrationTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx14.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-color-diagnostics",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "swift"
+      ],
+      "outputFileMapPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBTests.build/SelfDBIntegrationTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules/SelfDBTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Tests/SelfDBTests/SelfDBIntegrationTests.swift"
+      ],
+      "tempsPath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "SelfDB" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "SelfDB",
+      "-package-name",
+      "swift",
+      "-c",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Auth.swift",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Errors.swift",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/HTTPClient.swift",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/AnyCodable.swift",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/StorageModels.swift",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/Table.swift",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/User.swift",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Realtime.swift",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/SelfDB.swift",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Storage.swift",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Tables.swift",
+      "-I",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx12.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/include/SelfDB-Swift.h",
+      "-color-diagnostics",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "swift",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "SelfDBPackageTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "SelfDBPackageTests",
+      "-package-name",
+      "swift",
+      "-c",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.derived/runner.swift",
+      "-I",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx12.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/include/SelfDBPackageTests-Swift.h",
+      "-color-diagnostics",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "swift",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "SelfDBTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "SelfDBTests",
+      "-package-name",
+      "swift",
+      "-c",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Tests/SelfDBTests/SelfDBIntegrationTests.swift",
+      "-I",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx14.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-color-diagnostics",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "swift",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "SelfDB" : [
+
+    ],
+    "SelfDBPackageTests" : [
+      "SelfDBTests",
+      "SelfDB"
+    ],
+    "SelfDBTests" : [
+      "SelfDB"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+    "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.derived/runner.swift" : {
+      "inputs" : [
+
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.derived/runner.swift"
+        }
+      ]
+    }
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Auth.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Errors.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/HTTPClient.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/AnyCodable.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/StorageModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/Table.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Models/User.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Realtime.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/SelfDB.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Storage.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Sources/SelfDB/Tables.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/sources"
+    },
+    "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.derived/runner.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/sources"
+    },
+    "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/AnyCodable.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Auth.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Errors.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/HTTPClient.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Realtime.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/SelfDB.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Storage.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/StorageModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Table.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/Tables.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/User.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBTests.build/SelfDBIntegrationTests.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.product/Objects.LinkFileList"
+    },
+    "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/Tests/SelfDBTests/SelfDBIntegrationTests.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBTests.build/sources"
+    },
+    "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

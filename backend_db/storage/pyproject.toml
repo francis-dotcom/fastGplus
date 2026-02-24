@@ -1,0 +1,12 @@
+[project]
+name = "storage"
+version = "0.5.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.123.5",
+    "psycopg[binary]>=3.1",
+    "psycopg-pool>=3.1",
+    "schemathesis>=4.6",
+    "locust>=2.42",
+    "aiofiles>=24.1.0",
+]

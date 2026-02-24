@@ -1,0 +1,28 @@
+# Dependencies
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Test files and benchmarks (not needed in production image)
+benchmarks/test-files/
+htmlcov/
+.coverage
+.pytest_cache/
+.hypothesis/
+
+# Development files
+*.md
+!README.md
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Local data (mounted as volume in production)
+data/
+
+# UV lock file (optional, included for reproducibility)
+# uv.lock

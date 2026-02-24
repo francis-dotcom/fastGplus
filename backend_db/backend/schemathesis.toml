@@ -1,0 +1,39 @@
+# Schemathesis Configuration File
+# This configures test data and behavior for API testing
+
+# Load custom hooks for deserializers
+hooks = "hooks"
+
+# Authentication header - loaded from environment variable
+headers = { "X-API-Key" = "${API_KEY}" }
+
+# Continue testing after failures to find more issues
+continue-on-failure = true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# WARNINGS CONFIGURATION
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Disable informational warnings that are expected:
+# - missing_test_data: Expected - random IDs won't exist
+# - validation_mismatch: Expected - schema has strict patterns
+# - missing_auth: Some operations may need different auth
+warnings = false
+
+# ─────────────────────────────────────────────────────────────────────────────
+# GENERATION SETTINGS  
+# ─────────────────────────────────────────────────────────────────────────────
+
+[generation]
+# Allow unique inputs to avoid duplicate IDs causing issues
+unique-inputs = true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CHECKS CONFIGURATION
+# ─────────────────────────────────────────────────────────────────────────────
+
+[checks]
+# Disable unsupported_method check globally
+# FastAPI/Starlette returns 404 instead of 405 for unsupported methods
+# This is acceptable framework behavior, not an API bug
+unsupported_method.enabled = false

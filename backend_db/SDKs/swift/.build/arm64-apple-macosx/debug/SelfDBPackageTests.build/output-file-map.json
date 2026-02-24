@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/master.swiftdeps"
+  },
+  "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.derived/runner.swift": {
+    "dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/runner.d",
+    "object": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/runner.swiftdeps",
+    "diagnostics": "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDBPackageTests.build/runner.dia"
+  }
+}

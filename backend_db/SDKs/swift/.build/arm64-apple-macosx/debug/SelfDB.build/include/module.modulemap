@@ -1,0 +1,3 @@
+module SelfDB {
+    header "/Users/rodgersmagabo/Desktop/SELFDB-FULL/SelfDB/SELFDB-V0.05/SDKs/swift/.build/arm64-apple-macosx/debug/SelfDB.build/include/SelfDB-Swift.h"
+}
