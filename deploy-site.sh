@@ -8,8 +8,9 @@ echo "🚀 Deploying grandpluscollege.com..."
 
 # Auto-bump CSS cache buster with current timestamp so phones always get fresh styles
 TIMESTAMP=$(date +%s)
-sed -i '' "s/styles\.css?v=[^\"']*/styles.css?v=${TIMESTAMP}/" index.html
-echo "🔄 Cache buster updated to v=${TIMESTAMP}"
+# Update all HTML files that use styles.css?v=...
+sed -i '' "s/styles\.css?v=[^\"' ]*/styles.css?v=${TIMESTAMP}/g" *.html
+echo "🔄 Cache buster updated to v=${TIMESTAMP} in all HTML files"
 
 rsync -az --progress \
   --exclude='.git' \
