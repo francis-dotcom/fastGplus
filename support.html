@@ -16,98 +16,86 @@
     <!-- Top Nav (Design Specific) -->
     <header class="header bg-white" style="height: 60px; border-bottom: none; margin: 10px 16px; border-radius: 10px; width: auto;">
         <div class="container header-content" style="padding: 14px 12px;">
-            <div style="display: flex; align-items: center; gap: 4px; cursor: pointer;" onclick="history.back()">
-                <i data-lucide="chevron-left" class="size-4" style="color: #102A43"></i>
-                <span style="color: #102A43; font-size: 11px; font-weight: 600;">Back</span>
+            <div class="d-flex items-center gap-xs cursor-pointer" onclick="history.back()">
+                <i data-lucide="chevron-left" class="size-4" style="color: var(--dark-blue)"></i>
+                <span class="text-xs fw-semibold" style="color: var(--dark-blue)">Back</span>
             </div>
-            <h1 class="brand" style="flex: 1; text-align: center;">
-                <a href="about.html" class="nav-link" style="font-size: 12px; font-weight: 700; color: #102A43; justify-content: center;">About Us</a>
-                <a href="programs.html" class="nav-link" style="font-size: 12px; font-weight: 700; color: #102A43; justify-content: center;">Programs</a>
+            <h1 class="brand d-flex gap-sm items-center" style="flex: 1; justify-content: center;">
+                <a href="about.html" class="body-sm fw-bold" style="color: var(--dark-blue); text-decoration: none;">About Us</a>
+                <a href="programs.html" class="body-sm fw-bold" style="color: var(--dark-blue); text-decoration: none;">Programs</a>
             </h1>
             <div style="width: 64px;"></div> <!-- Spacer for symmetry -->
         </div>
     </header>
 
-    <main class="container" style="padding: 0 16px 24px 16px; display: flex; flex-direction: column; gap: 10px;">
+    <main class="container d-flex flex-column gap-md mb-lg">
 
         <!-- Support Hero -->
-        <section class="support-hero" style="background-color: var(--primary-blue); border-radius: 12px; padding: 16px 16px 14px 16px; color: var(--white);">
-            <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 8px;">Support</h1>
-            <p style="font-size: 13px; font-weight: 500; color: #D9E7FF;">Get help with admissions, payments, or student services.</p>
+        <section class="card bg-primary text-white" style="background-color: var(--primary-blue); border: none;">
+            <h1 class="text-white text-2xl mb-xs">Support</h1>
+            <p class="text-sm fw-medium opacity-90 mb-0">Get help with admissions, payments, or student services.</p>
         </section>
 
         <!-- Quick Help Options -->
-        <section class="card" style="padding: 12px 16px;">
-            <h2 style="font-size: 14px; font-weight: 700; color: #102A43; margin-bottom: 8px;">Quick Help Options</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                <div class="support-opt-card" style="background-color: #F5F7FB; border-radius: 10px; padding: 12px; text-align: center; height: 58px; display: flex; align-items: center; justify-content: center;">
-                    <span style="font-size: 11px; font-weight: 600; color: #334E68;">Admissions Help</span>
+        <section class="card">
+            <h2 class="text-base fw-bold mb-sm">Quick Help Options</h2>
+            <div class="grid-2 gap-xs">
+                <div class="support-opt-card section-light d-flex items-center justify-center h-54" style="border-radius: 10px; padding: 12px; height: 58px;">
+                    <span class="text-xs fw-semibold text-primary">Admissions Help</span>
                 </div>
-                <div class="support-opt-card" style="background-color: #F5F7FB; border-radius: 10px; padding: 12px; text-align: center; height: 58px; display: flex; align-items: center; justify-content: center;">
-                    <span style="font-size: 11px; font-weight: 600; color: #334E68;">Payment Issues</span>
+                <div class="support-opt-card section-light d-flex items-center justify-center h-54" style="border-radius: 10px; padding: 12px; height: 58px;">
+                    <span class="text-xs fw-semibold text-primary">Payment Issues</span>
                 </div>
-                <div class="support-opt-card" style="background-color: #F5F7FB; border-radius: 10px; padding: 12px; text-align: center; height: 58px; display: flex; align-items: center; justify-content: center;">
-                    <span style="font-size: 11px; font-weight: 600; color: #334E68;">Application Status</span>
+                <div class="support-opt-card section-light d-flex items-center justify-center h-54" style="border-radius: 10px; padding: 12px; height: 58px;">
+                    <span class="text-xs fw-semibold text-primary">Application Status</span>
                 </div>
-                <div class="support-opt-card" style="background-color: #F5F7FB; border-radius: 10px; padding: 12px; text-align: center; height: 58px; display: flex; align-items: center; justify-content: center;">
-                    <span style="font-size: 11px; font-weight: 600; color: #334E68;">Technical Support</span>
+                <div class="support-opt-card section-light d-flex items-center justify-center h-54" style="border-radius: 10px; padding: 12px; height: 58px;">
+                    <span class="text-xs fw-semibold text-primary">Technical Support</span>
                 </div>
             </div>
         </section>
 
         <!-- Common Issues -->
-        <section class="card" style="padding: 12px 16px;">
-            <h2 style="font-size: 14px; font-weight: 700; color: #102A43; margin-bottom: 6px;">Common Issues</h2>
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-                <div class="faq-item-mini" style="background-color: #F5F7FB; border-radius: 8px; padding: 8px 10px; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 11px; font-weight: 500; color: #334E68;">How do I pay my fees?</span>
-                    <span style="font-size: 12px; font-weight: 700; color: #334E68;">+</span>
+        <section class="card">
+            <h2 class="text-base fw-bold mb-xs">Common Issues</h2>
+            <div class="d-flex flex-column gap-xs">
+                <div class="faq-item-mini section-light d-flex justify-between items-center" style="border-radius: 8px; padding: 8px 10px;">
+                    <span class="text-xs fw-medium">How do I pay my fees?</span>
+                    <span class="fw-bold">+</span>
                 </div>
-                <div class="faq-item-mini" style="background-color: #F5F7FB; border-radius: 8px; padding: 8px 10px; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 11px; font-weight: 500; color: #334E68;">How do I track my application?</span>
-                    <span style="font-size: 12px; font-weight: 700; color: #334E68;">+</span>
+                <div class="faq-item-mini section-light d-flex justify-between items-center" style="border-radius: 8px; padding: 8px 10px;">
+                    <span class="text-xs fw-medium">How do I track my application?</span>
+                    <span class="fw-bold">+</span>
                 </div>
-                <div class="faq-item-mini" style="background-color: #F5F7FB; border-radius: 8px; padding: 8px 10px; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 11px; font-weight: 500; color: #334E68;">I didn’t receive my receipt.</span>
-                    <span style="font-size: 12px; font-weight: 700; color: #334E68;">+</span>
-                </div>
-                <div class="faq-item-mini" style="background-color: #F5F7FB; border-radius: 8px; padding: 8px 10px; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 11px; font-weight: 500; color: #334E68;">How long does admission review take?</span>
-                    <span style="font-size: 12px; font-weight: 700; color: #334E68;">+</span>
-                </div>
-                <div class="faq-item-mini" style="background-color: #F5F7FB; border-radius: 8px; padding: 8px 10px; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 11px; font-weight: 500; color: #334E68;">I forgot my student ID.</span>
-                    <span style="font-size: 12px; font-weight: 700; color: #334E68;">+</span>
+                <div class="faq-item-mini section-light d-flex justify-between items-center" style="border-radius: 8px; padding: 8px 10px;">
+                    <span class="text-xs fw-medium">I didn’t receive my receipt.</span>
+                    <span class="fw-bold">+</span>
                 </div>
             </div>
         </section>
 
         <!-- Contact Form -->
-        <section class="card" style="padding: 12px 16px;">
-            <h2 style="font-size: 14px; font-weight: 700; color: #102A43; margin-bottom: 8px;">Contact Form</h2>
-            <form style="display: flex; flex-direction: column; gap: 8px;">
-                <input type="text" placeholder="Name" style="background-color: #F5F7FB; border: none; border-radius: 8px; padding: 10px; font-size: 11px; font-family: 'Poppins'; width: 100%;">
-                <input type="email" placeholder="Email" style="background-color: #F5F7FB; border: none; border-radius: 8px; padding: 10px; font-size: 11px; font-family: 'Poppins'; width: 100%;">
-                <input type="tel" placeholder="Phone (optional)" style="background-color: #F5F7FB; border: none; border-radius: 8px; padding: 10px; font-size: 11px; font-family: 'Poppins'; width: 100%;">
-                <select style="background-color: #F5F7FB; border: none; border-radius: 8px; padding: 10px; font-size: 11px; font-family: 'Poppins'; width: 100%; color: #627D98;">
+        <section class="card">
+            <h2 class="text-base fw-bold mb-sm">Contact Form</h2>
+            <form class="d-flex flex-column gap-sm">
+                <input type="text" placeholder="Name" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
+                <input type="email" placeholder="Email" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
+                <select class="w-full section-light text-muted" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
                     <option value="" disabled selected>Category</option>
                     <option value="admissions">Admissions Help</option>
                     <option value="payments">Payment Issues</option>
-                    <option value="technical">Technical Support</option>
-                    <option value="general">General Inquiry</option>
                 </select>
-                <textarea placeholder="Message" style="background-color: #F5F7FB; border: none; border-radius: 8px; padding: 10px; font-size: 11px; font-family: 'Poppins'; width: 100%; height: 64px; resize: none;"></textarea>
-                <button type="submit" class="btn btn-primary" style="height: 38px; font-size: 12px; border-radius: 10px;">Submit</button>
+                <textarea placeholder="Message" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main); height: 80px; resize: none;"></textarea>
+                <button type="submit" class="btn btn-primary btn-md btn-block">Submit</button>
             </form>
         </section>
 
         <!-- Direct Contact Info -->
-        <section class="card" style="padding: 12px 16px;">
-            <h2 style="font-size: 14px; font-weight: 700; color: #102A43; margin-bottom: 6px;">Direct Contact Info</h2>
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-                <p style="font-size: 12px; font-weight: 500; color: var(--primary-blue);">Phone: +1 202 555 0183</p>
-                <p style="font-size: 12px; font-weight: 500; color: var(--primary-blue);">Email: support@grandpluscollege.edu</p>
-                <p style="font-size: 12px; font-weight: 500; color: var(--primary-blue);">WhatsApp: Chat Now</p>
+        <section class="card">
+            <h2 class="text-base fw-bold mb-xs">Direct Contact Info</h2>
+            <div class="d-flex flex-column gap-xs">
+                <p class="text-sm fw-medium text-primary mb-0">Phone: +1 202 555 0183</p>
+                <p class="text-sm fw-medium text-primary mb-0">Email: support@grandpluscollege.edu</p>
             </div>
         </section>
 

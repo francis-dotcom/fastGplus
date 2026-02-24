@@ -49,7 +49,7 @@
           <a href="support.html" class="mobile-menu-link">Support</a>
         </nav>
         <div class="mobile-menu-footer">
-          <a href="apply.html" class="btn btn-primary" style="width: 100%; height: 54px; font-size: 16px; text-decoration: none;">Apply Now</a>
+          <a href="apply.html" class="btn btn-primary btn-lg btn-block">Apply Now</a>
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@
             <p class="hero-sub">
               Apply in minutes. Explore programs, requirements, and deadlines.
             </p>
-            <a href="apply.html" class="btn btn-primary btn-apply" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Apply Now</a>
+            <a href="apply.html" class="btn btn-primary btn-md btn-block">Apply Now</a>
           </div>
         </div>
       </section>
@@ -146,7 +146,7 @@
       <section class="scholarship-highlight">
         <div class="container highlight-box">
           <h3 class="highlight-title">Scholarships Available</h3>
-          <p class="highlight-text">
+          <p class="highlight-text mb-sm">
             Need-based and merit awards are open each intake with dedicated
             advisor support.
           </p>
@@ -220,8 +220,6 @@
             }
 
             function showNext() {
-              const randomIdx = Math.floor(Math.random() * testimonials.size); // SELFDB returns size + rows? Let's check or assume array
-              // Actually SELFDB data is usually the array of rows
               const testimonialList = Array.isArray(testimonials) ? testimonials : [];
               if (testimonialList.length === 0) return;
               
@@ -246,7 +244,7 @@
         .cursor {
           display: inline-block;
           width: 2px;
-          background-color: #0b4f9c;
+          background-color: var(--primary-blue);
           margin-left: 2px;
           animation: blink 0.7s infinite;
         }
@@ -265,7 +263,7 @@
         <div class="container support-box">
           <h3 class="support-title">Need Help With Admissions?</h3>
           <p class="support-text">Chat with admissions or request a call.</p>
-          <button class="btn btn-secondary">Contact Admissions</button>
+          <button class="btn btn-secondary btn-md">Contact Admissions</button>
         </div>
       </section>
 
