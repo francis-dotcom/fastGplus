@@ -344,7 +344,7 @@ section {
 
 .section-title {
   color: var(--dark-blue);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.01em;
   margin-bottom: 12px;
@@ -873,6 +873,19 @@ ol {
   line-height: 1.5;
 }
 
+.support-page-hero {
+  padding: 28px 0;
+  background-position: top center;
+}
+.support-page-hero .text-display {
+  font-size: 20px;
+  line-height: 1.2;
+}
+.support-page-hero .text-lg {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 /* Cards & Components */
 .card {
   background: var(--white);
@@ -920,9 +933,9 @@ ol {
 /* Specific Section Titles */
 .section-title {
   color: var(--dark-blue);
-  font-size: var(--fs-xl);
+  font-size: 14px;
   font-weight: var(--fw-bold);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   position: relative;
 }
 

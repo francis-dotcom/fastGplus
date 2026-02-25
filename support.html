@@ -7,12 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1772058563">
+    <link rel="stylesheet" href="styles.css?v=1772059429">
     <link rel="icon" href="images/logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-light">
-
+<body>
     <header class="header">
         <div class="container header-content">
             <h1 class="brand">
@@ -26,76 +25,76 @@
             </button>
         </div>
     </header>
-<main class="container d-flex flex-column gap-md mb-lg">
+<main>
+      <!-- Support Hero (same style as About) -->
+      <section class="section-hero support-page-hero" style="background-image: url('images/feedback.jpg');">
+        <div class="container">
+          <h2 class="text-display mb-sm text-white">Support</h2>
+          <p class="text-lg text-white opacity-90 mx-auto" style="max-width: 420px;">
+            Get help with admissions, payments, and student services.
+          </p>
+        </div>
+      </section>
 
-        <!-- Support hero image -->
-        <section class="support-hero-image mb-md">
-            <img src="images/feedback.jpg" alt="Support" class="support-hero-img" />
-        </section>
-        <!-- Support Intro -->
-        <section class="card support-intro-card">
-            <h1 class="section-title" style="font-size: 16px; margin-bottom: 0;">Support</h1>
-        </section>
+      <!-- Quick Help Options -->
+      <section class="section-padding-sm section-light">
+        <div class="container">
+          <h3 class="section-title" style="font-size: 14px;">Quick Help Options</h3>
+          <div class="support-list">
+            <button type="button" class="support-list-item"><span>Admissions Help</span></button>
+            <button type="button" class="support-list-item"><span>Payment Issues</span></button>
+            <button type="button" class="support-list-item"><span>Application Status</span></button>
+            <button type="button" class="support-list-item"><span>Technical Support</span></button>
+          </div>
+        </div>
+      </section>
 
-        <!-- Quick Help Options -->
-        <section class="card">
-            <h2 class="text-base fw-bold mb-sm">Quick Help Options</h2>
-            <div class="support-list">
-                <button type="button" class="support-list-item"><span>Admissions Help</span></button>
-                <button type="button" class="support-list-item"><span>Payment Issues</span></button>
-                <button type="button" class="support-list-item"><span>Application Status</span></button>
-                <button type="button" class="support-list-item"><span>Technical Support</span></button>
-            </div>
-        </section>
+      <!-- Common Issues -->
+      <section class="section-padding-sm">
+        <div class="container">
+          <h3 class="section-title" style="font-size: 14px;">Common Issues</h3>
+          <div class="support-list">
+            <button type="button" class="support-list-item"><span>How do I pay my fees?</span></button>
+            <button type="button" class="support-list-item"><span>How do I track my application?</span></button>
+            <button type="button" class="support-list-item"><span>I didn’t receive my receipt.</span></button>
+          </div>
+        </div>
+      </section>
 
-        <!-- Common Issues -->
-        <section class="card">
-            <h2 class="text-base fw-bold mb-xs">Common Issues</h2>
-            <div class="support-list">
-                <button type="button" class="support-list-item"><span>How do I pay my fees?</span></button>
-                <button type="button" class="support-list-item"><span>How do I track my application?</span></button>
-                <button type="button" class="support-list-item"><span>I didn’t receive my receipt.</span></button>
-            </div>
-        </section>
+      <!-- Contact Form -->
+      <section class="section-padding-sm section-light">
+        <div class="container">
+          <h3 class="section-title" style="font-size: 14px;">Contact Form</h3>
+          <form id="support-contact-form" class="d-flex flex-column gap-sm" style="max-width: 400px;">
+            <input type="text" name="name" placeholder="Name" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
+            <input type="email" name="email" placeholder="Email" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
+            <select name="category" class="w-full section-light text-muted" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
+              <option value="" disabled selected>Category</option>
+              <option value="admissions">Admissions Help</option>
+              <option value="payments">Payment Issues</option>
+            </select>
+            <textarea name="message" placeholder="Message" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main); height: 80px; resize: none;"></textarea>
+            <button type="submit" class="btn btn-primary btn-md btn-block">Submit</button>
+          </form>
+        </div>
+      </section>
 
-        <!-- Contact Form -->
-        <section class="card">
-            <h2 class="text-base fw-bold mb-sm">Contact Form</h2>
-            <form id="support-contact-form" class="d-flex flex-column gap-sm">
-                <input type="text" name="name" placeholder="Name" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
-                <input type="email" name="email" placeholder="Email" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
-                <select name="category" class="w-full section-light text-muted" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
-                    <option value="" disabled selected>Category</option>
-                    <option value="admissions">Admissions Help</option>
-                    <option value="payments">Payment Issues</option>
-                </select>
-                <textarea name="message" placeholder="Message" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main); height: 80px; resize: none;"></textarea>
-                <button type="submit" class="btn btn-primary btn-md btn-block">Submit</button>
-            </form>
-        </section>
-
-        <!-- Direct Contact Info -->
-        <section class="card">
-            <h2 class="text-base fw-bold mb-xs">Direct Contact Info</h2>
-            <div class="d-flex flex-column gap-xs">
-                <p class="text-sm fw-medium text-primary mb-0">Phone: +1 202 555 0183</p>
-                <p class="text-sm fw-medium text-primary mb-0">Email: support@grandpluscollege.edu</p>
-            </div>
-        </section>
-
-        <!-- Office Hours -->
-        <section class="card" style="padding: 12px 16px 14px 16px;">
-            <h2 style="font-size: 14px; font-weight: 700; color: #102A43; margin-bottom: 6px;">Office Hours</h2>
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-                <p style="font-size: 12px; font-weight: 500; color: #486581;">Mon-Fri, 9am-5pm</p>
-                <p style="font-size: 12px; font-weight: 500; color: #486581;">Typical response: within 24 hours</p>
-            </div>
-        </section>
-
+      <!-- Direct Contact & Office Hours -->
+      <section class="section-padding-sm">
+        <div class="container">
+          <h3 class="section-title" style="font-size: 14px;">Direct Contact</h3>
+          <div class="card">
+            <p class="text-sm fw-medium text-primary mb-xs">Phone: +1 202 555 0183</p>
+            <p class="text-sm fw-medium text-primary mb-sm">Email: support@grandpluscollege.edu</p>
+            <h4 class="fw-bold mb-xs" style="font-size: 13px;">Office Hours</h4>
+            <p class="text-sm text-muted mb-0">Mon–Fri, 9am–5pm. Typical response: within 24 hours.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <script src="school-brand.js"></script>
-        <script src="menu.js?v=1772058563"></script>
+    <script src="menu.js?v=1772059429"></script>
     <script>
         lucide.createIcons();
     </script>
