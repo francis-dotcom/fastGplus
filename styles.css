@@ -1112,6 +1112,14 @@ ol {
     border-radius: 999px;
 }
 
+.pg-filter-pill-btn {
+    border: none;
+    background: inherit;
+    font: inherit;
+    cursor: pointer;
+    border-radius: 999px;
+}
+
 /* Programs: Filter chips – horizontal scrollable row */
 .pg-filter-bar-section {
     padding: 12px 0 16px;

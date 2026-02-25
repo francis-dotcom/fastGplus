@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1772053959">
+    <link rel="stylesheet" href="styles.css?v=1772054176">
     <link rel="icon" href="images/logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -34,7 +34,7 @@
                 <p class="pg-hero-sub">Explore industry-aligned degree & certificate programs designed to launch your career.</p>
                 <div class="pg-summary">
                     <span class="pg-summary-pill" id="pg-count-pill">0 Programs</span>
-                    <span class="pg-summary-pill" id="pg-filter-pill">All Departments</span>
+                    <button type="button" class="pg-summary-pill pg-filter-pill-btn" id="pg-filter-pill" aria-label="Show all departments">All Departments</button>
                 </div>
             </div>
         </section>
@@ -43,7 +43,6 @@
             <div class="container">
                 <div class="pg-chips-scroll">
                     <div class="pg-chips" id="pg-chips">
-                    <button type="button" class="pg-chip pg-chip-active" data-filter="all">All departments</button>
                     <button type="button" class="pg-chip" data-filter="dept:health">Health Sciences</button>
                     <button type="button" class="pg-chip" data-filter="dept:technology">Technology &amp; IT</button>
                     <button type="button" class="pg-chip" data-filter="dept:business">Business &amp; Econ</button>
@@ -89,7 +88,7 @@
     </footer>
 
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772053959"></script>
+    <script src="menu.js?v=1772054176"></script>
     <script>document.addEventListener('DOMContentLoaded',function(){ if (window.lucide) lucide.createIcons(); });</script>
     <script>
 (function() {
@@ -232,6 +231,13 @@
         });
     });
 
+    var filterPillBtn = document.getElementById('pg-filter-pill');
+    if (filterPillBtn) {
+        filterPillBtn.addEventListener('click', function() {
+            setActiveFilter('all', false);
+        });
+    }
+
     var params = new URLSearchParams(window.location.search);
     var dept = params.get('dept');
     if (dept && document.querySelector('.pg-chip[data-filter="dept:'+dept+'"]')) {
@@ -242,6 +248,6 @@
 })();
     </script>
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772053959"></script>
+    <script src="menu.js?v=1772054176"></script>
 </body>
 </html>
