@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1771978389" />
+    <link rel="stylesheet" href="styles.css?v=1771978570" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
@@ -244,12 +244,13 @@
             }
           }
 
-          function typeWriter(text, i, cb) {
-            if (i < text.length) {
-              quoteEl.innerHTML = text.substring(0, i + 1) + '<span class="cursor">|</span>';
-              setTimeout(() => typeWriter(text, i + 1, cb), 30);
+          function typeWriterWords(text, i, cb) {
+            const words = text.split(' ');
+            if (i < words.length) {
+              quoteEl.innerHTML = words.slice(0, i + 1).join(' ') + ' <span class="cursor">|</span>';
+              setTimeout(() => typeWriterWords(text, i + 1, cb), 120);
             } else {
-              quoteEl.innerHTML = text; // Final text without cursor
+              quoteEl.innerHTML = text + ' <span class="cursor">|</span>';
               if (cb) setTimeout(cb, 5000); // Wait before next one
             }
           }
@@ -257,7 +258,7 @@
           async function startTestimonialCycle() {
             const testimonials = await fetchTestimonials();
             if (testimonials.length === 0) {
-              typeWriter("“Grand Plus gave me the confidence I needed to succeed.”", 0);
+              typeWriterWords("“Grand Plus gave me the confidence I needed to succeed.”", 0);
               authorEl.innerText = "Amina Yusuf, IT Graduate";
               return;
             }
@@ -269,7 +270,7 @@
               const item = testimonialList[Math.floor(Math.random() * testimonialList.length)];
               
               authorEl.style.opacity = 0;
-              typeWriter(`“${item.quote}”`, 0, () => {
+              typeWriterWords(`“${item.quote}”`, 0, () => {
                 authorEl.innerText = `${item.student_name}, ${item.program_graduated}`;
                 authorEl.style.opacity = 1;
                 setTimeout(showNext, 5000);
@@ -287,8 +288,10 @@
         .cursor {
           display: inline-block;
           width: 2px;
+          height: 1em;
           background-color: #1f8b4c;
           margin-left: 2px;
+          vertical-align: -0.1em;
           animation: blink 0.7s infinite;
         }
         #testimonial-quote {
