@@ -280,6 +280,13 @@ section {
   margin-bottom: 12px;
 }
 
+.section-sub {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  margin: -6px 0 12px;
+}
+
 /* Hero Section */
 .hero {
   padding: 12px 0 8px;
@@ -312,6 +319,17 @@ section {
   gap: 8px;
 }
 
+.hero-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  background: #e7f0ff;
+  padding: 4px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .hero-title {
   color: var(--hero-dark);
   font-size: 24px;
@@ -325,6 +343,30 @@ section {
   font-weight: 500;
   line-height: 1.5;
   margin-bottom: 4px;
+}
+
+.hero-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.hero-meta span {
+  background: #f1f5fb;
+  padding: 6px 8px;
+  border-radius: 10px;
 }
 
 /* Layout Utilities */
@@ -615,17 +657,54 @@ ol {
   list-style: none;
 }
 
-.why-list li,
+.feature-list,
+.step-list,
+.req-list,
+.date-list {
+  display: grid;
+  gap: 8px;
+}
+
+.feature-list li,
 .step-list li,
 .req-list li,
-.cost-list li,
-.date-list li {
+.date-list li,
+.why-list li {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 10px;
+  line-height: 1.5;
+  padding: 10px 12px;
+  border: 1px solid var(--border-light);
+  background: var(--white);
+  border-radius: 12px;
   display: flex;
   align-items: flex-start;
+  gap: 8px;
+}
+
+.feature-list li::before,
+.req-list li::before,
+.why-list li::before {
+  content: "✓";
+  color: var(--primary-blue);
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+.step-list {
+  counter-reset: step;
+}
+
+.step-list li::before {
+  counter-increment: step;
+  content: counter(step) ".";
+  color: var(--primary-blue);
+  font-weight: 700;
+}
+
+.date-list li strong {
+  color: var(--dark-blue);
 }
 
 /* Scholarship Highlight */
