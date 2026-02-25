@@ -5,9 +5,11 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Fees & Payments | Grand Plus College</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772039973" />
+    <link rel="stylesheet" href="styles.css?v=1772041455" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -33,8 +35,9 @@
         body, main, .header,
         input, select, button, label, option,
         h1, h2, h3, p, span {
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-main, 'Poppins'), sans-serif;
         }
+        .fees-page { font-size: var(--fs-base, 14px); }
         body {
             min-height: 100dvh;
         }
@@ -67,6 +70,9 @@
         .payment-method-btn:not(.active) .material-symbols-outlined { color: rgb(148 163 184); }
         .payment-method-panel { display: none; }
         .payment-method-panel.active { display: block; }
+        /* Match About page typography */
+        .fees-page .section-title { font-size: 14px; margin-bottom: 12px; }
+        .fees-page .text-muted { color: var(--text-muted, #627d98); }
         .custom-select {
             appearance: none;
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
@@ -84,7 +90,7 @@
             <h1 class="brand">
                 <a href="/" class="brand-link flex items-center gap-2">
                     <img src="logo.png" alt="Grand Plus College Logo" class="logo-img h-6 w-auto">
-                    <span class="font-bold text-lg">Grand Plus College</span>
+                    <span class="fw-bold text-md">Grand Plus College</span>
                 </a>
             </h1>
             <button id="hamburger-btn" class="hamburger-btn" aria-label="Open menu">
@@ -92,26 +98,26 @@
             </button>
         </div>
     </header>
-<main class="max-w-md mx-auto p-4 space-y-6">
+<main class="fees-page max-w-md mx-auto p-4 space-y-6">
         <!-- Section 1: Payer Identification -->
         <section class="space-y-4">
-            <h2 class="text-xl font-bold">Payer Identification</h2>
+            <h2 class="section-title">Payer Identification</h2>
             <div class="bg-slate-200/50 dark:bg-slate-800/50 p-1 rounded-xl flex gap-1" role="tablist" aria-label="Payer type">
-                <button type="button" role="tab" aria-selected="true" id="payer-existing" data-payer="existing" class="payer-tab active flex-1 py-2 px-1 text-xs font-semibold rounded-lg">Existing Student</button>
-                <button type="button" role="tab" aria-selected="false" id="payer-applicant" data-payer="applicant" class="payer-tab flex-1 py-2 px-1 text-xs font-semibold rounded-lg">New Applicant</button>
-                <button type="button" role="tab" aria-selected="false" id="payer-third" data-payer="third" class="payer-tab flex-1 py-2 px-1 text-xs font-semibold rounded-lg">Third Party</button>
+                <button type="button" role="tab" aria-selected="true" id="payer-existing" data-payer="existing" class="payer-tab active flex-1 py-2 px-1 text-xs fw-semibold rounded-lg">Existing Student</button>
+                <button type="button" role="tab" aria-selected="false" id="payer-applicant" data-payer="applicant" class="payer-tab flex-1 py-2 px-1 text-xs fw-semibold rounded-lg">New Applicant</button>
+                <button type="button" role="tab" aria-selected="false" id="payer-third" data-payer="third" class="payer-tab flex-1 py-2 px-1 text-xs fw-semibold rounded-lg">Third Party</button>
             </div>
             <div class="space-y-2">
-                <label id="payer-id-label" class="text-sm font-medium px-1">Student ID or Email Address</label>
-                <input id="student-id" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="e.g. 2024-00123" type="text" aria-describedby="payer-id-label"/>
+                <label id="payer-id-label" class="text-sm fw-medium px-1">Student ID or Email Address</label>
+                <input id="student-id" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4 text-sm" placeholder="e.g. 2024-00123" type="text" aria-describedby="payer-id-label"/>
             </div>
         </section>
 
         <!-- Section 2: Fee Type Selector -->
         <section class="space-y-4">
-            <h2 class="text-xl font-bold">Select Fee</h2>
+            <h2 class="section-title">Select Fee</h2>
             <div class="relative">
-                <select id="fee-select" class="custom-select w-full h-16 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-lg font-medium focus:ring-primary focus:border-primary appearance-none">
+                <select id="fee-select" class="custom-select w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm fw-medium focus:ring-primary focus:border-primary appearance-none">
                     <option value="">Loading fees…</option>
                 </select>
             </div>
@@ -120,29 +126,29 @@
         <!-- Section 3: Fee Summary Card -->
         <section class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-2xl p-5 space-y-4">
             <div class="flex justify-between items-center">
-                <h3 class="font-bold text-lg">Fee Summary</h3>
-                <span class="bg-primary/20 text-primary text-xs uppercase font-bold px-2 py-1 rounded">Pending</span>
+                <h3 class="section-title mb-0">Fee Summary</h3>
+                <span class="bg-primary/20 text-primary text-xs uppercase fw-bold px-2 py-1 rounded">Pending</span>
             </div>
             <div class="space-y-2 border-b border-slate-200 dark:border-slate-700 pb-4">
-                <div class="flex justify-between text-sm">
-                    <span class="text-slate-500" id="fee-base-label">Base amount</span>
+                <div class="flex justify-between text-xs">
+                    <span class="text-muted" id="fee-base-label">Base amount</span>
                     <span id="fee-base-amount">$4,200.00</span>
                 </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-slate-500">Processing Charges</span>
+                <div class="flex justify-between text-xs">
+                    <span class="text-muted">Processing Charges</span>
                     <span id="fee-processing">$25.50</span>
                 </div>
             </div>
-            <div class="flex justify-between items-center py-2">
-                <span class="font-bold">Total Amount</span>
-                <span class="font-bold text-2xl text-primary" id="fee-total">$4,225.50</span>
+            <div class="flex justify-between items-center py-2 text-sm">
+                <span class="fw-bold">Total Amount</span>
+                <span class="fw-bold text-md text-primary" id="fee-total">$4,225.50</span>
             </div>
             <div class="flex items-center justify-between bg-white dark:bg-slate-800 p-3 rounded-xl border border-slate-100 dark:border-slate-700" id="fee-installment-wrap">
                 <div class="flex items-center gap-3">
                     <span class="material-symbols-outlined text-primary">calendar_month</span>
                     <div>
-                        <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Pay in Installments</p>
-                        <p class="text-xs text-slate-500" id="fee-installment-text">3 monthly payments of $1,408.50</p>
+                        <p class="text-sm fw-bold text-slate-900 dark:text-slate-100">Pay in Installments</p>
+                        <p class="text-xs text-muted" id="fee-installment-text">3 monthly payments of $1,408.50</p>
                     </div>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
@@ -154,19 +160,19 @@
 
         <!-- Section 4: Payment Method -->
         <section class="space-y-4">
-            <h2 class="text-xl font-bold">Payment Method</h2>
+            <h2 class="section-title">Payment Method</h2>
             <div class="grid grid-cols-3 gap-3" role="tablist" aria-label="Payment method">
                 <button type="button" role="tab" aria-selected="true" id="pm-card" data-payment="card" class="payment-method-btn active flex flex-col items-center justify-center p-4 rounded-xl border-2 border-primary bg-primary/5 text-primary">
                     <span class="material-symbols-outlined text-3xl mb-1">credit_card</span>
-                    <span class="text-xs font-bold">Card</span>
+                    <span class="text-xs fw-bold">Card</span>
                 </button>
                 <button type="button" role="tab" aria-selected="false" id="pm-bank" data-payment="bank" class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
                     <span class="material-symbols-outlined text-3xl mb-1 text-slate-400">account_balance</span>
-                    <span class="text-xs font-bold text-slate-500">Bank</span>
+                    <span class="text-xs fw-bold text-slate-500">Bank</span>
                 </button>
                 <button type="button" role="tab" aria-selected="false" id="pm-ach" data-payment="ach" class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
                     <span class="material-symbols-outlined text-3xl mb-1 text-slate-400">payments</span>
-                    <span class="text-xs font-bold text-slate-500">ACH</span>
+                    <span class="text-xs fw-bold text-slate-500">ACH</span>
                 </button>
             </div>
 
@@ -174,11 +180,11 @@
             <div id="panel-card" class="payment-method-panel active" role="tabpanel">
                 <div class="space-y-4">
                     <div class="space-y-2">
-                        <label class="text-sm font-medium px-1">Cardholder Name</label>
-                        <input id="card-name" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="Full name on card" type="text"/>
+                        <label class="text-sm fw-medium px-1">Cardholder Name</label>
+                        <input id="card-name" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4 text-sm" placeholder="Full name on card" type="text"/>
                     </div>
                     <div class="space-y-2">
-                        <label class="text-sm font-medium px-1">Card Number</label>
+                        <label class="text-sm fw-medium px-1">Card Number</label>
                         <div class="relative">
                             <input id="card-number" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary pr-12 px-4" placeholder="0000 0000 0000 0000" type="text"/>
                             <div class="absolute right-4 top-1/2 -translate-y-1/2 flex gap-1">
@@ -188,29 +194,43 @@
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-2">
-                            <label class="text-sm font-medium px-1">Expiry Date</label>
+                            <label class="text-sm fw-medium px-1">Expiry Date</label>
                             <input id="expiry" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="MM/YY" type="text"/>
                         </div>
                         <div class="space-y-2">
-                            <label class="text-sm font-medium px-1">CVC</label>
+                            <label class="text-sm fw-medium px-1">CVC</label>
                             <input id="cvc" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="123" type="text"/>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 px-1 pt-2">
                         <input class="rounded text-primary focus:ring-primary border-slate-300" id="save-card" type="checkbox"/>
-                        <label class="text-xs text-slate-500" for="save-card">Save card details for future payments</label>
+                        <label class="text-xs text-muted" for="save-card">Save card details for future payments</label>
                     </div>
                 </div>
             </div>
 
             <!-- Bank transfer (shown when Bank selected) -->
             <div id="panel-bank" class="payment-method-panel" role="tabpanel" hidden>
-                <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-5 space-y-3">
+                <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-5 space-y-4">
                     <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Bank transfer</p>
-                    <p class="text-xs text-slate-500">After you continue, we’ll show payment instructions and our bank details. You can complete the transfer from your bank app or branch.</p>
-                    <div class="space-y-2 pt-2">
-                        <label class="text-sm font-medium px-1">Account holder name (for reference)</label>
-                        <input id="bank-holder" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm" placeholder="Name on bank account" type="text"/>
+                    <p class="text-xs text-slate-500">Enter your bank details below. We’ll use this to process your payment or show you where to send the transfer.</p>
+                    <div class="space-y-3 pt-1">
+                        <div class="space-y-2">
+                            <label class="text-sm fw-medium px-1" for="bank-name">Bank name</label>
+                            <input id="bank-name" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm focus:ring-primary focus:border-primary" placeholder="e.g. Chase, Wells Fargo" type="text"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm fw-medium px-1" for="bank-routing">Routing number</label>
+                            <input id="bank-routing" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm focus:ring-primary focus:border-primary" placeholder="9-digit routing number" type="text" inputmode="numeric" maxlength="9"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm fw-medium px-1" for="bank-account">Account number</label>
+                            <input id="bank-account" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm focus:ring-primary focus:border-primary" placeholder="Account number" type="text" inputmode="numeric"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm fw-medium px-1" for="bank-holder">Account holder name</label>
+                            <input id="bank-holder" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm focus:ring-primary focus:border-primary" placeholder="Name on bank account" type="text"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -218,12 +238,12 @@
             <!-- ACH (shown when ACH selected) -->
             <div id="panel-ach" class="payment-method-panel" role="tabpanel" hidden>
                 <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-5 space-y-3">
-                    <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Pay by ACH</p>
-                    <p class="text-xs text-slate-500">Link your bank account to pay securely. You’ll be guided through verification.</p>
+                    <p class="text-sm fw-bold text-slate-700 dark:text-slate-300">Pay by ACH</p>
+                    <p class="text-xs text-muted">Link your bank account to pay securely. You’ll be guided through verification.</p>
                     <div class="space-y-2 pt-2">
-                        <label class="text-sm font-medium px-1">Routing number</label>
+                        <label class="text-sm fw-medium px-1">Routing number</label>
                         <input id="ach-routing" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm" placeholder="9-digit routing number" type="text"/>
-                        <label class="text-sm font-medium px-1">Account number</label>
+                        <label class="text-sm fw-medium px-1">Account number</label>
                         <input id="ach-account" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm" placeholder="Account number" type="text"/>
                     </div>
                 </div>
@@ -234,18 +254,18 @@
     <!-- Sticky Footer -->
     <footer class="fixed bottom-0 left-0 right-0 p-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 z-50">
         <div class="max-w-md mx-auto">
-            <button id="pay-btn" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
+            <button id="pay-btn" class="w-full bg-primary hover:bg-primary/90 text-white fw-bold text-sm py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
                 <span id="pay-btn-label">Pay Total Amount ($4,225.50)</span>
                 <span class="material-symbols-outlined">lock</span>
             </button>
-            <p class="text-center text-xs text-slate-400 mt-2 flex items-center justify-center gap-1">
+            <p class="text-center text-xs text-muted mt-2 flex items-center justify-center gap-1">
                 <span class="material-symbols-outlined text-sm">verified_user</span>
                 Encrypted and Secure PCI-DSS Compliant Payment
             </p>
         </div>
     </footer>
 
-    <script src="menu.js?v=1772039973"></script>
+    <script src="menu.js?v=1772041455"></script>
     <script>
         lucide.createIcons();
 
