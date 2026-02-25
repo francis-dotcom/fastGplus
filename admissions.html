@@ -47,28 +47,45 @@
             left: 16px;
             color: var(--white);
         }
+        .adm-section-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .adm-block {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 14px;
+        }
         .adm-timeline {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 16px;
             position: relative;
-            margin: 24px 0;
+            margin: 10px 0 6px;
+            padding-left: 20px;
         }
         .adm-timeline::before {
             content: "";
             position: absolute;
-            top: 16px;
-            left: 0;
-            right: 0;
-            height: 2px;
+            top: 0;
+            bottom: 0;
+            left: 12px;
+            width: 2px;
             background: #e2e8f0;
             z-index: 1;
         }
         .adm-step {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 10px;
             z-index: 2;
-            width: 33%;
+            width: 100%;
         }
         .adm-step-icon {
             width: 32px;
@@ -80,14 +97,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 6px;
+            margin: 0;
+            flex-shrink: 0;
         }
         .adm-step.active .adm-step-icon {
             background: var(--primary-blue);
             color: var(--white);
         }
-        .adm-step-label { font-size: 11px; font-weight: 700; }
-        .adm-step-date { font-size: 10px; color: var(--text-muted); }
+        .adm-step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding-top: 2px;
+        }
+        .adm-step-label { font-size: 12px; font-weight: 700; display: block; }
+        .adm-step-date { font-size: 11px; color: var(--text-muted); display: block; }
 
         /* Unified Accordion to match Program Detail */
         .adm-accordion {
@@ -124,7 +148,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-top: 20px;
+            margin-top: 12px;
         }
         .adm-contact-btn {
             background: rgba(25, 94, 179, 0.1);
@@ -194,29 +218,31 @@
         
         <div class="adm-hero">
             <img src="01.jpg" alt="Campus Life" class="adm-hero-img">
-            <div class="adm-hero-content">
-                <span class="pg-badge pg-badge-blue" style="position: static; font-size: 9px; padding: 2px 8px;">FALL 2026</span>
-                <h2 style="font-size: 20px; font-weight: 700; margin-top: 4px;">Grand Plus College</h2>
-            </div>
         </div>
 
-        <section>
-            <h3 style="font-size: 12px; font-weight: 700; color: var(--primary-blue); letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase;">Application Timeline</h3>
+        <section class="adm-block">
+            <h3 class="adm-section-title">Application Timeline</h3>
             <div class="adm-timeline">
                 <div class="adm-step active">
                     <div class="adm-step-icon"><span class="material-symbols-outlined" style="font-size: 18px;">upload</span></div>
-                    <span class="adm-step-label">Apply</span>
-                    <span class="adm-step-date">Oct 1 - Jan 15</span>
+                    <div class="adm-step-content">
+                        <span class="adm-step-label">Apply</span>
+                        <span class="adm-step-date">Oct 1 - Jan 15</span>
+                    </div>
                 </div>
                 <div class="adm-step">
                     <div class="adm-step-icon"><span class="material-symbols-outlined" style="font-size: 18px;">search</span></div>
-                    <span class="adm-step-label">Review</span>
-                    <span class="adm-step-date">Feb - Mar</span>
+                    <div class="adm-step-content">
+                        <span class="adm-step-label">Review</span>
+                        <span class="adm-step-date">Feb - Mar</span>
+                    </div>
                 </div>
                 <div class="adm-step">
                     <div class="adm-step-icon"><span class="material-symbols-outlined" style="font-size: 18px;">mail</span></div>
-                    <span class="adm-step-label">Decision</span>
-                    <span class="adm-step-date">Late March</span>
+                    <div class="adm-step-content">
+                        <span class="adm-step-label">Decision</span>
+                        <span class="adm-step-date">Late March</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -258,8 +284,8 @@
             </div>
         </section>
 
-        <section style="margin-top: 32px; text-align: center;">
-            <h3 style="font-size: 12px; font-weight: 700; color: var(--primary-blue); text-transform: uppercase;">Need Assistance?</h3>
+        <section class="adm-block" style="margin-top: 12px; text-align: center;">
+            <h3 class="adm-section-title">Need Assistance?</h3>
             <div class="adm-contact-grid">
                 <a href="tel:+123456789" class="adm-contact-btn">
                     <span class="material-symbols-outlined">call</span>
