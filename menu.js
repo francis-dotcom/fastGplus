@@ -3,20 +3,21 @@ const initMenu = () => {
   const headerEl = document.querySelector("header");
 
   const links = [
-    { href: "index.html", label: "Home" },
-    { href: "about.html", label: "About Us" },
-    { href: "programs.html", label: "Programs" },
-    { href: "admissions.html", label: "Admissions" },
-    { href: "fees.html", label: "Fees & Payments" },
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About Us" },
+    { href: "/programs", label: "Programs" },
+    { href: "/admissions", label: "Admissions" },
+    { href: "/fees", label: "Fees & Payments" },
     { href: "https://gpceportal.com", label: "Portal/Login" },
-    { href: "support.html", label: "Support" }
+    { href: "/support", label: "Support" }
   ];
 
-  const path = window.location.pathname.split("/").pop() || "index.html";
+  const path = window.location.pathname.replace(/^\//, "").split("/")[0] || "";
 
   const navHtml = links
     .map((l) => {
-      const isActive = l.href === path;
+      const linkPath = l.href.startsWith("http") ? null : (l.href === "/" ? "" : l.href.replace(/^\//, ""));
+      const isActive = linkPath !== null && (linkPath === "" ? (path === "" || path === "index.html") : path === linkPath);
       return `<a href="${l.href}" class="mobile-menu-link${isActive ? " active" : ""}">${l.label}</a>`;
     })
     .join("");
@@ -34,7 +35,7 @@ const initMenu = () => {
           ${navHtml}
         </nav>
         <div class="mobile-menu-footer">
-          <a href="apply.html" class="btn btn-primary" style="width: 100%; height: 54px; font-size: 16px; text-decoration: none;">Apply Now</a>
+          <a href="/apply" class="btn btn-primary" style="width: 100%; height: 54px; font-size: 16px; text-decoration: none;">Apply Now</a>
         </div>
       </div>
     </div>

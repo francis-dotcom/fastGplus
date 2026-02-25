@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1772038223">
+    <link rel="stylesheet" href="styles.css?v=1772038367">
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -17,7 +17,7 @@
     <header class="header">
         <div class="container header-content">
             <h1 class="brand">
-                <a href="index.html" class="brand-link">
+                <a href="/" class="brand-link">
                     <img src="logo.png" alt="Grand Plus College Logo" class="logo-img">
                     Grand Plus College
                 </a>
@@ -76,7 +76,7 @@
                 <div class="pg-banner">
                     <h3 class="pg-banner-title">Ready to Start?</h3>
                     <p class="pg-banner-text">Join thousands of students building their future at Grand Plus College.</p>
-                    <a href="apply.html" class="btn pg-banner-btn" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Apply Now</a>
+                    <a href="/apply" class="btn pg-banner-btn" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Apply Now</a>
                 </div>
             </div>
         </section>
@@ -89,7 +89,7 @@
         </div>
     </footer>
 
-    <script src="menu.js?v=1772038223"></script>
+    <script src="menu.js?v=1772038367"></script>
     <script>document.addEventListener('DOMContentLoaded',function(){ if (window.lucide) lucide.createIcons(); });</script>
     <script>
 (function() {
@@ -189,7 +189,7 @@
             var dept = pair[0], items = pair[1];
             html += '<div class="pg-dept-header" data-dept="'+dept+'"><h3 class="pg-dept-title">'+DEPT_LABELS[dept]+' <span class="pg-dept-count">('+items.length+')</span></h3></div>';
             items.forEach(function(p) {
-                html += '<article class="pg-card" data-dept="'+p.dept+'" data-segment="'+p.segment+'"><div class="pg-card-img-wrap"><span class="pg-status-dot" title="Admission Open"></span><img src="'+p.img+'" alt="'+p.title+'" class="pg-card-img" loading="lazy"></div><div class="pg-card-body"><h3 class="pg-card-title">'+p.title+'</h3><div class="pg-card-meta"><span>'+p.meta+'</span></div><a href="apply.html" class="btn btn-primary pg-btn">Apply Now</a></div></article>';
+                html += '<article class="pg-card" data-dept="'+p.dept+'" data-segment="'+p.segment+'"><div class="pg-card-img-wrap"><span class="pg-status-dot" title="Admission Open"></span><img src="'+p.img+'" alt="'+p.title+'" class="pg-card-img" loading="lazy"></div><div class="pg-card-body"><h3 class="pg-card-title">'+p.title+'</h3><div class="pg-card-meta"><span>'+p.meta+'</span></div><a href="/apply" class="btn btn-primary pg-btn">Apply Now</a></div></article>';
             });
         });
         document.getElementById('program-grid').innerHTML = html || '<p class="text-muted">No programs match this filter.</p>';
@@ -241,6 +241,6 @@
     }
 })();
     </script>
-    <script src="menu.js?v=1772038223"></script>
+    <script src="menu.js?v=1772038367"></script>
 </body>
 </html>

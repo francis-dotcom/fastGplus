@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1772038223" />
+    <link rel="stylesheet" href="styles.css?v=1772038367" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
@@ -18,7 +18,7 @@
     <header class="header">
       <div class="container header-content">
         <h1 class="brand">
-          <a href="index.html" class="brand-link">
+          <a href="/" class="brand-link">
             <img src="logo.png" alt="Grand Plus College Logo" class="logo-img">
             Grand Plus College
           </a>
@@ -46,8 +46,8 @@
               Apply in minutes. Explore programs, requirements, and deadlines.
             </p>
             <div class="hero-actions">
-              <a href="apply.html" class="btn btn-primary btn-block">Apply Now</a>
-              <a href="programs.html" class="btn btn-secondary btn-block">Explore Programs</a>
+              <a href="/apply" class="btn btn-primary btn-block">Apply Now</a>
+              <a href="/programs" class="btn btn-secondary btn-block">Explore Programs</a>
             </div>
             <div class="hero-meta">
               <span>Fast online application</span>
@@ -100,7 +100,7 @@
               triggerText.innerText = option.innerText;
               list.classList.remove('active');
               trigger.classList.remove('active');
-              window.location.href = 'programs.html?dept=' + selectedDept;
+              window.location.href = '/programs?dept=' + selectedDept;
             });
 
             document.addEventListener('click', () => {
@@ -156,7 +156,7 @@
             <li>Scholarships available for qualified applicants</li>
             <li>Transparent tuition ranges by faculty and level</li>
           </ul>
-          <a href="fees.html" class="btn btn-primary btn-cta">See Payment Options</a>
+          <a href="/fees" class="btn btn-primary btn-cta">See Payment Options</a>
         </div>
       </section>
 
@@ -167,7 +167,7 @@
           <div class="highlight-text">
             Need-based and merit awards are open each intake with dedicated advisor support.
           </div>
-          <a href="support.html" class="btn btn-primary btn-cta">See Scholarships</a>
+          <a href="/support" class="btn btn-primary btn-cta">See Scholarships</a>
         </div>
       </section>
 
@@ -346,7 +346,7 @@
       </section>
 
     </main>
-    <script src="menu.js?v=1772038223"></script>
+    <script src="menu.js?v=1772038367"></script>
     <script>
       lucide.createIcons();
     </script>

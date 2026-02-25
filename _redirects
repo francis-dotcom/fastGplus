@@ -1,0 +1,10 @@
+# Pretty URLs: serve .html files without showing .html (200 = rewrite, URL stays clean)
+/fees              /fees.html            200
+/apply             /apply.html           200
+/programs          /programs.html        200
+/about             /about.html           200
+/admissions        /admissions.html      200
+/support           /support.html         200
+/status            /status.html          200
+/payment-success   /payment-success.html 200
+/program-detail    /program-detail.html  200

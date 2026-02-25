@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772038223" />
+    <link rel="stylesheet" href="styles.css?v=1772038367" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -47,7 +47,7 @@
 <!-- Header -->
 <header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
     <div class="max-w-xl mx-auto flex items-center justify-between px-4 h-16">
-        <a href="index.html" class="flex items-center justify-center size-10 rounded-full hover:bg-primary/10 transition-colors">
+        <a href="/" class="flex items-center justify-center size-10 rounded-full hover:bg-primary/10 transition-colors">
             <span class="material-symbols-outlined text-primary">arrow_back</span>
         </a>
         <div class="flex items-center gap-2">
@@ -511,8 +511,8 @@
             const applicationId = data?.id || '';
             const submittedAt = new Date().toISOString();
             window.location.href = applicationId
-                ? `status.html?application_id=${encodeURIComponent(applicationId)}&submitted_at=${encodeURIComponent(submittedAt)}`
-                : 'status.html';
+                ? `/status?application_id=${encodeURIComponent(applicationId)}&submitted_at=${encodeURIComponent(submittedAt)}`
+                : '/status';
         } catch (error) {
             alert(error.message || 'Could not submit application. Please try again.');
             nextBtn.disabled = false;
@@ -541,6 +541,6 @@
         }
     });
 </script>
-<script src="menu.js?v=1772038223"></script>
+<script src="menu.js?v=1772038367"></script>
 </body>
 </html>
