@@ -88,12 +88,7 @@
 
         <section class="pg-pagination-section">
             <div class="container">
-                <div class="pg-pagination">
-                    <button type="button" class="pg-page-btn pg-page-active">1</button>
-                    <button type="button" class="pg-page-btn">2</button>
-                    <button type="button" class="pg-page-btn">3</button>
-                    <span class="pg-page-dots">…</span>
-                </div>
+                <div class="pg-pagination" id="pg-pagination"></div>
             </div>
         </section>
 
@@ -154,6 +149,8 @@
     ];
     var DEPT_ORDER = ['health','technology','business','computer','languages','science','math','social','education'];
     var DEPT_LABELS = {health:'Health Sciences',technology:'Technology & IT',business:'Business & Economics',computer:'Computer & Science Education',languages:'Languages & Religious Studies',science:'Integrated Science',math:'Math & Physical Sciences',social:'Social & Political Sciences',education:'Education Programs'};
+    var PAGE_SIZE = 5;
+    var currentPage = 1;
 
     function filterList(filter) {
         if (filter === 'all') return PROGRAMS;
@@ -169,9 +166,45 @@
         return DEPT_ORDER.filter(function(d){ return g[d] && g[d].length; }).map(function(d){ return [d, g[d]]; });
     }
 
+    function getPagedList(list, page) {
+        var start = (page - 1) * PAGE_SIZE;
+        return list.slice(start, start + PAGE_SIZE);
+    }
+
+    function renderPagination(totalItems) {
+        var totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
+        var container = document.getElementById('pg-pagination');
+        if (!container) return;
+        var html = '';
+        var maxButtons = 5;
+        var startPage = Math.max(1, currentPage - 2);
+        var endPage = Math.min(totalPages, startPage + maxButtons - 1);
+        if (endPage - startPage < maxButtons - 1) {
+            startPage = Math.max(1, endPage - maxButtons + 1);
+        }
+
+        for (var p = startPage; p <= endPage; p++) {
+            html += '<button type="button" class="pg-page-btn'+(p === currentPage ? ' pg-page-active' : '')+'" data-page="'+p+'">'+p+'</button>';
+        }
+        if (endPage < totalPages) {
+            html += '<span class="pg-page-dots">…</span>';
+        }
+        container.innerHTML = html;
+
+        container.querySelectorAll('.pg-page-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var page = parseInt(btn.getAttribute('data-page'), 10);
+                if (!page || page === currentPage) return;
+                currentPage = page;
+                renderCards(currentFilter);
+            });
+        });
+    }
+
     function renderCards(filter) {
         var list = filterList(filter);
-        var groups = groupByDept(list);
+        var paged = getPagedList(list, currentPage);
+        var groups = groupByDept(paged);
         var html = '';
         groups.forEach(function(pair) {
             var dept = pair[0], items = pair[1];
@@ -181,6 +214,7 @@
             });
         });
         document.getElementById('program-grid').innerHTML = html || '<p class="text-muted">No programs match this filter.</p>';
+        renderPagination(list.length);
     }
 
     var currentFilter = 'all';
@@ -189,6 +223,7 @@
     chips.forEach(function(chip) {
         chip.addEventListener('click', function() {
             currentFilter = chip.dataset.filter;
+            currentPage = 1;
             chips.forEach(function(c){ c.classList.remove('pg-chip-active'); });
             chip.classList.add('pg-chip-active');
             // Scroll active chip into view
