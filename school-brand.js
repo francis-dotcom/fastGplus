@@ -34,6 +34,10 @@
     document.querySelectorAll('img.logo-img').forEach(function (img) {
       img.setAttribute('alt', window.SCHOOL_BRAND.alt);
     });
+    var titleMeta = document.querySelector('meta[name="school-brand-title-prefix"]');
+    if (titleMeta && titleMeta.content) {
+      document.title = titleMeta.content + window.SCHOOL_BRAND.alt;
+    }
   }
 
   window.getSchoolBrandHtml = getSchoolBrandHtml;

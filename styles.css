@@ -170,6 +170,11 @@ p {
   font-size: 13px;
 }
 
+/* Apply form: smaller school name in header */
+.apply-page .school-name {
+  font-size: 11px;
+}
+
 .school-name-inline {
   display: inline-block;
   text-align: center;
