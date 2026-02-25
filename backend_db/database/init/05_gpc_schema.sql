@@ -73,6 +73,19 @@ CREATE TABLE IF NOT EXISTS testimonials (
 );
 
 -- ─────────────────────────────────────────────────────────────────────────────
+-- Contact Submissions Table (Support page contact form)
+-- Stores messages from the support/contact form
+-- ─────────────────────────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS contact_submissions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    category VARCHAR(100),
+    message TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ─────────────────────────────────────────────────────────────────────────────
 -- Realtime & Security Configuration
 -- Enable realtime for state updates and security for public access (per project needs)
 -- ─────────────────────────────────────────────────────────────────────────────
@@ -111,5 +124,16 @@ SELECT
     true, 
     (SELECT id FROM users LIMIT 1), 
     'Student testimonials for home page', 
+    true
+ON CONFLICT (name) DO NOTHING;
+
+INSERT INTO tables (id, name, table_schema, public, owner_id, description, realtime_enabled)
+SELECT 
+    gen_random_uuid(), 
+    'contact_submissions', 
+    '{}'::jsonb, 
+    true, 
+    (SELECT id FROM users LIMIT 1), 
+    'Support page contact form submissions', 
     true
 ON CONFLICT (name) DO NOTHING;

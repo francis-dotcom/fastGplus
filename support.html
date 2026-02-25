@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1772055766">
+    <link rel="stylesheet" href="styles.css?v=1772057091">
     <link rel="icon" href="images/logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -58,15 +58,15 @@
         <!-- Contact Form -->
         <section class="card">
             <h2 class="text-base fw-bold mb-sm">Contact Form</h2>
-            <form class="d-flex flex-column gap-sm">
-                <input type="text" placeholder="Name" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
-                <input type="email" placeholder="Email" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
-                <select class="w-full section-light text-muted" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
+            <form id="support-contact-form" class="d-flex flex-column gap-sm">
+                <input type="text" name="name" placeholder="Name" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
+                <input type="email" name="email" placeholder="Email" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
+                <select name="category" class="w-full section-light text-muted" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main);">
                     <option value="" disabled selected>Category</option>
                     <option value="admissions">Admissions Help</option>
                     <option value="payments">Payment Issues</option>
                 </select>
-                <textarea placeholder="Message" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main); height: 80px; resize: none;"></textarea>
+                <textarea name="message" placeholder="Message" class="w-full section-light" style="border: none; border-radius: 8px; padding: 12px; font-size: 13px; font-family: var(--font-main); height: 80px; resize: none;"></textarea>
                 <button type="submit" class="btn btn-primary btn-md btn-block">Submit</button>
             </form>
         </section>
@@ -92,7 +92,7 @@
     </main>
 
     <script src="school-brand.js"></script>
-        <script src="menu.js?v=1772055766"></script>
+        <script src="menu.js?v=1772057091"></script>
     <script>
         lucide.createIcons();
     </script>
