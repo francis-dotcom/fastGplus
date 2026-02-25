@@ -220,24 +220,32 @@
     var currentFilter = 'all';
     var chips = document.querySelectorAll('.pg-chip');
 
+    function setActiveFilter(filter, scroll) {
+        currentFilter = filter;
+        currentPage = 1;
+        chips.forEach(function(c){ c.classList.remove('pg-chip-active'); });
+        var active = document.querySelector('.pg-chip[data-filter="'+filter+'"]');
+        if (active) {
+            active.classList.add('pg-chip-active');
+            if (scroll) {
+                active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
+        renderCards(currentFilter);
+    }
+
     chips.forEach(function(chip) {
         chip.addEventListener('click', function() {
-            currentFilter = chip.dataset.filter;
-            currentPage = 1;
-            chips.forEach(function(c){ c.classList.remove('pg-chip-active'); });
-            chip.classList.add('pg-chip-active');
-            // Scroll active chip into view
-            chip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            renderCards(currentFilter);
+            setActiveFilter(chip.dataset.filter, true);
         });
     });
 
     var params = new URLSearchParams(window.location.search);
     var dept = params.get('dept');
     if (dept && document.querySelector('.pg-chip[data-filter="dept:'+dept+'"]')) {
-        document.querySelector('.pg-chip[data-filter="dept:'+dept+'"]').click();
+        setActiveFilter('dept:'+dept, true);
     } else {
-        renderCards('all');
+        setActiveFilter('all', false);
     }
 })();
     </script>

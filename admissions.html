@@ -143,6 +143,26 @@
             max-height: 500px;
             padding-bottom: 16px;
         }
+        .adm-checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        .adm-checklist li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 6px;
+        }
+        .adm-checklist li:last-child {
+            margin-bottom: 0;
+        }
+        .adm-checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
 
         .adm-contact-grid {
             display: grid;
@@ -257,7 +277,7 @@
                     <span class="material-symbols-outlined" style="color: #94a3b8;">expand_more</span>
                 </button>
                 <div class="adm-accordion-content">
-                    <ul style="font-size: 13px; color: var(--text-muted); line-height: 1.6; padding-left: 20px;">
+                    <ul class="adm-checklist" style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
                         <li>Minimum GPA: 3.5 on a 4.0 scale</li>
                         <li>Official High School Transcripts</li>
                         <li>Two Letters of Recommendation</li>
@@ -275,7 +295,7 @@
                     <span class="material-symbols-outlined" style="color: #94a3b8;">expand_more</span>
                 </button>
                 <div class="adm-accordion-content">
-                    <ul style="font-size: 13px; color: var(--text-muted); line-height: 1.6; padding-left: 20px;">
+                    <ul class="adm-checklist" style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
                         <li>English Proficiency Proof</li>
                         <li>Valid Identity Document</li>
                         <li>Application Fee Receipt</li>
