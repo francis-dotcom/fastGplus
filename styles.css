@@ -923,11 +923,6 @@ ol {
   background: #f8fafc;
 }
 
-.support-list-item span:last-child {
-  color: var(--text-muted);
-  font-weight: 700;
-}
-
 .support-list-item:hover {
   background: #f1f5f9;
 }
