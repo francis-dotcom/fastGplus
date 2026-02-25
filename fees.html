@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772027072" />
+    <link rel="stylesheet" href="styles.css?v=1772038223" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
@@ -36,6 +36,22 @@
         }
         body {
             min-height: 100dvh;
+        }
+        .payer-tab.active {
+            background: white;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            color: var(--tw-color-primary, #0b4f9c);
+        }
+        .dark .payer-tab.active {
+            background: rgb(51 65 85);
+            color: var(--tw-color-primary, #0b4f9c);
+        }
+        .payer-tab:not(.active) {
+            background: transparent;
+            color: rgb(100 116 139);
+        }
+        .dark .payer-tab:not(.active) {
+            color: rgb(148 163 184);
         }
         .custom-select {
             appearance: none;
@@ -66,14 +82,14 @@
         <!-- Section 1: Payer Identification -->
         <section class="space-y-4">
             <h2 class="text-xl font-bold">Payer Identification</h2>
-            <div class="bg-slate-200/50 dark:bg-slate-800/50 p-1 rounded-xl flex gap-1">
-                <button class="flex-1 py-2 px-1 text-xs font-semibold rounded-lg bg-white dark:bg-slate-700 shadow-sm text-primary">Existing Student</button>
-                <button class="flex-1 py-2 px-1 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400">New Applicant</button>
-                <button class="flex-1 py-2 px-1 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400">Third Party</button>
+            <div class="bg-slate-200/50 dark:bg-slate-800/50 p-1 rounded-xl flex gap-1" role="tablist" aria-label="Payer type">
+                <button type="button" role="tab" aria-selected="true" id="payer-existing" data-payer="existing" class="payer-tab active flex-1 py-2 px-1 text-xs font-semibold rounded-lg">Existing Student</button>
+                <button type="button" role="tab" aria-selected="false" id="payer-applicant" data-payer="applicant" class="payer-tab flex-1 py-2 px-1 text-xs font-semibold rounded-lg">New Applicant</button>
+                <button type="button" role="tab" aria-selected="false" id="payer-third" data-payer="third" class="payer-tab flex-1 py-2 px-1 text-xs font-semibold rounded-lg">Third Party</button>
             </div>
             <div class="space-y-2">
-                <label class="text-sm font-medium px-1">Student ID or Email Address</label>
-                <input id="student-id" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="e.g. 2024-00123" type="text"/>
+                <label id="payer-id-label" class="text-sm font-medium px-1">Student ID or Email Address</label>
+                <input id="student-id" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="e.g. 2024-00123" type="text" aria-describedby="payer-id-label"/>
             </div>
         </section>
 
@@ -190,12 +206,40 @@
         </div>
     </footer>
 
-    <script src="menu.js?v=1772027072"></script>
+    <script src="menu.js?v=1772038223"></script>
     <script>
         lucide.createIcons();
-        
-        document.getElementById('pay-btn').addEventListener('click', () => {
-            // Simulate payment processing then redirect
+
+        (function () {
+            var payerTabs = document.querySelectorAll('.payer-tab');
+            var labelEl = document.getElementById('payer-id-label');
+            var inputEl = document.getElementById('student-id');
+            var labels = {
+                existing: { label: 'Student ID or Email Address', placeholder: 'e.g. 2024-00123' },
+                applicant: { label: 'Application ID or Email Address', placeholder: 'e.g. application reference or email' },
+                third: { label: 'Invoice / Reference or Email', placeholder: 'e.g. invoice number or payer email' }
+            };
+
+            function setActiveTab(activeBtn) {
+                payerTabs.forEach(function (btn) {
+                    var isActive = btn === activeBtn;
+                    btn.classList.toggle('active', isActive);
+                    btn.setAttribute('aria-selected', isActive);
+                });
+                var payer = activeBtn.getAttribute('data-payer');
+                if (labelEl && inputEl && labels[payer]) {
+                    labelEl.textContent = labels[payer].label;
+                    inputEl.placeholder = labels[payer].placeholder;
+                }
+            }
+
+            payerTabs.forEach(function (btn) {
+                btn.addEventListener('click', function () { setActiveTab(btn); });
+            });
+            setActiveTab(document.getElementById('payer-existing'));
+        })();
+
+        document.getElementById('pay-btn').addEventListener('click', function () {
             window.location.href = 'payment-success.html';
         });
     </script>
