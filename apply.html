@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=1771991950" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -87,9 +87,15 @@
     <!-- Stage 1: Personal Details -->
     <div class="form-stage active" id="stage1">
         <form class="space-y-6">
-            <div class="space-y-2">
-                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200">Full Name</label>
-                <input class="w-full h-14 px-4 bg-white dark:bg-slate-800 border-primary/20 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-slate-400" placeholder="Enter your full name" type="text" id="full-name">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200">First Name</label>
+                    <input class="w-full h-14 px-4 bg-white dark:bg-slate-800 border-primary/20 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-slate-400" placeholder="Enter first name" type="text" id="first-name">
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200">Last Name</label>
+                    <input class="w-full h-14 px-4 bg-white dark:bg-slate-800 border-primary/20 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-slate-400" placeholder="Enter last name" type="text" id="last-name">
+                </div>
             </div>
             <div class="space-y-2">
                 <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200">Email Address</label>
@@ -281,7 +287,13 @@
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+    // Supabase config (anon key is safe for browser; use RLS in Supabase to protect data)
+    const SUPABASE_URL = 'https://hqjbfcujajaoiwcmwkcn.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxamJmY3VqYWphb2l3Y213a2NuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1MjA4MzMsImV4cCI6MjA3NjA5NjgzM30.4JcFCqk8cHMS9rZPH87oCNJ0wlXVBQ7fyoupmPnpOI4';
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
     // Dynamic Program Filtering
         const programsData = {
             "Business & Economics": [
@@ -387,8 +399,6 @@
 
     let currentStep = 1;
     const totalSteps = 5;
-    const APPLICATIONS_ENDPOINT = '/api/tables/applications/rows';
-    const API_KEY = 'selfdb-bd66637d-60dc-cf8a-a1aa-037f1b37d7b9';
     let isSubmitting = false;
 
     const stages = [
@@ -422,7 +432,7 @@
     }
 
     function populateReview() {
-        document.getElementById('rv-name').textContent = document.getElementById('full-name').value || "Not provided";
+        document.getElementById('rv-name').textContent = (document.getElementById('first-name').value + " " + document.getElementById('last-name').value).trim() || "Not provided";
         document.getElementById('rv-email').textContent = document.getElementById('email').value || "Not provided";
         document.getElementById('rv-phone').textContent = document.getElementById('phone').value || "Not provided";
         document.getElementById('rv-address').textContent = document.getElementById('address').value || "Not provided";
@@ -437,7 +447,8 @@
 
     function buildApplicationPayload() {
         return {
-            full_name: document.getElementById('full-name').value.trim(),
+            first_name: document.getElementById('first-name').value.trim(),
+            last_name: document.getElementById('last-name').value.trim(),
             email: document.getElementById('email').value.trim(),
             phone: document.getElementById('phone').value.trim() || null,
             date_of_birth: document.getElementById('dob').value || null,
@@ -458,8 +469,8 @@
     }
 
     function validateSubmission(payload) {
-        if (!payload.full_name || !payload.email || !payload.program_applied) {
-            alert('Please complete Full Name, Email Address, and Program before submitting.');
+        if (!payload.first_name || !payload.last_name || !payload.email || !payload.program_applied) {
+            alert('Please complete First Name, Last Name, Email Address, and Program before submitting.');
             return false;
         }
 
@@ -485,29 +496,15 @@
             nextBtn.disabled = true;
             nextBtn.innerHTML = 'Submitting... <span class="material-symbols-outlined">hourglass_top</span>';
 
-            const response = await fetch(APPLICATIONS_ENDPOINT, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-API-Key': API_KEY
-                },
-                body: JSON.stringify(payload)
-            });
+            const { data, error } = await supabase
+                .from('applications')
+                .insert(payload)
+                .select('id')
+                .single();
 
-            let responseData = null;
-            try {
-                responseData = await response.json();
-            } catch (e) {
-                responseData = null;
-            }
+            if (error) throw new Error(error.message || 'Submission failed.');
 
-            if (!response.ok) {
-                const errorMessage = responseData?.message || responseData?.error || `Submission failed (${response.status}).`;
-                throw new Error(errorMessage);
-            }
-
-            const applicationId = responseData?.data?.id || responseData?.id || '';
+            const applicationId = data?.id || '';
             window.location.href = applicationId
                 ? `status.html?application_id=${encodeURIComponent(applicationId)}`
                 : 'status.html';
@@ -515,6 +512,7 @@
             alert(error.message || 'Could not submit application. Please try again.');
             nextBtn.disabled = false;
             nextBtn.innerHTML = previousLabel;
+        } finally {
             isSubmitting = false;
         }
     }
@@ -538,6 +536,6 @@
         }
     });
 </script>
-<script src="menu.js?v=1771990005"></script>
+<script src="menu.js?v=1771991950"></script>
 </body>
 </html>

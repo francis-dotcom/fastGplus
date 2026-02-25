@@ -6,15 +6,34 @@ REMOTE_DIR="/var/www/html/grandpluscollege"
 
 echo "🚀 Deploying grandpluscollege.com..."
 
-# Auto-bump cache buster with current timestamp so phones always get fresh assets
+# Load Supabase credentials from .env
+if [ -f .env ]; then
+  # Use a safer way to export variables from .env
+  set -a
+  source .env
+  set +a
+  echo "🔑 Loaded Supabase credentials from .env"
+else
+  echo "⚠️  .env file not found! Deployment may fail if keys are missing."
+fi
+
+# Auto-bump cache buster with current timestamp
 TIMESTAMP=$(date +%s)
-# Update all HTML files that use styles.css?v=...
+# Update assets with cache buster
+sed -i '' "s/styles\.css\([?\"' ]\)/styles.css?v=${TIMESTAMP}\1/g" *.html
 sed -i '' "s/styles\.css?v=[^\"' ]*/styles.css?v=${TIMESTAMP}/g" *.html
-# Update all HTML files that use menu.js?v=...
+sed -i '' "s/menu\.js\([?\"' ]\)/menu.js?v=${TIMESTAMP}\1/g" *.html
 sed -i '' "s/menu\.js?v=[^\"' ]*/menu.js?v=${TIMESTAMP}/g" *.html
-# Also add cache buster to menu.js references that don't have one yet
-sed -i '' "s/menu\.js\"/menu.js?v=${TIMESTAMP}\"/g" *.html
-echo "🔄 Cache buster updated to v=${TIMESTAMP} in all HTML files"
+
+# Inject Supabase Credentials into apply.html
+if [ ! -z "$SUPABASE_URL" ] && [ ! -z "$SUPABASE_ANON_KEY" ]; then
+  sed -i '' "s|SUPABASE_URL_PLACEHOLDER|${SUPABASE_URL}|g" apply.html
+  sed -i '' "s|SUPABASE_KEY_PLACEHOLDER|${SUPABASE_ANON_KEY}|g" apply.html
+  sed -i '' "s|SUPABASE_TABLE_PLACEHOLDER|${SUPABASE_TABLE_NAME}|g" apply.html
+  echo "💉 Injected Supabase credentials into apply.html"
+fi
+
+echo "🔄 Deployment preparation complete (v=${TIMESTAMP})"
 
 rsync -az --progress \
   --exclude='.git' \
