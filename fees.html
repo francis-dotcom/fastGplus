@@ -7,8 +7,9 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772039405" />
+    <link rel="stylesheet" href="styles.css?v=1772039973" />
     <link rel="icon" href="logo.png" type="image/png" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -50,9 +51,22 @@
             background: transparent;
             color: rgb(100 116 139);
         }
-        .dark .payer-tab:not(.active) {
+        .dark         .payer-tab:not(.active) {
             color: rgb(148 163 184);
         }
+        .payment-method-btn.active {
+            border-width: 2px;
+            border-color: var(--tw-color-primary, #0b4f9c);
+            background: rgba(11, 79, 156, 0.05);
+            color: var(--tw-color-primary, #0b4f9c);
+        }
+        .payment-method-btn.active .material-symbols-outlined,
+        .payment-method-btn.active .text-xs { color: inherit !important; }
+        .payment-method-btn:not(.active) { border-color: rgb(226 232 240); color: rgb(100 116 139); }
+        .dark .payment-method-btn:not(.active) { border-color: rgb(51 65 85); color: rgb(148 163 184); }
+        .payment-method-btn:not(.active) .material-symbols-outlined { color: rgb(148 163 184); }
+        .payment-method-panel { display: none; }
+        .payment-method-panel.active { display: block; }
         .custom-select {
             appearance: none;
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
@@ -97,11 +111,8 @@
         <section class="space-y-4">
             <h2 class="text-xl font-bold">Select Fee</h2>
             <div class="relative">
-                <select class="custom-select w-full h-16 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-lg font-medium focus:ring-primary focus:border-primary appearance-none">
-                    <option>Tuition Fees (Fall 2024)</option>
-                    <option>Technology & Resource Fee</option>
-                    <option>Application Fee</option>
-                    <option>Library Fines / Misc</option>
+                <select id="fee-select" class="custom-select w-full h-16 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-lg font-medium focus:ring-primary focus:border-primary appearance-none">
+                    <option value="">Loading fees…</option>
                 </select>
             </div>
         </section>
@@ -114,24 +125,24 @@
             </div>
             <div class="space-y-2 border-b border-slate-200 dark:border-slate-700 pb-4">
                 <div class="flex justify-between text-sm">
-                    <span class="text-slate-500">Base Tuition</span>
-                    <span>$4,200.00</span>
+                    <span class="text-slate-500" id="fee-base-label">Base amount</span>
+                    <span id="fee-base-amount">$4,200.00</span>
                 </div>
                 <div class="flex justify-between text-sm">
                     <span class="text-slate-500">Processing Charges</span>
-                    <span>$25.50</span>
+                    <span id="fee-processing">$25.50</span>
                 </div>
             </div>
             <div class="flex justify-between items-center py-2">
                 <span class="font-bold">Total Amount</span>
-                <span class="font-bold text-2xl text-primary">$4,225.50</span>
+                <span class="font-bold text-2xl text-primary" id="fee-total">$4,225.50</span>
             </div>
-            <div class="flex items-center justify-between bg-white dark:bg-slate-800 p-3 rounded-xl border border-slate-100 dark:border-slate-700">
+            <div class="flex items-center justify-between bg-white dark:bg-slate-800 p-3 rounded-xl border border-slate-100 dark:border-slate-700" id="fee-installment-wrap">
                 <div class="flex items-center gap-3">
                     <span class="material-symbols-outlined text-primary">calendar_month</span>
                     <div>
                         <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Pay in Installments</p>
-                        <p class="text-xs text-slate-500">3 monthly payments of $1,408.50</p>
+                        <p class="text-xs text-slate-500" id="fee-installment-text">3 monthly payments of $1,408.50</p>
                     </div>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
@@ -144,50 +155,78 @@
         <!-- Section 4: Payment Method -->
         <section class="space-y-4">
             <h2 class="text-xl font-bold">Payment Method</h2>
-            <div class="grid grid-cols-3 gap-3">
-                <button class="flex flex-col items-center justify-center p-4 rounded-xl border-2 border-primary bg-primary/5 text-primary">
+            <div class="grid grid-cols-3 gap-3" role="tablist" aria-label="Payment method">
+                <button type="button" role="tab" aria-selected="true" id="pm-card" data-payment="card" class="payment-method-btn active flex flex-col items-center justify-center p-4 rounded-xl border-2 border-primary bg-primary/5 text-primary">
                     <span class="material-symbols-outlined text-3xl mb-1">credit_card</span>
                     <span class="text-xs font-bold">Card</span>
                 </button>
-                <button class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
+                <button type="button" role="tab" aria-selected="false" id="pm-bank" data-payment="bank" class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
                     <span class="material-symbols-outlined text-3xl mb-1 text-slate-400">account_balance</span>
                     <span class="text-xs font-bold text-slate-500">Bank</span>
                 </button>
-                <button class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
+                <button type="button" role="tab" aria-selected="false" id="pm-ach" data-payment="ach" class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
                     <span class="material-symbols-outlined text-3xl mb-1 text-slate-400">payments</span>
                     <span class="text-xs font-bold text-slate-500">ACH</span>
                 </button>
             </div>
-        </section>
 
-        <!-- Section 5: Card Details -->
-        <section class="space-y-4">
-            <div class="space-y-2">
-                <label class="text-sm font-medium px-1">Cardholder Name</label>
-                <input id="card-name" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="Full name on card" type="text"/>
-            </div>
-            <div class="space-y-2">
-                <label class="text-sm font-medium px-1">Card Number</label>
-                <div class="relative">
-                    <input id="card-number" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary pr-12 px-4" placeholder="0000 0000 0000 0000" type="text"/>
-                    <div class="absolute right-4 top-1/2 -translate-y-1/2 flex gap-1">
-                        <i data-lucide="credit-card" class="text-slate-400 size-5"></i>
+            <!-- Card details (shown when Card selected) -->
+            <div id="panel-card" class="payment-method-panel active" role="tabpanel">
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium px-1">Cardholder Name</label>
+                        <input id="card-name" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="Full name on card" type="text"/>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium px-1">Card Number</label>
+                        <div class="relative">
+                            <input id="card-number" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary pr-12 px-4" placeholder="0000 0000 0000 0000" type="text"/>
+                            <div class="absolute right-4 top-1/2 -translate-y-1/2 flex gap-1">
+                                <i data-lucide="credit-card" class="text-slate-400 size-5"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium px-1">Expiry Date</label>
+                            <input id="expiry" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="MM/YY" type="text"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium px-1">CVC</label>
+                            <input id="cvc" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="123" type="text"/>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 px-1 pt-2">
+                        <input class="rounded text-primary focus:ring-primary border-slate-300" id="save-card" type="checkbox"/>
+                        <label class="text-xs text-slate-500" for="save-card">Save card details for future payments</label>
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="space-y-2">
-                    <label class="text-sm font-medium px-1">Expiry Date</label>
-                    <input id="expiry" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="MM/YY" type="text"/>
-                </div>
-                <div class="space-y-2">
-                    <label class="text-sm font-medium px-1">CVC</label>
-                    <input id="cvc" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="123" type="text"/>
+
+            <!-- Bank transfer (shown when Bank selected) -->
+            <div id="panel-bank" class="payment-method-panel" role="tabpanel" hidden>
+                <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-5 space-y-3">
+                    <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Bank transfer</p>
+                    <p class="text-xs text-slate-500">After you continue, we’ll show payment instructions and our bank details. You can complete the transfer from your bank app or branch.</p>
+                    <div class="space-y-2 pt-2">
+                        <label class="text-sm font-medium px-1">Account holder name (for reference)</label>
+                        <input id="bank-holder" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm" placeholder="Name on bank account" type="text"/>
+                    </div>
                 </div>
             </div>
-            <div class="flex items-center gap-2 px-1 pt-2">
-                <input class="rounded text-primary focus:ring-primary border-slate-300" id="save-card" type="checkbox"/>
-                <label class="text-xs text-slate-500" for="save-card">Save card details for future payments</label>
+
+            <!-- ACH (shown when ACH selected) -->
+            <div id="panel-ach" class="payment-method-panel" role="tabpanel" hidden>
+                <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-5 space-y-3">
+                    <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Pay by ACH</p>
+                    <p class="text-xs text-slate-500">Link your bank account to pay securely. You’ll be guided through verification.</p>
+                    <div class="space-y-2 pt-2">
+                        <label class="text-sm font-medium px-1">Routing number</label>
+                        <input id="ach-routing" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm" placeholder="9-digit routing number" type="text"/>
+                        <label class="text-sm font-medium px-1">Account number</label>
+                        <input id="ach-account" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm" placeholder="Account number" type="text"/>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -196,7 +235,7 @@
     <footer class="fixed bottom-0 left-0 right-0 p-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 z-50">
         <div class="max-w-md mx-auto">
             <button id="pay-btn" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
-                <span>Pay Total Amount ($4,225.50)</span>
+                <span id="pay-btn-label">Pay Total Amount ($4,225.50)</span>
                 <span class="material-symbols-outlined">lock</span>
             </button>
             <p class="text-center text-xs text-slate-400 mt-2 flex items-center justify-center gap-1">
@@ -206,7 +245,7 @@
         </div>
     </footer>
 
-    <script src="menu.js?v=1772039405"></script>
+    <script src="menu.js?v=1772039973"></script>
     <script>
         lucide.createIcons();
 
@@ -237,6 +276,139 @@
                 btn.addEventListener('click', function () { setActiveTab(btn); });
             });
             setActiveTab(document.getElementById('payer-existing'));
+        })();
+
+        (function () {
+            var pmButtons = document.querySelectorAll('.payment-method-btn');
+            var panels = {
+                card: document.getElementById('panel-card'),
+                bank: document.getElementById('panel-bank'),
+                ach: document.getElementById('panel-ach')
+            };
+
+            function setPaymentMethod(activeBtn) {
+                var method = activeBtn.getAttribute('data-payment');
+                pmButtons.forEach(function (btn) {
+                    var isActive = btn === activeBtn;
+                    btn.classList.toggle('active', isActive);
+                    btn.setAttribute('aria-selected', isActive);
+                });
+                Object.keys(panels).forEach(function (key) {
+                    var el = panels[key];
+                    if (el) {
+                        var show = key === method;
+                        el.classList.toggle('active', show);
+                        el.hidden = !show;
+                    }
+                });
+            }
+
+            pmButtons.forEach(function (btn) {
+                btn.addEventListener('click', function () { setPaymentMethod(btn); });
+            });
+            setPaymentMethod(document.getElementById('pm-card'));
+        })();
+
+        (function () {
+            var SUPABASE_URL = 'https://hqjbfcujajaoiwcmwkcn.supabase.co';
+            var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxamJmY3VqYWphb2l3Y213a2NuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1MjA4MzMsImV4cCI6MjA3NjA5NjgzM30.4JcFCqk8cHMS9rZPH87oCNJ0wlXVBQ7fyoupmPnpOI4';
+
+            var FEES_TABLE = {};
+            var feeSelect = document.getElementById('fee-select');
+
+            function getSupabase() {
+                if (typeof window.supabase === 'undefined') throw new Error('Connection loading. Please try again.');
+                return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            }
+
+            function formatCurrency(n) {
+                return '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+
+            function updateFeeSummary() {
+                var baseLabelEl = document.getElementById('fee-base-label');
+                var baseAmountEl = document.getElementById('fee-base-amount');
+                var processingEl = document.getElementById('fee-processing');
+                var totalEl = document.getElementById('fee-total');
+                var installmentTextEl = document.getElementById('fee-installment-text');
+                var installmentWrap = document.getElementById('fee-installment-wrap');
+                var payBtnLabel = document.getElementById('pay-btn-label');
+
+                var key = feeSelect && feeSelect.value ? feeSelect.value : (Object.keys(FEES_TABLE)[0] || '');
+                var fee = FEES_TABLE[key];
+                if (!fee) return;
+
+                var base = Number(fee.baseAmount) || 0;
+                var processing = Number(fee.processingFee) || 0;
+                var total = base + processing;
+                var installmentCount = Math.max(0, parseInt(fee.installmentCount, 10) || 0);
+                var installmentAmount = installmentCount > 0 ? total / installmentCount : 0;
+
+                if (baseLabelEl) baseLabelEl.textContent = fee.baseLabel;
+                if (baseAmountEl) baseAmountEl.textContent = formatCurrency(base);
+                if (processingEl) processingEl.textContent = formatCurrency(processing);
+                if (totalEl) totalEl.textContent = formatCurrency(total);
+                if (payBtnLabel) payBtnLabel.textContent = 'Pay Total Amount (' + formatCurrency(total) + ')';
+
+                if (installmentWrap) {
+                    if (installmentCount > 0 && installmentAmount > 0) {
+                        installmentWrap.style.display = '';
+                        if (installmentTextEl) installmentTextEl.textContent = installmentCount + ' monthly payment' + (installmentCount > 1 ? 's' : '') + ' of ' + formatCurrency(installmentAmount);
+                    } else {
+                        installmentWrap.style.display = 'none';
+                    }
+                }
+            }
+
+            function applyFees(rows) {
+                FEES_TABLE = {};
+                if (!feeSelect) return;
+                feeSelect.innerHTML = '';
+                if (!rows || rows.length === 0) {
+                    feeSelect.innerHTML = '<option value="">No fees available</option>';
+                    return;
+                }
+                rows.sort(function (a, b) { return (a.sort_order || 0) - (b.sort_order || 0); });
+                rows.forEach(function (r) {
+                    var key = r.key || 'fee-' + r.id;
+                    FEES_TABLE[key] = {
+                        baseLabel: r.base_label || 'Base amount',
+                        baseAmount: r.base_amount,
+                        processingFee: r.processing_fee,
+                        installmentCount: r.installment_count
+                    };
+                    var opt = document.createElement('option');
+                    opt.value = key;
+                    opt.textContent = r.label || key;
+                    feeSelect.appendChild(opt);
+                });
+                var firstKey = rows[0] && (rows[0].key || 'fee-' + rows[0].id);
+                feeSelect.value = firstKey || '';
+                updateFeeSummary();
+            }
+
+            function fallbackFees() {
+                applyFees([
+                    { key: 'tuition', label: 'Tuition Fees (Fall 2024)', base_label: 'Base Tuition', base_amount: 4200, processing_fee: 25.50, installment_count: 3, sort_order: 10 },
+                    { key: 'tech', label: 'Technology & Resource Fee', base_label: 'Technology & Resource Fee', base_amount: 150, processing_fee: 2.50, installment_count: 0, sort_order: 20 },
+                    { key: 'application', label: 'Application Fee', base_label: 'Application Fee', base_amount: 75, processing_fee: 2.50, installment_count: 0, sort_order: 30 },
+                    { key: 'library', label: 'Library Fines / Misc', base_label: 'Library / Misc', base_amount: 0, processing_fee: 0, installment_count: 0, sort_order: 40 }
+                ]);
+            }
+
+            if (feeSelect) {
+                feeSelect.addEventListener('change', updateFeeSummary);
+                if (typeof window.supabase !== 'undefined') {
+                    getSupabase().from('fees').select('id, key, label, base_label, base_amount, processing_fee, installment_count, sort_order').order('sort_order').then(function (result) {
+                        if (result.error || !result.data || result.data.length === 0) fallbackFees();
+                        else applyFees(result.data);
+                    }).catch(function () { fallbackFees(); });
+                } else {
+                    setTimeout(function () {
+                        if (Object.keys(FEES_TABLE).length === 0) fallbackFees();
+                    }, 500);
+                }
+            }
         })();
 
         document.getElementById('pay-btn').addEventListener('click', function () {
