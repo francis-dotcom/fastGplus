@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1772057091" />
+    <link rel="stylesheet" href="styles.css?v=1772057757" />
     <link rel="icon" href="images/logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
@@ -34,8 +34,9 @@
         <div class="container hero-container">
           <div class="hero-image-wrap">
             <img
+              id="hero-slider-img"
               src="images/02.jpg"
-              alt="Students at Grand Plus College"
+              alt="Grand Plus College campus and students"
               class="hero-img"
             />
           </div>
@@ -361,9 +362,20 @@
 
     </main>
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772057091"></script>
+    <script src="menu.js?v=1772057757"></script>
     <script>
       lucide.createIcons();
+
+      (function() {
+        var heroImgs = ['images/02.jpg', 'images/graduation.jpg', 'images/horseriders.jpg', 'images/workshop.jpg'];
+        var heroEl = document.getElementById('hero-slider-img');
+        if (!heroEl) return;
+        var idx = 0;
+        setInterval(function() {
+          idx = (idx + 1) % heroImgs.length;
+          heroEl.src = heroImgs[idx];
+        }, 4000);
+      })();
     </script>
   </body>
 </html>
