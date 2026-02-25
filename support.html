@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1772059429">
+    <link rel="stylesheet" href="styles.css?v=1772062515">
     <link rel="icon" href="images/logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -93,10 +93,62 @@
       </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772059429"></script>
+    <script src="menu.js?v=1772062515"></script>
     <script>
         lucide.createIcons();
+
+        (function() {
+            var SUPABASE_URL = 'https://hqjbfcujajaoiwcmwkcn.supabase.co';
+            var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxamJmY3VqYWphb2l3Y213a2NuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1MjA4MzMsImV4cCI6MjA3NjA5NjgzM30.4JcFCqk8cHMS9rZPH87oCNJ0wlXVBQ7fyoupmPnpOI4';
+
+            function getSupabase() {
+                if (typeof window.supabase === 'undefined') throw new Error('Connection loading. Please try again.');
+                return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            }
+
+            var form = document.getElementById('support-contact-form');
+            if (!form) return;
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var nameEl = form.querySelector('[name="name"]');
+                var emailEl = form.querySelector('[name="email"]');
+                var categoryEl = form.querySelector('[name="category"]');
+                var messageEl = form.querySelector('[name="message"]');
+                var btn = form.querySelector('button[type="submit"]');
+
+                var name = nameEl && nameEl.value ? nameEl.value.trim() : '';
+                var email = emailEl && emailEl.value ? emailEl.value.trim() : '';
+                var category = categoryEl && categoryEl.value ? categoryEl.value.trim() : '';
+                var message = messageEl && messageEl.value ? messageEl.value.trim() : '';
+
+                if (!name || !email || !message) {
+                    alert('Please fill in Name, Email, and Message.');
+                    return;
+                }
+
+                var originalText = btn ? btn.textContent : 'Submit';
+                if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+                getSupabase()
+                    .from('contact_submissions')
+                    .insert({ name: name, email: email, category: category || null, message: message })
+                    .then(function(result) {
+                        if (result.error) throw result.error;
+                        alert('Thank you. Your message has been sent. We\'ll get back to you soon.');
+                        form.reset();
+                    })
+                    .catch(function(err) {
+                        alert('Could not send message. Please try again or email us directly.');
+                        console.error(err);
+                    })
+                    .finally(function() {
+                        if (btn) { btn.disabled = false; btn.textContent = originalText; }
+                    });
+            });
+        })();
     </script>
 </body>
 </html>
