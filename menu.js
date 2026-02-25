@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+const initMenu = () => {
   const hamburgerBtn = document.getElementById("hamburger-btn");
   const headerEl = document.querySelector("header");
 
@@ -72,4 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.lucide && typeof window.lucide.createIcons === "function") {
     window.lucide.createIcons();
   }
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initMenu);
+} else {
+  initMenu();
+}
