@@ -986,6 +986,21 @@ ol {
   padding: 14px;
 }
 
+.support-hero-image {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+.support-hero-img {
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
 .support-list {
   display: flex;
   flex-direction: column;
