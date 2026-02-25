@@ -973,20 +973,15 @@ ol {
 }
 
 .pg-chips-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    overflow: visible;
 }
 
-.pg-chips-scroll::-webkit-scrollbar {
-    display: none;
-}
+/* Horizontal scrollbar disabled to allow wrapping */
 
 .pg-chips {
     display: flex;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 8px;
     padding: 4px 0 8px;
 }
