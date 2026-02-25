@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772026830" />
+    <link rel="stylesheet" href="styles.css?v=1772027072" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
@@ -70,11 +70,11 @@
                 <div class="space-y-4">
                     <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
                         <span class="text-slate-500 dark:text-slate-400 text-sm">Reference ID</span>
-                        <span class="text-slate-900 dark:text-slate-100 font-semibold text-sm">#GPC-2026-8829</span>
+                        <span id="ref-id" class="text-slate-900 dark:text-slate-100 font-semibold text-sm font-mono">—</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-slate-500 dark:text-slate-400 text-sm">Date Submitted</span>
-                        <span class="text-slate-900 dark:text-slate-100 font-semibold text-sm">October 24, 2026</span>
+                        <span id="date-submitted" class="text-slate-900 dark:text-slate-100 font-semibold text-sm">—</span>
                     </div>
                 </div>
             </div>
@@ -114,9 +114,36 @@
 
     <footer class="h-2 bg-primary/5"></footer>
 
-    <script src="menu.js?v=1772026830"></script>
+    <script src="menu.js?v=1772027072"></script>
     <script>
         lucide.createIcons();
+
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var applicationId = params.get('application_id');
+            var submittedAt = params.get('submitted_at');
+
+            var refEl = document.getElementById('ref-id');
+            var dateEl = document.getElementById('date-submitted');
+
+            if (applicationId) {
+                var short = applicationId.replace(/-/g, '').slice(-8).toUpperCase();
+                var year = new Date().getFullYear();
+                refEl.textContent = '#GPC-' + year + '-' + short;
+            }
+
+            if (submittedAt) {
+                try {
+                    var d = new Date(submittedAt);
+                    if (!isNaN(d.getTime())) {
+                        dateEl.textContent = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+                    }
+                } catch (e) {}
+            }
+            if (dateEl.textContent === '—' && applicationId) {
+                dateEl.textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+            }
+        })();
     </script>
 </body>
 </html>

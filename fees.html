@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772026830" />
+    <link rel="stylesheet" href="styles.css?v=1772027072" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
@@ -29,8 +29,12 @@
         }
     </script>
     <style>
-        body {
+        body, main, .header,
+        input, select, button, label, option,
+        h1, h2, h3, p, span {
             font-family: 'Poppins', sans-serif;
+        }
+        body {
             min-height: 100dvh;
         }
         .custom-select {
@@ -90,7 +94,7 @@
         <section class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-2xl p-5 space-y-4">
             <div class="flex justify-between items-center">
                 <h3 class="font-bold text-lg">Fee Summary</h3>
-                <span class="bg-primary/20 text-primary text-[10px] uppercase font-bold px-2 py-1 rounded">Pending</span>
+                <span class="bg-primary/20 text-primary text-xs uppercase font-bold px-2 py-1 rounded">Pending</span>
             </div>
             <div class="space-y-2 border-b border-slate-200 dark:border-slate-700 pb-4">
                 <div class="flex justify-between text-sm">
@@ -111,7 +115,7 @@
                     <span class="material-symbols-outlined text-primary">calendar_month</span>
                     <div>
                         <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Pay in Installments</p>
-                        <p class="text-[10px] text-slate-500">3 monthly payments of $1,408.50</p>
+                        <p class="text-xs text-slate-500">3 monthly payments of $1,408.50</p>
                     </div>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
@@ -127,15 +131,15 @@
             <div class="grid grid-cols-3 gap-3">
                 <button class="flex flex-col items-center justify-center p-4 rounded-xl border-2 border-primary bg-primary/5 text-primary">
                     <span class="material-symbols-outlined text-3xl mb-1">credit_card</span>
-                    <span class="text-[10px] font-bold">Card</span>
+                    <span class="text-xs font-bold">Card</span>
                 </button>
                 <button class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
                     <span class="material-symbols-outlined text-3xl mb-1 text-slate-400">account_balance</span>
-                    <span class="text-[10px] font-bold text-slate-500">Bank</span>
+                    <span class="text-xs font-bold text-slate-500">Bank</span>
                 </button>
                 <button class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
                     <span class="material-symbols-outlined text-3xl mb-1 text-slate-400">payments</span>
-                    <span class="text-[10px] font-bold text-slate-500">ACH</span>
+                    <span class="text-xs font-bold text-slate-500">ACH</span>
                 </button>
             </div>
         </section>
@@ -179,14 +183,14 @@
                 <span>Pay Total Amount ($4,225.50)</span>
                 <span class="material-symbols-outlined">lock</span>
             </button>
-            <p class="text-center text-[10px] text-slate-400 mt-2 flex items-center justify-center gap-1">
-                <span class="material-symbols-outlined text-[12px]">verified_user</span>
+            <p class="text-center text-xs text-slate-400 mt-2 flex items-center justify-center gap-1">
+                <span class="material-symbols-outlined text-sm">verified_user</span>
                 Encrypted and Secure PCI-DSS Compliant Payment
             </p>
         </div>
     </footer>
 
-    <script src="menu.js?v=1772026830"></script>
+    <script src="menu.js?v=1772027072"></script>
     <script>
         lucide.createIcons();
         
