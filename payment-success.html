@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772042542" />
+    <link rel="stylesheet" href="styles.css?v=1772043663" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
@@ -40,12 +40,8 @@
         <div class="container header-content">
             <h1 class="brand">
                 <a href="/" class="brand-link flex items-center gap-2">
-                    <img src="logo.png" alt="Grand-Plus College of Education" class="logo-img h-6 w-auto">
-                    <span class="school-name">
-                        <span class="school-name__line1">Grand-PlusCollege</span>
-                        <span class="school-name__line2">of</span>
-                        <span class="school-name__line3">Education</span>
-                    </span>
+                    <img src="logo.png" alt="" class="logo-img h-6 w-auto">
+                    <span data-school-brand class="school-name"></span>
                 </a>
             </h1>
             <button id="hamburger-btn" class="hamburger-btn" aria-label="Open menu">
@@ -161,7 +157,8 @@
         <div class="h-4 bg-background-light dark:bg-background-dark"></div>
     </div>
 
-    <script src="menu.js?v=1772042542"></script>
+    <script src="school-brand.js"></script>
+    <script src="menu.js?v=1772043663"></script>
     <script>
         lucide.createIcons();
     </script>

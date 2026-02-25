@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 :root {
   /* Colors */
   /* Colors from gpc.pen */
@@ -138,62 +140,62 @@ p {
   display: block;
 }
 
-/* School name: Grand-PlusCollege / of / Education (stacked, display style) */
+/* School name: GRAND-PLUS COLLEGE / OF / EDUCATION (Permanent Marker, three-line, centered) */
 .school-name {
   display: inline-block;
-  text-align: left;
-  font-weight: 700;
-  color: var(--dark-blue);
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  color: #1a1a1a;
   line-height: 1.2;
-  font-family: var(--font-main);
+  letter-spacing: 0.01em;
 }
 .school-name__line1 {
   display: block;
   font-size: 1em;
-  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 .school-name__line2 {
   display: block;
-  font-size: 0.55em;
-  text-transform: lowercase;
-  font-weight: 600;
-  opacity: 0.9;
+  font-size: 0.48em;
+  text-transform: uppercase;
+  margin-top: 0.15em;
 }
 .school-name__line3 {
   display: block;
-  font-size: 0.95em;
+  font-size: 0.98em;
+  text-transform: uppercase;
+  margin-top: 0.12em;
 }
 .brand .school-name {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .school-name-inline {
   display: inline-block;
-  text-align: left;
-  font-weight: 700;
-  color: var(--dark-blue);
+  text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  color: #1a1a1a;
   line-height: 1.2;
-  font-family: var(--font-main);
-  font-size: 15px;
+  font-size: 14px;
 }
 .school-name-inline .school-name__line1,
 .school-name-inline .school-name__line2,
 .school-name-inline .school-name__line3 {
   display: block;
+  text-transform: uppercase;
 }
 .school-name-inline .school-name__line2 {
-  font-size: 0.55em;
-  text-transform: lowercase;
-  font-weight: 600;
-  opacity: 0.9;
+  font-size: 0.48em;
+  margin-top: 0.15em;
 }
 .school-name--hero {
   font-size: 22px;
   text-align: center;
-  color: var(--dark-blue);
+  color: #1a1a1a;
+  font-family: 'Permanent Marker', cursive;
 }
 .school-name--hero .school-name__line2 {
-  font-size: 0.5em;
+  font-size: 0.48em;
 }
 
 /* Hamburger Menu Button */
