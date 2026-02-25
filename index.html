@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1771978570" />
+    <link rel="stylesheet" href="styles.css?v=1771978783" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
@@ -227,6 +227,8 @@
         document.addEventListener('DOMContentLoaded', async () => {
           const quoteEl = document.getElementById('testimonial-quote');
           const authorEl = document.getElementById('testimonial-author');
+          const testimonialSection = document.querySelector('.testimonials');
+          let started = false;
           
           async function fetchTestimonials() {
             try {
@@ -248,7 +250,7 @@
             const words = text.split(' ');
             if (i < words.length) {
               quoteEl.innerHTML = words.slice(0, i + 1).join(' ') + ' <span class="cursor">|</span>';
-              setTimeout(() => typeWriterWords(text, i + 1, cb), 120);
+              setTimeout(() => typeWriterWords(text, i + 1, cb), 200);
             } else {
               quoteEl.innerHTML = text + ' <span class="cursor">|</span>';
               if (cb) setTimeout(cb, 5000); // Wait before next one
@@ -256,6 +258,8 @@
           }
 
           async function startTestimonialCycle() {
+            if (started) return;
+            started = true;
             const testimonials = await fetchTestimonials();
             if (testimonials.length === 0) {
               typeWriterWords("“Grand Plus gave me the confidence I needed to succeed.”", 0);
@@ -280,7 +284,19 @@
             showNext();
           }
 
-          startTestimonialCycle();
+          if (testimonialSection && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries, obs) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  startTestimonialCycle();
+                  obs.disconnect();
+                }
+              });
+            }, { threshold: 0.3 });
+            observer.observe(testimonialSection);
+          } else {
+            startTestimonialCycle();
+          }
         });
       </script>
 
