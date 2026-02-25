@@ -56,6 +56,10 @@
             <div class="container">
                 <h2 class="pg-hero-title">Programs</h2>
                 <p class="pg-hero-sub">Explore industry-aligned degree & certificate programs designed to launch your career.</p>
+                <div class="pg-summary">
+                    <span class="pg-summary-pill" id="pg-count-pill">0 Programs</span>
+                    <span class="pg-summary-pill" id="pg-filter-pill">All Departments</span>
+                </div>
             </div>
         </section>
 
@@ -214,6 +218,19 @@
             });
         });
         document.getElementById('program-grid').innerHTML = html || '<p class="text-muted">No programs match this filter.</p>';
+        var countPill = document.getElementById('pg-count-pill');
+        var filterPill = document.getElementById('pg-filter-pill');
+        if (countPill) {
+            countPill.textContent = list.length + ' Programs';
+        }
+        if (filterPill) {
+            if (filter === 'all') filterPill.textContent = 'All Departments';
+            else if (filter === 'segment:undergraduate') filterPill.textContent = 'NCE Programs';
+            else if (filter.indexOf('dept:') === 0) {
+                var deptKey = filter.slice(5);
+                filterPill.textContent = DEPT_LABELS[deptKey] || 'Selected Department';
+            }
+        }
         renderPagination(list.length);
     }
 

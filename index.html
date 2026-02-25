@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1771978917" />
+    <link rel="stylesheet" href="styles.css?v=1771979253" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
@@ -217,7 +217,11 @@
               <blockquote class="quote" id="testimonial-quote">
                 Loading testimonials...
               </blockquote>
-              <cite class="citation" id="testimonial-author"></cite>
+              <cite class="citation" id="testimonial-author">
+                <span class="testimonial-author" id="testimonial-author-name"></span>
+                <span class="testimonial-sep">, </span>
+                <span class="testimonial-dept" id="testimonial-author-dept"></span>
+              </cite>
             </div>
           </div>
         </div>
@@ -227,6 +231,8 @@
         document.addEventListener('DOMContentLoaded', async () => {
           const quoteEl = document.getElementById('testimonial-quote');
           const authorEl = document.getElementById('testimonial-author');
+          const authorNameEl = document.getElementById('testimonial-author-name');
+          const authorDeptEl = document.getElementById('testimonial-author-dept');
           const testimonialSection = document.querySelector('.testimonials');
           let started = false;
           
@@ -246,12 +252,18 @@
             }
           }
 
+          function clearCursors() {
+            document.querySelectorAll('.cursor').forEach((c) => c.remove());
+          }
+
           function typeWriterWords(text, i, cb) {
             const words = text.split(' ');
             if (i < words.length) {
+              clearCursors();
               quoteEl.innerHTML = words.slice(0, i + 1).join(' ') + ' <span class="cursor">|</span>';
-              setTimeout(() => typeWriterWords(text, i + 1, cb), 400);
+              setTimeout(() => typeWriterWords(text, i + 1, cb), 600);
             } else {
+              clearCursors();
               quoteEl.innerHTML = text + ' <span class="cursor">|</span>';
               if (cb) setTimeout(cb, 5000); // Wait before next one
             }
@@ -260,9 +272,11 @@
           function typeWriterWordsTarget(el, text, i, cb) {
             const words = text.split(' ');
             if (i < words.length) {
+              clearCursors();
               el.innerHTML = words.slice(0, i + 1).join(' ') + ' <span class="cursor">|</span>';
-              setTimeout(() => typeWriterWordsTarget(el, text, i + 1, cb), 400);
+              setTimeout(() => typeWriterWordsTarget(el, text, i + 1, cb), 600);
             } else {
+              clearCursors();
               el.innerHTML = text + ' <span class="cursor">|</span>';
               if (cb) setTimeout(cb, 5000);
             }
@@ -274,7 +288,11 @@
             const testimonials = await fetchTestimonials();
             if (testimonials.length === 0) {
               typeWriterWords("“Grand Plus gave me the confidence I needed to succeed.”", 0);
-              typeWriterWordsTarget(authorEl, "Amina Yusuf, IT Graduate", 0);
+              if (authorNameEl) authorNameEl.textContent = "";
+              if (authorDeptEl) authorDeptEl.textContent = "";
+              typeWriterWordsTarget(authorNameEl, "Amina Yusuf", 0, () => {
+                typeWriterWordsTarget(authorDeptEl, "IT Graduate", 0);
+              });
               return;
             }
 
@@ -285,9 +303,13 @@
               const item = testimonialList[Math.floor(Math.random() * testimonialList.length)];
               
               authorEl.style.opacity = 1;
+              if (authorNameEl) authorNameEl.textContent = "";
+              if (authorDeptEl) authorDeptEl.textContent = "";
               typeWriterWords(`“${item.quote}”`, 0, () => {
-                typeWriterWordsTarget(authorEl, `${item.student_name}, ${item.program_graduated}`, 0, () => {
-                  setTimeout(showNext, 5000);
+                typeWriterWordsTarget(authorNameEl, `${item.student_name}`, 0, () => {
+                  typeWriterWordsTarget(authorDeptEl, `${item.program_graduated}`, 0, () => {
+                    setTimeout(showNext, 5000);
+                  });
                 });
               });
             }
@@ -326,6 +348,9 @@
         }
         #testimonial-author {
           color: #1f8b4c;
+        }
+        .testimonial-sep {
+          opacity: 0.7;
         }
         @keyframes blink {
           0% { opacity: 1; }
