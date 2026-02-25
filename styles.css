@@ -973,7 +973,8 @@ ol {
 }
 
 .pg-chips-scroll {
-    overflow: visible;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* Horizontal scrollbar disabled to allow wrapping */
@@ -984,6 +985,7 @@ ol {
     flex-wrap: wrap;
     gap: 8px;
     padding: 4px 0 8px;
+    width: 100%;
 }
 
 .pg-chip {
@@ -999,7 +1001,7 @@ ol {
     color: var(--text-muted);
     cursor: pointer;
     font-family: var(--font-main);
-    white-space: nowrap;
+    white-space: normal;
     transition: background 0.15s, border-color 0.15s, color 0.15s;
     -webkit-tap-highlight-color: transparent;
 }
