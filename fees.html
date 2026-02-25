@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772044894" />
+    <link rel="stylesheet" href="styles.css?v=1772045040" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -38,9 +38,12 @@
         h1, h2, h3, p, span {
             font-family: var(--font-main, 'Poppins'), sans-serif;
         }
-        /* Modularized school name: keep Permanent Marker (from styles.css) */
+        /* Modularized school name: Permanent Marker (inner spans need it so global span rule doesn’t override) */
         .school-name,
-        .brand .school-name {
+        .brand .school-name,
+        .school-name__line1,
+        .school-name__line2,
+        .school-name__line3 {
             font-family: 'Permanent Marker', cursive !important;
         }
         .fees-page { font-size: var(--fs-base, 14px); }
@@ -272,7 +275,7 @@
     </footer>
 
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772044894"></script>
+    <script src="menu.js?v=1772045040"></script>
     <script>
         lucide.createIcons();
 
