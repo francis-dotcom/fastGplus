@@ -7,8 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1772062515">
+    <link rel="stylesheet" href="styles.css?v=1772063014">
     <link rel="icon" href="images/logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
@@ -94,8 +95,9 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772062515"></script>
+    <script src="menu.js?v=1772063014"></script>
     <script>
         lucide.createIcons();
 
@@ -125,7 +127,9 @@
                 var message = messageEl && messageEl.value ? messageEl.value.trim() : '';
 
                 if (!name || !email || !message) {
-                    alert('Please fill in Name, Email, and Message.');
+                    if (window.Toastify) {
+                        Toastify({ text: 'Please fill in Name, Email, and Message.', duration: 3500, gravity: 'bottom', position: 'center', style: { background: '#334e68' } }).showToast();
+                    } else { alert('Please fill in Name, Email, and Message.'); }
                     return;
                 }
 
@@ -137,11 +141,15 @@
                     .insert({ name: name, email: email, category: category || null, message: message })
                     .then(function(result) {
                         if (result.error) throw result.error;
-                        alert('Thank you. Your message has been sent. We\'ll get back to you soon.');
+                        if (window.Toastify) {
+                            Toastify({ text: "Thank you. Your message has been sent. We'll get back to you soon.", duration: 4000, gravity: 'bottom', position: 'center', style: { background: '#0b4f9c' } }).showToast();
+                        } else { alert("Thank you. Your message has been sent."); }
                         form.reset();
                     })
                     .catch(function(err) {
-                        alert('Could not send message. Please try again or email us directly.');
+                        if (window.Toastify) {
+                            Toastify({ text: 'Could not send message. Please try again or email us directly.', duration: 4000, gravity: 'bottom', position: 'center', style: { background: '#b91c1c' } }).showToast();
+                        } else { alert('Could not send message. Please try again.'); }
                         console.error(err);
                     })
                     .finally(function() {

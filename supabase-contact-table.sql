@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS public.contact_submissions (
 -- Allow anonymous inserts from the website (support form).
 ALTER TABLE public.contact_submissions ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Allow anonymous insert" ON public.contact_submissions;
 CREATE POLICY "Allow anonymous insert"
     ON public.contact_submissions
     FOR INSERT
