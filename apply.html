@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1771991950" />
+    <link rel="stylesheet" href="styles.css?v=1772026830" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -289,10 +289,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-    // Supabase config (anon key is safe for browser; use RLS in Supabase to protect data)
+    // Supabase config – client created only on submit so form steps work even if CDN is slow
     const SUPABASE_URL = 'https://hqjbfcujajaoiwcmwkcn.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxamJmY3VqYWphb2l3Y213a2NuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1MjA4MzMsImV4cCI6MjA3NjA5NjgzM30.4JcFCqk8cHMS9rZPH87oCNJ0wlXVBQ7fyoupmPnpOI4';
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    function getSupabase() {
+        if (typeof window.supabase === 'undefined') throw new Error('Connection loading. Please try again in a moment.');
+        return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
 
     // Dynamic Program Filtering
         const programsData = {
@@ -496,6 +499,7 @@
             nextBtn.disabled = true;
             nextBtn.innerHTML = 'Submitting... <span class="material-symbols-outlined">hourglass_top</span>';
 
+            const supabase = getSupabase();
             const { data, error } = await supabase
                 .from('applications')
                 .insert(payload)
@@ -536,6 +540,6 @@
         }
     });
 </script>
-<script src="menu.js?v=1771991950"></script>
+<script src="menu.js?v=1772026830"></script>
 </body>
 </html>
