@@ -773,17 +773,17 @@ ol {
 }
 
 .about-hero {
-  padding: 40px 0;
+  padding: 28px 0;
 }
 
 .about-hero .text-display {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.2;
 }
 
 .about-hero .text-lg {
   font-size: 12px;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 /* Cards & Components */
