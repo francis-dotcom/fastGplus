@@ -26,7 +26,11 @@ const initMenu = () => {
     <div id="mobile-menu-overlay" class="mobile-menu-overlay">
       <div class="mobile-menu-drawer">
         <div class="mobile-menu-header">
-          <div class="brand">Grand Plus College</div>
+          <div class="brand school-name-inline">
+            <span class="school-name__line1">Grand-PlusCollege</span>
+            <span class="school-name__line2">of</span>
+            <span class="school-name__line3">Education</span>
+          </div>
           <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
             <i data-lucide="x"></i>
           </button>

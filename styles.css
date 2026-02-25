@@ -138,6 +138,64 @@ p {
   display: block;
 }
 
+/* School name: Grand-PlusCollege / of / Education (stacked, display style) */
+.school-name {
+  display: inline-block;
+  text-align: left;
+  font-weight: 700;
+  color: var(--dark-blue);
+  line-height: 1.2;
+  font-family: var(--font-main);
+}
+.school-name__line1 {
+  display: block;
+  font-size: 1em;
+  letter-spacing: -0.02em;
+}
+.school-name__line2 {
+  display: block;
+  font-size: 0.55em;
+  text-transform: lowercase;
+  font-weight: 600;
+  opacity: 0.9;
+}
+.school-name__line3 {
+  display: block;
+  font-size: 0.95em;
+}
+.brand .school-name {
+  font-size: 14px;
+}
+
+.school-name-inline {
+  display: inline-block;
+  text-align: left;
+  font-weight: 700;
+  color: var(--dark-blue);
+  line-height: 1.2;
+  font-family: var(--font-main);
+  font-size: 15px;
+}
+.school-name-inline .school-name__line1,
+.school-name-inline .school-name__line2,
+.school-name-inline .school-name__line3 {
+  display: block;
+}
+.school-name-inline .school-name__line2 {
+  font-size: 0.55em;
+  text-transform: lowercase;
+  font-weight: 600;
+  opacity: 0.9;
+}
+.school-name--hero {
+  font-size: 22px;
+  text-align: center;
+  color: var(--dark-blue);
+}
+.school-name--hero .school-name__line2 {
+  font-size: 0.5em;
+}
+
 /* Hamburger Menu Button */
 .hamburger-btn {
   background: none;
