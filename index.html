@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1772041455" />
+    <link rel="stylesheet" href="styles.css?v=1772042152" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
@@ -226,33 +226,41 @@
             }
           }
 
+          const WORD_DELAY_MS = 380;
+          const PAUSE_AFTER_QUOTE_MS = 2500;
+          const PAUSE_BEFORE_NEXT_MS = 6000;
+
           function clearCursors() {
             document.querySelectorAll('.cursor').forEach((c) => c.remove());
           }
 
           function typeWriterWords(text, i, cb) {
-            const words = text.split(' ');
+            const words = text.split(/\s+/).filter(Boolean);
             if (i < words.length) {
               clearCursors();
               quoteEl.innerHTML = words.slice(0, i + 1).join(' ') + ' <span class="cursor">|</span>';
-              setTimeout(() => typeWriterWords(text, i + 1, cb), 600);
+              const word = words[i];
+              const isPunctuationEnd = /[.!?,;:]$/.test(word);
+              const delay = isPunctuationEnd ? WORD_DELAY_MS + 200 : WORD_DELAY_MS;
+              setTimeout(() => typeWriterWords(text, i + 1, cb), delay);
             } else {
               clearCursors();
               quoteEl.innerHTML = text + ' <span class="cursor">|</span>';
-              if (cb) setTimeout(cb, 5000); // Wait before next one
+              if (cb) setTimeout(cb, PAUSE_AFTER_QUOTE_MS);
             }
           }
 
           function typeWriterWordsTarget(el, text, i, cb) {
-            const words = text.split(' ');
+            if (!el) { if (cb) cb(); return; }
+            const words = (text || '').toString().split(/\s+/).filter(Boolean);
             if (i < words.length) {
               clearCursors();
               el.innerHTML = words.slice(0, i + 1).join(' ') + ' <span class="cursor">|</span>';
-              setTimeout(() => typeWriterWordsTarget(el, text, i + 1, cb), 600);
+              setTimeout(() => typeWriterWordsTarget(el, text, i + 1, cb), WORD_DELAY_MS);
             } else {
               clearCursors();
-              el.innerHTML = text + ' <span class="cursor">|</span>';
-              if (cb) setTimeout(cb, 5000);
+              el.textContent = text || '';
+              if (cb) setTimeout(cb, WORD_DELAY_MS * 2);
             }
           }
 
@@ -261,12 +269,18 @@
             started = true;
             const testimonials = await fetchTestimonials();
             if (testimonials.length === 0) {
-              typeWriterWords("“Grand Plus gave me the confidence I needed to succeed.”", 0);
-              if (authorNameEl) authorNameEl.textContent = "";
-              if (authorDeptEl) authorDeptEl.textContent = "";
-              typeWriterWordsTarget(authorNameEl, "Amina Yusuf", 0, () => {
-                typeWriterWordsTarget(authorDeptEl, "IT Graduate", 0);
-              });
+              function showFallback() {
+                if (authorNameEl) authorNameEl.textContent = "";
+                if (authorDeptEl) authorDeptEl.textContent = "";
+                typeWriterWords('"Grand Plus gave me the confidence I needed to succeed."', 0, () => {
+                  typeWriterWordsTarget(authorNameEl, "Amina Yusuf", 0, () => {
+                    typeWriterWordsTarget(authorDeptEl, "IT Graduate", 0, () => {
+                      setTimeout(showFallback, PAUSE_BEFORE_NEXT_MS);
+                    });
+                  });
+                });
+              }
+              showFallback();
               return;
             }
 
@@ -281,8 +295,8 @@
               if (authorDeptEl) authorDeptEl.textContent = "";
               typeWriterWords(`“${item.quote}”`, 0, () => {
                 typeWriterWordsTarget(authorNameEl, `${item.student_name}`, 0, () => {
-                  typeWriterWordsTarget(authorDeptEl, `${item.program_graduated}`, 0, () => {
-                    setTimeout(showNext, 5000);
+                  typeWriterWordsTarget(authorDeptEl, `${item.program_graduated || ''}`, 0, () => {
+                    setTimeout(showNext, PAUSE_BEFORE_NEXT_MS);
                   });
                 });
               });
@@ -346,7 +360,7 @@
       </section>
 
     </main>
-    <script src="menu.js?v=1772041455"></script>
+    <script src="menu.js?v=1772042152"></script>
     <script>
       lucide.createIcons();
     </script>
