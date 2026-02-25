@@ -8,9 +8,9 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772044667" />
+    <link rel="stylesheet" href="styles.css?v=1772044894" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -37,6 +37,11 @@
         input, select, button, label, option,
         h1, h2, h3, p, span {
             font-family: var(--font-main, 'Poppins'), sans-serif;
+        }
+        /* Modularized school name: keep Permanent Marker (from styles.css) */
+        .school-name,
+        .brand .school-name {
+            font-family: 'Permanent Marker', cursive !important;
         }
         .fees-page { font-size: var(--fs-base, 14px); }
         body {
@@ -267,7 +272,7 @@
     </footer>
 
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772044667"></script>
+    <script src="menu.js?v=1772044894"></script>
     <script>
         lucide.createIcons();
 
