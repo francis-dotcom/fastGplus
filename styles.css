@@ -894,6 +894,43 @@ ol {
   font-weight: 500;
   color: rgba(255,255,255,0.9);
 }
+
+.support-intro-card {
+  padding: 14px;
+}
+
+.support-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.support-list-item {
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border: 1px solid #eef2f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dark-blue);
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  border: 1px solid #eef2f7;
+  background: #f8fafc;
+}
+
+.support-list-item span:last-child {
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.support-list-item:hover {
+  background: #f1f5f9;
+}
 .support-box {
   display: flex;
   flex-direction: column;
