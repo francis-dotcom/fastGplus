@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1771978783" />
+    <link rel="stylesheet" href="styles.css?v=1771978917" />
     <link rel="icon" href="logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
@@ -250,10 +250,21 @@
             const words = text.split(' ');
             if (i < words.length) {
               quoteEl.innerHTML = words.slice(0, i + 1).join(' ') + ' <span class="cursor">|</span>';
-              setTimeout(() => typeWriterWords(text, i + 1, cb), 200);
+              setTimeout(() => typeWriterWords(text, i + 1, cb), 400);
             } else {
               quoteEl.innerHTML = text + ' <span class="cursor">|</span>';
               if (cb) setTimeout(cb, 5000); // Wait before next one
+            }
+          }
+
+          function typeWriterWordsTarget(el, text, i, cb) {
+            const words = text.split(' ');
+            if (i < words.length) {
+              el.innerHTML = words.slice(0, i + 1).join(' ') + ' <span class="cursor">|</span>';
+              setTimeout(() => typeWriterWordsTarget(el, text, i + 1, cb), 400);
+            } else {
+              el.innerHTML = text + ' <span class="cursor">|</span>';
+              if (cb) setTimeout(cb, 5000);
             }
           }
 
@@ -263,7 +274,7 @@
             const testimonials = await fetchTestimonials();
             if (testimonials.length === 0) {
               typeWriterWords("“Grand Plus gave me the confidence I needed to succeed.”", 0);
-              authorEl.innerText = "Amina Yusuf, IT Graduate";
+              typeWriterWordsTarget(authorEl, "Amina Yusuf, IT Graduate", 0);
               return;
             }
 
@@ -273,11 +284,11 @@
               
               const item = testimonialList[Math.floor(Math.random() * testimonialList.length)];
               
-              authorEl.style.opacity = 0;
+              authorEl.style.opacity = 1;
               typeWriterWords(`“${item.quote}”`, 0, () => {
-                authorEl.innerText = `${item.student_name}, ${item.program_graduated}`;
-                authorEl.style.opacity = 1;
-                setTimeout(showNext, 5000);
+                typeWriterWordsTarget(authorEl, `${item.student_name}, ${item.program_graduated}`, 0, () => {
+                  setTimeout(showNext, 5000);
+                });
               });
             }
 
@@ -313,6 +324,9 @@
         #testimonial-quote {
           color: #1f8b4c;
         }
+        #testimonial-author {
+          color: #1f8b4c;
+        }
         @keyframes blink {
           0% { opacity: 1; }
           50% { opacity: 0; }
@@ -332,15 +346,6 @@
         </div>
       </section>
 
-      <!-- Marketing Claims Section -->
-      <section class="marketing-footer">
-        <div class="container">
-          <h3 class="marketing-title">Why We Stand Out</h3>
-          <p class="marketing-text">
-            Career-first curriculum. Industry mentors. Global-ready graduates.
-          </p>
-        </div>
-      </section>
     </main>
     <script src="menu.js"></script>
     <script>

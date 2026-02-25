@@ -764,8 +764,26 @@ ol {
   padding: 64px 0;
 }
 
+.section-padding-sm {
+  padding: 28px 0;
+}
+
 .section-light {
   background-color: #f8fafc;
+}
+
+.about-hero {
+  padding: 56px 0;
+}
+
+.about-hero .text-display {
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.about-hero .text-lg {
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 /* Cards & Components */
