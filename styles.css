@@ -773,16 +773,16 @@ ol {
 }
 
 .about-hero {
-  padding: 56px 0;
+  padding: 40px 0;
 }
 
 .about-hero .text-display {
-  font-size: 28px;
+  font-size: 22px;
   line-height: 1.2;
 }
 
 .about-hero .text-lg {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.6;
 }
 
@@ -790,21 +790,21 @@ ol {
 .card {
   background: var(--white);
   border-radius: 16px;
-  padding: 24px;
+  padding: 16px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .person-card {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: flex-start;
 }
 
 .person-media {
-  width: 72px;
-  height: 72px;
-  border-radius: 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
   overflow: hidden;
   border: 1px solid #eef2f7;
   flex-shrink: 0;
