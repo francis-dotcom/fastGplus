@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1772074018">
+    <link rel="stylesheet" href="styles.css?v=1772122651">
     <link rel="icon" href="images/logo.png" type="image/png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <style>
@@ -98,21 +98,15 @@
       </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772074018"></script>
+    <script src="menu.js?v=1772122651"></script>
     <script>
         lucide.createIcons();
 
         (function() {
-            var SUPABASE_URL = 'https://hqjbfcujajaoiwcmwkcn.supabase.co';
-            var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxamJmY3VqYWphb2l3Y213a2NuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1MjA4MzMsImV4cCI6MjA3NjA5NjgzM30.4JcFCqk8cHMS9rZPH87oCNJ0wlXVBQ7fyoupmPnpOI4';
-
-            function getSupabase() {
-                if (typeof window.supabase === 'undefined') throw new Error('Connection loading. Please try again.');
-                return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            }
+            var SELFDB_API_URL = 'SELFDB_API_URL_PLACEHOLDER';
+            var SELFDB_API_KEY = 'SELFDB_API_KEY_PLACEHOLDER';
 
             var form = document.getElementById('support-contact-form');
             if (!form) return;
@@ -140,11 +134,20 @@
                 var originalText = btn ? btn.textContent : 'Submit';
                 if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
 
-                getSupabase()
-                    .from('contact_submissions')
-                    .insert({ name: name, email: email, category: category || null, message: message })
-                    .then(function(result) {
-                        if (result.error) throw result.error;
+                var headers = { 'X-API-Key': SELFDB_API_KEY, 'Content-Type': 'application/json' };
+                fetch(SELFDB_API_URL.replace(/\/$/, '') + '/tables/?search=contact_submissions&limit=1', { headers: headers })
+                    .then(function(r) { if (!r.ok) throw new Error('API error'); return r.json(); })
+                    .then(function(tables) {
+                        var tableId = tables[0] && tables[0].id;
+                        if (!tableId) throw new Error('Table not found');
+                        return fetch(SELFDB_API_URL.replace(/\/$/, '') + '/tables/' + tableId + '/data', {
+                            method: 'POST',
+                            headers: headers,
+                            body: JSON.stringify({ name: name, email: email, category: category || null, message: message })
+                        });
+                    })
+                    .then(function(r) {
+                        if (!r.ok) throw new Error(r.statusText || 'Send failed');
                         if (window.Toastify) {
                             Toastify({ text: "Thank you. Your message has been sent. We'll get back to you soon.", duration: 4000, gravity: 'top', position: 'center', style: { background: '#0b4f9c' } }).showToast();
                         } else { alert("Thank you. Your message has been sent."); }

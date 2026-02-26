@@ -1,0 +1,3 @@
+# SelfDB source (for deploy / setup)
+# Use this folder when deploying the SelfDB stack to Hetzner (contact form + applications use SelfDB API).
+/Users/stfrancis/Desktop/SELFDB-V0.0.5.4

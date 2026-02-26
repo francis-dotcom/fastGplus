@@ -25,12 +25,13 @@ sed -i '' "s/styles\.css?v=[^\"' ]*/styles.css?v=${TIMESTAMP}/g" *.html
 sed -i '' "s/menu\.js\([?\"' ]\)/menu.js?v=${TIMESTAMP}\1/g" *.html
 sed -i '' "s/menu\.js?v=[^\"' ]*/menu.js?v=${TIMESTAMP}/g" *.html
 
-# Inject Supabase Credentials into apply.html
-if [ ! -z "$SUPABASE_URL" ] && [ ! -z "$SUPABASE_ANON_KEY" ]; then
-  sed -i '' "s|SUPABASE_URL_PLACEHOLDER|${SUPABASE_URL}|g" apply.html
-  sed -i '' "s|SUPABASE_KEY_PLACEHOLDER|${SUPABASE_ANON_KEY}|g" apply.html
-  sed -i '' "s|SUPABASE_TABLE_PLACEHOLDER|${SUPABASE_TABLE_NAME}|g" apply.html
-  echo "💉 Injected Supabase credentials into apply.html"
+# Inject SelfDB API URL and key into support.html and apply.html
+if [ ! -z "$SELFDB_API_URL" ] && [ ! -z "$SELFDB_API_KEY" ]; then
+  sed -i '' "s|SELFDB_API_URL_PLACEHOLDER|${SELFDB_API_URL}|g" support.html apply.html
+  sed -i '' "s|SELFDB_API_KEY_PLACEHOLDER|${SELFDB_API_KEY}|g" support.html apply.html
+  echo "💉 Injected SelfDB API credentials into support.html and apply.html"
+else
+  echo "⚠️  SELFDB_API_URL and SELFDB_API_KEY not set in .env – support/apply forms will not work until you deploy SelfDB and set these."
 fi
 
 echo "🔄 Deployment preparation complete (v=${TIMESTAMP})"
