@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772122651" />
+    <link rel="stylesheet" href="styles.css?v=1772137534" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -293,8 +293,8 @@
 
 <script>
     // SelfDB API – URL and key injected at deploy
-    const SELFDB_API_URL = 'SELFDB_API_URL_PLACEHOLDER';
-    const SELFDB_API_KEY = 'SELFDB_API_KEY_PLACEHOLDER';
+    const SELFDB_API_URL = 'https://grandpluscollege.com/api';
+    const SELFDB_API_KEY = 'selfdb-b652a1d0bf1c0a2f74bb6497412524c88679974f31f7443dc31ac282faa0e5b9';
 
     // Dynamic Program Filtering
         const programsData = {
@@ -472,8 +472,8 @@
     }
 
     function validateSubmission(payload) {
-        if (!payload.first_name || !payload.last_name || !payload.email || !payload.program_applied) {
-            alert('Please complete First Name, Last Name, Email Address, and Program before submitting.');
+        if (!payload.full_name || !payload.email || !payload.program_applied) {
+            alert('Please complete Name, Email Address, and Program before submitting.');
             return false;
         }
 
@@ -549,6 +549,6 @@
     });
 </script>
 <script src="school-brand.js"></script>
-<script src="menu.js?v=1772122651"></script>
+<script src="menu.js?v=1772137534"></script>
 </body>
 </html>
