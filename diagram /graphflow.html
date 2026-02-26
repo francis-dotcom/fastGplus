@@ -54,7 +54,7 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.1rem;
   animation: fadeIn 0.5s ease;
 }
 .subtitle {
@@ -63,7 +63,7 @@ h1 {
   color: var(--muted);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   animation: fadeIn 0.6s ease;
 }
 
@@ -82,7 +82,7 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  padding: 0.6rem 0;
+  padding: 0.3rem 0;
   position: relative;
   animation: slideUp 0.5s ease both;
 }
@@ -104,7 +104,7 @@ h1 {
   justify-content: center;
   align-items: flex-start;
   gap: 1.5rem;
-  min-height: 36px;
+  min-height: 24px;
   position: relative;
   animation: fadeIn 0.5s ease both;
 }
@@ -161,27 +161,44 @@ h1 {
 .node-sub {
   font-size: 0.55rem;
   text-align: center;
-  opacity: 0.8;
+  opacity: 0.9;
   line-height: 1.3;
 }
 
 .annotation {
   position: absolute;
-  left: 105%;
   top: 50%;
+  left: 105%;
   transform: translateY(-50%);
-  width: 180px;
-  font-size: 0.6rem;
-  line-height: 1.4;
-  color: var(--muted);
-  background: #f8fafc;
-  padding: 0.5rem;
-  border-left: 2px solid var(--ln);
-  border-radius: 4px;
+  width: 220px;
+  font-size: 0.65rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #ffffff;
+  padding: 0.8rem;
+  border: 1px solid var(--ln);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-radius: 8px;
   pointer-events: none;
-  z-index: 10;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  text-align: left;
 }
-@media (max-width: 900px) { .annotation { display: none; } }
+
+.node:hover .annotation {
+  opacity: 1;
+  visibility: visible;
+  left: 110%;
+}
+
+@media (max-width: 900px) { 
+  .annotation { 
+    width: 180px;
+    font-size: 0.6rem;
+  } 
+}
 
 /* color variants */
 .node-cloud .node-box  { border-color: var(--cloud);  background: rgba(249,115,22,0.08);  color: var(--cloud);  }
@@ -221,21 +238,24 @@ h1 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent, currentColor);
+  background: currentColor; /* Solid line instead of gradient */
 }
 .arrow-head {
   width: 0; height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 7px solid currentColor;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid currentColor;
   margin-top: -1px;
 }
 .arrow-label {
-  font-size: 0.55rem;
+  font-size: 0.6rem;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  opacity: 0.6;
-  margin-top: 2px;
+  background: var(--bg);
+  padding: 0 4px;
+  margin-top: -10px;
+  z-index: 1;
   white-space: nowrap;
 }
 
@@ -350,12 +370,86 @@ h1 {
   color: var(--dim);
   margin-top: 1px;
 }
+
+/* ─── BRIDGE LINE ─── */
+.bridge-line {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+  height: 60px;
+  background: repeating-linear-gradient(to bottom, var(--docker) 0, var(--docker) 5px, transparent 5px, transparent 10px);
+  z-index: -1;
+}
+.bridge-label {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  font-weight: bold;
+  color: var(--docker);
+  background: var(--bg);
+  padding: 2px 4px;
+  border: 1px solid var(--docker);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* ─── FORK CONNECTOR ─── */
+.fork-wrap {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.fork-stem {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: var(--dim);
+  z-index: 0;
+}
+.fork-bar {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(4rem + 110px + 60px); /* Adjust based on gap and node widths */
+  height: 2px;
+  background: var(--dim);
+  z-index: 0;
+}
+.fork-label {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  background: var(--bg);
+  padding: 0 4px;
+}
 </style>
 </head>
 <body>
 
 <h1>Grand Plus College</h1>
 <p class="subtitle">Hetzner VPS · System Flow Diagram · Full Stack</p>
+
+<!-- Global Overview -->
+<div style="max-width: 900px; margin: 0 auto 2rem; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.2rem; text-align: left;">
+  <p style="font-size: 0.75rem; color: #334155; line-height: 1.6;">
+    <strong>SYSTEM ARCHITECTURE:</strong> This diagram shows the flow from the <strong>Global Internet</strong> down to your <strong>Physical Hardware</strong>. <br>
+    The system is split into two main flows: <strong>Static Asset Delivery</strong> (Left) and the <strong>Containerized Application Stack</strong> (Right).
+    Everything inside the <span style="color:var(--docker); font-weight:bold">Blue Zone</span> is managed by Docker, providing an isolated environment for the SelfDB backend services.
+  </p>
+</div>
 
 <div class="diagram">
 
@@ -369,6 +463,9 @@ h1 {
           <span class="node-icon">💻</span>
           <span class="node-label">User Browser</span>
           <span class="node-sub">HTTPS request</span>
+        </div>
+        <div class="annotation">
+          <strong>Your Device:</strong> This is the starting point. Whether it's a student's phone or your laptop, this is where the journey begins.
         </div>
       </div>
     </div>
@@ -391,10 +488,10 @@ h1 {
         <div class="node-box">
           <span class="node-icon">🔶</span>
           <span class="node-label">Cloudflare</span>
-          <span class="node-sub">CDN · DDoS · TLS</span>
+          <span class="node-sub">Security Layer</span>
         </div>
         <div class="annotation">
-          <strong>The Shield:</strong> Cloudflare is the first stop. It protects your site from attacks and speeds it up by caching your content closer to your users.
+          <strong>The Security Guard:</strong> This is outside your server. It blocks "bad guys" and ensures the connection to your site is fast and safe.
         </div>
       </div>
     </div>
@@ -410,173 +507,193 @@ h1 {
   </div>
 
   <!-- ══════ HETZNER VPS ══════ -->
-  <div class="zone-label" style="margin-top:1.5rem">🖥️ Hetzner VPS — Ubuntu Host</div>
-  <div class="zone-wrap" style="border-color: rgba(34,197,94,0.12);">
-    <span class="zone-title" style="color:var(--nginx)">NGINX REVERSE PROXY · :443</span>
+  <div class="zone-label" style="margin-top:1.5rem">🏁 The Physical Server (Hetzner VPS)</div>
+  <div class="zone-wrap" style="border-color: rgba(34,197,94,0.4); border-style: solid; border-width: 3px; background: rgba(34,197,94,0.02);">
+    <span class="zone-title" style="color:var(--nginx); font-weight: bold; font-size: 0.7rem;">THE OPERATING SYSTEM (Ubuntu Linux)</span>
 
+    <div style="font-size: 0.6rem; color: var(--muted); text-align: center; margin-bottom: 1rem; letter-spacing: 0.1em;">
+      Everything below runs INSIDE Ubuntu
+    </div>
+
+    <!-- Nginx Node -->
     <div class="layer">
       <div class="node node-nginx">
         <div class="node-box">
           <span class="node-icon">🌐</span>
           <span class="node-label">Nginx</span>
-          <span class="node-sub">SSL · Routes · Static</span>
+          <span class="node-sub">The Receptionist</span>
           <span class="port">:443</span>
         </div>
         <div class="annotation">
-          <strong>The Traffic Cop:</strong> Nginx receives all traffic on port 443. It checks the URL: if it's <code>/api</code>, it forwards to Docker; otherwise, it serves your .html files.
+          <strong>The Receptionist:</strong> Nginx sits at the very front of your server. It "sees" the request and decides exactly where to send it.
         </div>
       </div>
     </div>
 
-    <!-- Branch arrows -->
-    <div style="display:flex; justify-content:center; gap:2.5rem; margin-top:0.3rem; flex-wrap:wrap; animation: fadeIn 0.5s 0.3s ease both; opacity:0">
+    <!-- Visual Fork -->
+    <div class="fork-wrap">
+      <div class="fork-stem"></div>
+      <div class="fork-bar" style="width: 320px;"></div>
+      <div class="fork-label">ROUTES TRAFFIC TO:</div>
+    </div>
+    <div style="display:flex; justify-content:center; gap:4rem; margin-top:0.5rem; flex-wrap:wrap; animation: fadeIn 0.5s 0.3s ease both; opacity:0">
 
-      <!-- STATIC BRANCH -->
-      <div class="split-col">
-        <span class="col-label" style="color:var(--static)">Route: / · /support · /apply · /fees · /status</span>
+      <!-- LEFT COLUMN: STATIC FILES -->
+      <div class="split-col" style="width: 280px;">
+        <span class="col-label" style="color:var(--static)">Traffic: /view-page</span>
         <div class="arrow-down arr-static">
-          <div class="arrow-line"></div>
+          <div class="arrow-line" style="height: 30px;"></div>
           <div class="arrow-head"></div>
-          <span class="arrow-label">STATIC FILES</span>
+          <span class="arrow-label">SHOW PAGES</span>
         </div>
         <div class="node node-static">
           <div class="node-box">
-            <span class="node-icon">📁</span>
-            <span class="node-label">Static Site</span>
-            <span class="node-sub">/var/www/html<br>grandpluscollege</span>
+            <span class="node-icon">�</span>
+            <span class="node-label">The Library</span>
+            <span class="node-sub">Static Files</span>
           </div>
-          <div class="annotation" style="left: -190px; border-left: none; border-right: 2px solid var(--ln);">
-            <strong>The Folder:</strong> This is literally a folder on your server containing the .html, .css, and .js files you see in this project.
+          <div class="annotation">
+            <strong>The Library:</strong> This is where your .html files live. If a user just wants to "read" your site, Nginx gets the page from here.
           </div>
         </div>
-        <div style="font-size:0.55rem; color:var(--muted); text-align:center; margin-top:4px;">
-          index · support · apply<br>fees · status  .html
+        <div style="font-size:0.55rem; color:var(--muted); text-align:center; margin-top:8px; line-height: 1.5;">
+          index.html · support.html<br>apply.html · fees.html
         </div>
       </div>
 
-      <!-- API BRANCH -->
-      <div class="split-col">
-        <span class="col-label" style="color:var(--docker)">Route: /api/*</span>
+      <!-- RIGHT COLUMN: DOCKER & SELFDB -->
+      <div class="split-col" style="flex: 1; max-width: 600px;">
+        <span class="col-label" style="color:var(--docker)">Traffic: /submit-data</span>
         <div class="arrow-down arr-docker">
-          <div class="arrow-line"></div>
+          <div class="arrow-line" style="height: 30px;"></div>
           <div class="arrow-head"></div>
-          <span class="arrow-label">PROXY PASS</span>
+          <span class="arrow-label">SEND TO APP</span>
         </div>
+        
         <div class="node node-docker">
           <div class="node-box">
             <span class="node-icon">🐳</span>
-            <span class="node-label">Docker</span>
-            <span class="node-sub">SelfDB Stack</span>
+            <span class="node-label">Docker Engine</span>
+            <span class="node-sub">Hypervisor Layer</span>
+          </div>
+          <div class="annotation">
+            <strong>The Containerization Layer:</strong> Docker creates a virtual network and isolated environments for your application services to run regardless of the host OS configuration.
+          </div>
+        </div>
+
+        <!-- SelfDB Internals nested here -->
+        <div class="zone-wrap" style="border-color: rgba(59,130,246,0.3); border-style: solid; border-width: 2px; margin-top: 1.5rem; background: rgba(59,130,246,0.03); width: 100%;">
+          <span class="zone-title" style="color:var(--docker); font-size: 0.6rem; font-weight:bold;">SELFDB V0.0.5.4 STACK</span>
+
+          <div class="layer" style="flex-wrap:wrap; gap:1rem; padding: 1.2rem 0.5rem;">
+            
+            <!-- FastAPI -->
+            <div class="node node-docker">
+              <div class="node-box">
+                <span class="node-icon">⚡</span>
+                <span class="node-label">FastAPI Backend</span>
+                <span class="port">:8000</span>
+              </div>
+              <div class="annotation"><strong>The Brain:</strong> Restored API backend. Handles authentication, routing, and data processing logic.</div>
+            </div>
+
+            <!-- PostgREST -->
+            <div class="node node-docker">
+              <div class="node-box">
+                <span class="node-icon">🛠️</span>
+                <span class="node-label">PostgREST</span>
+                <span class="node-sub">Direct SQL API</span>
+              </div>
+              <div class="annotation"><strong>The Direct Conduit:</strong> Provides a RESTful API directly on top of your Postgres database for faster data access.</div>
+            </div>
+
+            <!-- Realtime -->
+            <div class="node node-docker">
+              <div class="node-box">
+                <span class="node-icon">🔔</span>
+                <span class="node-label">Realtime</span>
+                <span class="node-sub">Elixir / Phoenix</span>
+              </div>
+              <div class="annotation"><strong>Realtime Engine:</strong> Listens to database changes and broadcasts them via WebSockets to the frontend instantly.</div>
+            </div>
+
+            <!-- Storage -->
+            <div class="node node-docker">
+              <div class="node-box">
+                <span class="node-icon">🖼️</span>
+                <span class="node-label">Storage (S3-bit)</span>
+                <span class="node-sub">Object API</span>
+              </div>
+              <div class="annotation"><strong>Object Storage:</strong> Manages file uploads, profile pictures, and documents stored on the server.</div>
+            </div>
+
+            <!-- GoTrue -->
+            <div class="node node-docker">
+              <div class="node-box">
+                <span class="node-icon">🔐</span>
+                <span class="node-label">GoTrue</span>
+                <span class="node-sub">Auth Service</span>
+              </div>
+              <div class="annotation"><strong>Auth Engine:</strong> Handles user logins, signups, and password resets securely.</div>
+            </div>
+
+            <!-- PgBouncer -->
+            <div class="node node-docker">
+              <div class="node-box">
+                <span class="node-icon">🔁</span>
+                <span class="node-label">PgBouncer</span>
+                <span class="node-sub">Connection Pool</span>
+              </div>
+              <div class="annotation"><strong>Efficiency Layer:</strong> Prevents the database from hitting connection limits by pooling multiple requests.</div>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="node node-docker">
+              <div class="node-box">
+                <span class="node-icon">🖥️</span>
+                <span class="node-label">Admin Studio</span>
+                <span class="port">:3000</span>
+              </div>
+              <div class="annotation"><strong>Management UI:</strong> The React-based dashboard used to manage your database tables and users manually.</div>
+            </div>
+
+          </div>
+
+          <div class="connrow" style="min-height: 24px;">
+            <div class="arrow-down arr-db">
+              <div class="arrow-line" style="height: 18px;"></div>
+              <div class="arrow-head"></div>
+              <span class="arrow-label">SQL QUERIES</span>
+            </div>
+          </div>
+
+          <div class="layer">
+            <div class="node node-db">
+              <div class="node-box">
+                <span class="node-icon">🐘</span>
+                <span class="node-label">Postgres DB</span>
+                <span class="node-sub">v18 Main Instance</span>
+                <span class="port">:5432</span>
+              </div>
+              <div class="annotation"><strong>The Source of Truth:</strong> The main relational database where all your applications, contacts, and student records are stored.</div>
+            </div>
+
+            <!-- Secondary DB -->
+            <div class="node node-db" style="opacity: 0.6;">
+              <div class="node-box" style="border-style: dotted;">
+                <span class="node-icon">🗄️</span>
+                <span class="node-label">Secondary PG</span>
+                <span class="node-sub">grandplus_backup</span>
+                <span class="port">:5433</span>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
-
     </div>
-
   </div>
 
-  <!-- Docker internals -->
-  <div style="animation: slideUp 0.5s 0.4s ease both; opacity:0">
-  <div class="zone-label" style="margin-top:1.4rem">🐳 Docker — SelfDB Stack (Internal Network)</div>
-  <div class="zone-wrap" style="border-color: rgba(59,130,246,0.12);">
-    <span class="zone-title" style="color:var(--docker)">SELFDB INTERNAL</span>
-
-    <div class="layer" style="flex-wrap:wrap; gap:1rem;">
-
-      <div class="node node-docker">
-        <div class="node-box">
-          <span class="node-icon">⚡</span>
-          <span class="node-label">FastAPI Backend</span>
-          <span class="node-sub">Receives /api/* from Nginx</span>
-          <span class="port">127.0.0.1:8000</span>
-        </div>
-        <div class="annotation">
-          <strong>The Brain:</strong> This FastAPI service handles the database logic. When a student applies, this is what processes the data and sends it to Postgres.
-        </div>
-      </div>
-
-      <div class="node node-docker">
-        <div class="node-box">
-          <span class="node-icon">🔁</span>
-          <span class="node-label">PgBouncer</span>
-          <span class="node-sub">Connection pooler</span>
-          <span class="port">internal</span>
-        </div>
-      </div>
-
-      <div class="node node-docker">
-        <div class="node-box">
-          <span class="node-icon">🔔</span>
-          <span class="node-label">Realtime</span>
-          <span class="node-sub">WebSocket events</span>
-        </div>
-      </div>
-
-      <div class="node node-docker">
-        <div class="node-box">
-          <span class="node-icon">🖼️</span>
-          <span class="node-label">Storage</span>
-          <span class="node-sub">File / object store</span>
-        </div>
-      </div>
-
-      <div class="node node-docker">
-        <div class="node-box">
-          <span class="node-icon">⚙️</span>
-          <span class="node-label">Functions</span>
-          <span class="node-sub">Edge / serverless</span>
-        </div>
-      </div>
-
-      <div class="node node-docker">
-        <div class="node-box">
-          <span class="node-icon">🖥️</span>
-          <span class="node-label">Admin UI</span>
-          <span class="node-sub">Management panel</span>
-          <span class="port">:3000</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Arrow to DB -->
-    <div class="connrow" style="margin-top:0.3rem;">
-      <div class="arrow-down arr-db">
-        <div class="arrow-line"></div>
-        <div class="arrow-head"></div>
-        <span class="arrow-label">queries</span>
-      </div>
-    </div>
-
-    <!-- Postgres -->
-    <div class="layer">
-      <div class="node node-db">
-        <div class="node-box">
-          <span class="node-icon">🐘</span>
-          <span class="node-label">Postgres DB</span>
-          <span class="node-sub">contact_submissions<br>applications · tables</span>
-          <span class="port">:5432 · internal</span>
-        </div>
-        <div class="annotation">
-          <strong>The Vault:</strong> This is the Postgres database. It’s where all the student data and form submissions are permanently stored inside the Docker container.
-        </div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-left:2rem;">
-        <div style="font-size:0.55rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;">Optional</div>
-        <div class="node node-db" style="opacity:0.55;">
-          <div class="node-box" style="border-style:dashed;">
-            <span class="node-icon">🗄️</span>
-            <span class="node-label">postgres-grandplus</span>
-            <span class="node-sub">Secondary DB</span>
-            <span class="port">127.0.0.1:5433</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  </div>
 
   <!-- ══════ EXTERNAL SERVICES ══════ -->
   <div style="animation: slideUp 0.5s 0.55s ease both; opacity:0">
@@ -593,6 +710,9 @@ h1 {
             <span class="node-label">Supabase Cloud</span>
             <span class="node-sub">Fees data API<br>REST / realtime</span>
           </div>
+          <div class="annotation">
+            <strong>The External Vault:</strong> Separate from your server, this specifically holds the information for the "Fees" page.
+          </div>
         </div>
       </div>
 
@@ -602,9 +722,12 @@ h1 {
         <div style="font-size:0.55rem;color:var(--muted);margin-bottom:4px;letter-spacing:0.08em;text-transform:uppercase;">payment processing</div>
         <div class="node node-pay">
           <div class="node-box">
-            <span class="node-icon">💳</span>
-            <span class="node-label">PayGate</span>
-            <span class="node-sub">Payment gateway<br>checkout / confirm</span>
+            <span class="node-icon">🏦</span>
+            <span class="node-label">The Cashier</span>
+            <span class="node-sub">PayGate</span>
+          </div>
+          <div class="annotation">
+            <strong>The Cashier (PayGate):</strong> This handles the actual money transfers safely on their own secure website.
           </div>
         </div>
       </div>

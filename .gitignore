@@ -1,6 +1,11 @@
 # AI Documentation
 walkthrough.md
 brain/
+architecture_diagram.md
+
+# Diagrams
+diagram /
+*.html
 
 # IDE/Junk
 .DS_Store
