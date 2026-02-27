@@ -5,9 +5,15 @@ const env = process.env;
 export const config = {
   port: parseInt(env.PORT ?? '3000', 10),
   nodeEnv: env.NODE_ENV ?? 'development',
-  supabase: {
-    url: env.SUPABASE_URL ?? '',
-    anonKey: env.SUPABASE_ANON_KEY ?? '',
-    serviceRoleKey: env.SUPABASE_SERVICE_ROLE_KEY ?? '',
+  database: {
+    url: env.DATABASE_URL ?? '',
+  },
+  paygate: {
+    apiKey: env.PAYGATE_API_KEY ?? '',
+    clientSecret: env.PAYGATE_CLIENT_SECRET ?? '',
+    baseUrl: env.PAYGATE_BASE_URL ?? 'https://api.paygate.ng',
+  },
+  app: {
+    baseUrl: env.APP_BASE_URL ?? 'https://grandpluscollege.com',
   },
 } as const;

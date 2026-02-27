@@ -1,12 +1,10 @@
 import { Router } from 'express';
 import healthRouter from './health.js';
+import paymentsRouter from './payments.js';
 
 const router = Router();
 
 router.use('/health', healthRouter);
-
-// Mount more route modules here, e.g.:
-// router.use('/applications', applicationsRouter);
-// router.use('/webhooks', webhooksRouter);
+router.use('/payments', paymentsRouter);
 
 export default router;
