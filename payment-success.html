@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772169027" />
+    <link rel="stylesheet" href="styles.css?v=1772197308" />
     <link rel="icon" href="images/logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
@@ -78,19 +78,23 @@
                 <div class="flex flex-col gap-4 p-5">
                     <div class="flex justify-between items-center">
                         <p class="text-slate-500 dark:text-slate-400 text-sm">Receipt #</p>
-                        <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold">GPC-882910</p>
+                        <p id="receipt-ref" class="text-slate-900 dark:text-slate-100 text-sm font-semibold">—</p>
                     </div>
                     <div class="flex justify-between items-center">
                         <p class="text-slate-500 dark:text-slate-400 text-sm">Date</p>
-                        <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Oct 24, 2026</p>
+                        <p id="receipt-date" class="text-slate-900 dark:text-slate-100 text-sm font-semibold">—</p>
                     </div>
                     <div class="flex justify-between items-center">
                         <p class="text-slate-500 dark:text-slate-400 text-sm">Payer</p>
-                        <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold text-right">John Doe</p>
+                        <p id="receipt-payer" class="text-slate-900 dark:text-slate-100 text-sm font-semibold text-right">—</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Fee Type</p>
+                        <p id="receipt-fee-type" class="text-slate-900 dark:text-slate-100 text-sm font-semibold text-right">—</p>
                     </div>
                     <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
                         <p class="text-slate-900 dark:text-slate-100 font-bold">Amount Paid</p>
-                        <p class="text-primary text-xl font-bold">$4,225.50</p>
+                        <p id="receipt-amount" class="text-primary text-xl font-bold">—</p>
                     </div>
                 </div>
             </div>
@@ -158,9 +162,65 @@
     </div>
 
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772169027"></script>
+    <script src="menu.js?v=1772197308"></script>
     <script>
         lucide.createIcons();
+
+        (async function () {
+            // Read request_ref from URL — PayGate appends it on redirect
+            var params     = new URLSearchParams(window.location.search);
+            var requestRef = params.get('request_ref') || params.get('reference');
+
+            if (!requestRef) return; // No ref — page visited directly, show static UI
+
+            // Populate receipt # immediately
+            var refEl = document.getElementById('receipt-ref');
+            if (refEl) refEl.textContent = requestRef;
+
+            function formatCurrency(cents, currency) {
+                var amount = cents / 100;
+                return '₦' + amount.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+
+            function formatDate(iso) {
+                return new Date(iso).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+            }
+
+            function populate(tx) {
+                if (document.getElementById('receipt-ref'))      document.getElementById('receipt-ref').textContent      = requestRef;
+                if (document.getElementById('receipt-date'))     document.getElementById('receipt-date').textContent     = formatDate(tx.created_at);
+                if (document.getElementById('receipt-payer'))    document.getElementById('receipt-payer').textContent    = tx.payer_name || tx.email || '—';
+                if (document.getElementById('receipt-fee-type')) document.getElementById('receipt-fee-type').textContent = tx.fee_type || '—';
+                if (document.getElementById('receipt-amount'))   document.getElementById('receipt-amount').textContent   = formatCurrency(tx.amount_cents, tx.currency);
+            }
+
+            try {
+                // 1. Quick local DB check
+                var statusRes  = await fetch('/api/payments/status/' + requestRef);
+                var statusData = await statusRes.json();
+
+                if (statusData.ok && statusData.status === 'SUCCESS') {
+                    populate(statusData);
+                    return;
+                }
+
+                // 2. If still PENDING — call verify (checks PayGate directly + syncs DB)
+                var verifyRes  = await fetch('/api/payments/verify/' + requestRef);
+                var verifyData = await verifyRes.json();
+
+                if (verifyData.ok) {
+                    // Merge status data with any extra fields from status endpoint
+                    populate(Object.assign({}, statusData, { status: verifyData.status }));
+                }
+
+                if (verifyData.status === 'FAILED') {
+                    document.querySelector('h1').textContent = 'Payment Failed';
+                    document.querySelector('h1').classList.replace('text-slate-900', 'text-red-600');
+                }
+            } catch (e) {
+                console.error('Receipt load error:', e.message);
+            }
+        })();
     </script>
 </body>
 </html>

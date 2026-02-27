@@ -16,13 +16,22 @@ const router = Router();
 // ─────────────────────────────────────────────────────────────────────────────
 router.post('/initialize', async (req: Request, res: Response) => {
   try {
-    const { email, amount, currency = 'NGN' } = req.body;
+    const {
+      email,
+      amount,
+      currency = 'NGN',
+      payer_name,
+      student_id,
+      payer_type,
+      fee_type,
+      payment_method,
+    } = req.body;
 
     if (!email || !amount) {
       return res.status(400).json({ ok: false, error: 'email and amount are required' });
     }
     if (typeof amount !== 'number' || amount <= 0) {
-      return res.status(400).json({ ok: false, error: 'amount must be a positive number (in Naira)' });
+      return res.status(400).json({ ok: false, error: 'amount must be a positive number' });
     }
 
     const request_ref = generateReference();
@@ -30,14 +39,26 @@ router.post('/initialize', async (req: Request, res: Response) => {
     // Call PayGate — returns payment_url and paygate_txn_id
     const initResponse = await paygateInitialize({ reference: request_ref, amount, email, currency });
 
-    // Store amount as integer in kobo (smallest unit)
-    const amountKobo = Math.round(amount * 100);
+    // Store amount as integer in cents/kobo (smallest unit)
+    const amountSmallest = Math.round(amount * 100);
 
     await query(
       `INSERT INTO transactions
-        (request_ref, email, amount, currency, status, raw_init_response)
-       VALUES ($1, $2, $3, $4, 'PENDING', $5)`,
-      [request_ref, email, amountKobo, currency, JSON.stringify(initResponse)]
+        (request_ref, email, payer_name, student_id, payer_type, fee_type,
+         payment_method, amount, currency, status, raw_init_response)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'PENDING', $10)`,
+      [
+        request_ref,
+        email,
+        payer_name ?? null,
+        student_id ?? null,
+        payer_type ?? null,
+        fee_type ?? null,
+        payment_method ?? null,
+        amountSmallest,
+        currency,
+        JSON.stringify(initResponse),
+      ]
     );
 
     return res.status(201).json({
@@ -162,10 +183,15 @@ router.get('/status/:request_ref', async (req: Request, res: Response) => {
       amount: number;
       currency: string;
       email: string;
+      payer_name: string | null;
+      student_id: string | null;
+      fee_type: string | null;
+      payment_method: string | null;
       created_at: string;
       updated_at: string;
     }>(
-      `SELECT status, amount, currency, email, created_at, updated_at
+      `SELECT status, amount, currency, email, payer_name, student_id,
+              fee_type, payment_method, created_at, updated_at
        FROM transactions WHERE request_ref = $1`,
       [request_ref]
     );
@@ -178,9 +204,13 @@ router.get('/status/:request_ref', async (req: Request, res: Response) => {
       ok: true,
       request_ref,
       status: tx.status,
-      amount_kobo: tx.amount,
+      amount_cents: tx.amount,
       currency: tx.currency,
       email: tx.email,
+      payer_name: tx.payer_name,
+      student_id: tx.student_id,
+      fee_type: tx.fee_type,
+      payment_method: tx.payment_method,
       created_at: tx.created_at,
       updated_at: tx.updated_at,
     });
