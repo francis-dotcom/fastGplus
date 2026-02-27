@@ -37,7 +37,14 @@ router.post('/initialize', async (req: Request, res: Response) => {
     const request_ref = generateReference();
 
     // Call PayGate — returns payment_url and paygate_txn_id
-    const initResponse = await paygateInitialize({ reference: request_ref, amount, email, currency });
+    const initResponse = await paygateInitialize({
+      reference: request_ref,
+      amount,
+      email,
+      currency,
+      payerName: payer_name ?? undefined,
+      feeType:   fee_type   ?? undefined,
+    });
 
     // Store amount as integer in cents/kobo (smallest unit)
     const amountSmallest = Math.round(amount * 100);

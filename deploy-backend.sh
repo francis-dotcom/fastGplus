@@ -46,30 +46,10 @@ ssh -o StrictHostKeyChecking=accept-new "$SERVER" bash << ENDSSH
   npm prune --omit=dev
   echo '✅ Build complete'
 
-  # Write systemd service file
-  echo '$SUDO_PASS' | sudo -S tee /etc/systemd/system/gpc-backend.service > /dev/null << 'SERVICE'
-[Unit]
-Description=GPC Node.js Backend
-After=network.target
-
-[Service]
-Type=simple
-User=femi
-WorkingDirectory=/home/femi/gpc-backend
-ExecStart=/bin/bash -c 'source /home/femi/.nvm/nvm.sh && node dist/index.js'
-EnvironmentFile=/home/femi/gpc-backend/.env
-Restart=always
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
-SERVICE
-
-  echo '$SUDO_PASS' | sudo -S systemctl daemon-reload
-  echo '$SUDO_PASS' | sudo -S systemctl enable gpc-backend
-  echo '$SUDO_PASS' | sudo -S systemctl restart gpc-backend
-  sleep 2
-  echo '$SUDO_PASS' | sudo -S systemctl status gpc-backend --no-pager
+  # Restart via PM2
+  pm2 restart gpc-backend --update-env || pm2 start dist/index.js --name gpc-backend
+  pm2 save
+  pm2 status
 ENDSSH
 
 echo ""
