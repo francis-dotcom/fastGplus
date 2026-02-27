@@ -19,9 +19,14 @@ rsync -az --progress \
   -e "ssh -o StrictHostKeyChecking=accept-new" \
   ./backend/ "$SERVER:$REMOTE_DIR/"
 
-# 2. Sync .env separately (not excluded from sync above, kept explicit)
+# 2. Sync .env separately then force NODE_ENV=production on server
 echo "🔑 Syncing .env..."
-scp -o StrictHostKeyChecking=accept-new ./backend/.env "$SERVER:$REMOTE_DIR/.env"
+if [ -f ./backend/.env ]; then
+  scp -o StrictHostKeyChecking=accept-new ./backend/.env "$SERVER:$REMOTE_DIR/.env"
+else
+  echo "⚠️  ./backend/.env not found locally — skipping (server .env unchanged)"
+fi
+ssh -o StrictHostKeyChecking=accept-new "$SERVER" "sed -i 's/NODE_ENV=.*/NODE_ENV=production/' $REMOTE_DIR/.env"
 
 # 3. On server: install deps, build, restart service
 echo "🔧 Installing & building on server..."
@@ -36,8 +41,9 @@ ssh -o StrictHostKeyChecking=accept-new "$SERVER" bash << ENDSSH
   cd $REMOTE_DIR
   echo "Node: \$(node --version), npm: \$(npm --version)"
 
-  npm install --omit=dev
+  npm install
   npm run build
+  npm prune --omit=dev
   echo '✅ Build complete'
 
   # Write systemd service file
