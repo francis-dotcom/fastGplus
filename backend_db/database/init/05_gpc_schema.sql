@@ -137,3 +137,7 @@ SELECT
     'Support page contact form submissions', 
     true
 ON CONFLICT (name) DO NOTHING;
+
+INSERT INTO tables (id, name, table_schema, public, owner_id, description, realtime_enabled)
+SELECT gen_random_uuid(), 'application_documents', '{}'::jsonb, true, (SELECT id FROM users LIMIT 1), 'Document uploads linked to applications', true
+ON CONFLICT (name) DO NOTHING;
