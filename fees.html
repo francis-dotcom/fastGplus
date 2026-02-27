@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772211544" />
+    <link rel="stylesheet" href="styles.css?v=1772214839" />
     <link rel="icon" href="images/logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
@@ -120,6 +120,10 @@
                 <input id="student-id" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4 text-sm" placeholder="e.g. 2024-00123" type="text" aria-describedby="payer-id-label"/>
             </div>
             <div class="space-y-2">
+                <label class="text-sm fw-medium px-1" for="payer-name">Full Name <span class="text-red-500">*</span></label>
+                <input id="payer-name" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4 text-sm" placeholder="Your full name" type="text" required/>
+            </div>
+            <div class="space-y-2">
                 <label class="text-sm fw-medium px-1" for="payer-email">Email Address <span class="text-red-500">*</span></label>
                 <input id="payer-email" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4 text-sm" placeholder="Receipt will be sent here" type="email" required/>
             </div>
@@ -173,6 +177,7 @@
         <!-- Section 4: Payment Method -->
         <section class="space-y-4">
             <h2 class="section-title">Payment Method</h2>
+            <p class="text-xs text-muted -mt-2">Select your preferred method. You’ll enter your details securely on PayGate’s checkout page.</p>
             <div class="grid grid-cols-3 gap-3" role="tablist" aria-label="Payment method">
                 <button type="button" role="tab" aria-selected="true" id="pm-card" data-payment="card" class="payment-method-btn active flex flex-col items-center justify-center p-4 rounded-xl border-2 border-primary bg-primary/5 text-primary">
                     <span class="material-symbols-outlined text-3xl mb-1">credit_card</span>
@@ -180,85 +185,20 @@
                 </button>
                 <button type="button" role="tab" aria-selected="false" id="pm-bank" data-payment="bank" class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
                     <span class="material-symbols-outlined text-3xl mb-1 text-slate-400">account_balance</span>
-                    <span class="text-xs fw-bold text-slate-500">Bank</span>
+                    <span class="text-xs fw-bold text-slate-500">Bank Transfer</span>
                 </button>
                 <button type="button" role="tab" aria-selected="false" id="pm-ach" data-payment="ach" class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors">
-                    <span class="material-symbols-outlined text-3xl mb-1 text-slate-400">payments</span>
-                    <span class="text-xs fw-bold text-slate-500">ACH</span>
+                    <span class="material-symbols-outlined text-3xl mb-1 text-slate-400">dialpad</span>
+                    <span class="text-xs fw-bold text-slate-500">USSD</span>
                 </button>
             </div>
 
-            <!-- Card details (shown when Card selected) -->
-            <div id="panel-card" class="payment-method-panel active" role="tabpanel">
-                <div class="space-y-4">
-                    <div class="space-y-2">
-                        <label class="text-sm fw-medium px-1">Cardholder Name</label>
-                        <input id="card-name" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4 text-sm" placeholder="Full name on card" type="text"/>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-sm fw-medium px-1">Card Number</label>
-                        <div class="relative">
-                            <input id="card-number" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary pr-12 px-4" placeholder="0000 0000 0000 0000" type="text"/>
-                            <div class="absolute right-4 top-1/2 -translate-y-1/2 flex gap-1">
-                                <i data-lucide="credit-card" class="text-slate-400 size-5"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="space-y-2">
-                            <label class="text-sm fw-medium px-1">Expiry Date</label>
-                            <input id="expiry" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="MM/YY" type="text"/>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm fw-medium px-1">CVC</label>
-                            <input id="cvc" class="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4" placeholder="123" type="text"/>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2 px-1 pt-2">
-                        <input class="rounded text-primary focus:ring-primary border-slate-300" id="save-card" type="checkbox"/>
-                        <label class="text-xs text-muted" for="save-card">Save card details for future payments</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bank transfer (shown when Bank selected) -->
-            <div id="panel-bank" class="payment-method-panel" role="tabpanel" hidden>
-                <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-5 space-y-4">
-                    <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Bank transfer</p>
-                    <p class="text-xs text-slate-500">Enter your bank details below. We’ll use this to process your payment or show you where to send the transfer.</p>
-                    <div class="space-y-3 pt-1">
-                        <div class="space-y-2">
-                            <label class="text-sm fw-medium px-1" for="bank-name">Bank name</label>
-                            <input id="bank-name" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm focus:ring-primary focus:border-primary" placeholder="e.g. Chase, Wells Fargo" type="text"/>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm fw-medium px-1" for="bank-routing">Routing number</label>
-                            <input id="bank-routing" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm focus:ring-primary focus:border-primary" placeholder="9-digit routing number" type="text" inputmode="numeric" maxlength="9"/>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm fw-medium px-1" for="bank-account">Account number</label>
-                            <input id="bank-account" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm focus:ring-primary focus:border-primary" placeholder="Account number" type="text" inputmode="numeric"/>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm fw-medium px-1" for="bank-holder">Account holder name</label>
-                            <input id="bank-holder" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm focus:ring-primary focus:border-primary" placeholder="Name on bank account" type="text"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ACH (shown when ACH selected) -->
-            <div id="panel-ach" class="payment-method-panel" role="tabpanel" hidden>
-                <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-5 space-y-3">
-                    <p class="text-sm fw-bold text-slate-700 dark:text-slate-300">Pay by ACH</p>
-                    <p class="text-xs text-muted">Link your bank account to pay securely. You’ll be guided through verification.</p>
-                    <div class="space-y-2 pt-2">
-                        <label class="text-sm fw-medium px-1">Routing number</label>
-                        <input id="ach-routing" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm" placeholder="9-digit routing number" type="text"/>
-                        <label class="text-sm fw-medium px-1">Account number</label>
-                        <input id="ach-account" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 text-sm" placeholder="Account number" type="text"/>
-                    </div>
-                </div>
+            <!-- PayGate redirect notice -->
+            <div class="flex items-start gap-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-xl p-4">
+                <span class="material-symbols-outlined text-blue-500 flex-shrink-0" style="font-size:1.2rem;margin-top:1px">info</span>
+                <p class="text-xs text-blue-700 dark:text-blue-300 leading-relaxed">
+                    After clicking <strong>Pay</strong>, you’ll be redirected to <strong>PayGate’s secure checkout page</strong> to complete your payment. Your card or bank details are entered there — not on this page.
+                </p>
             </div>
         </section>
     </main>
@@ -267,7 +207,7 @@
     <footer class="fixed bottom-0 left-0 right-0 p-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 z-50">
         <div class="container mx-auto">
             <button id="pay-btn" class="w-full bg-primary hover:bg-primary/90 text-white fw-bold text-sm py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
-                <span id="pay-btn-label">Pay Total Amount ($4,225.50)</span>
+                <span id="pay-btn-label">Pay Total Amount</span>
                 <span class="material-symbols-outlined">lock</span>
             </button>
             <p class="text-center text-xs text-muted mt-2 flex items-center justify-center gap-1">
@@ -278,7 +218,7 @@
     </footer>
 
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772211544"></script>
+    <script src="menu.js?v=1772214839"></script>
     <script>
         lucide.createIcons();
 
@@ -397,8 +337,9 @@
             var studentId = (document.getElementById('student-id').value || '').trim();
             var feeKey   = feeSelect && feeSelect.value;
             var total    = getCurrentTotal();
-            var payerName = (document.getElementById('card-name') && document.getElementById('card-name').value || '').trim();
+            var payerName = (document.getElementById('payer-name') && document.getElementById('payer-name').value || '').trim();
 
+            if (!payerName) { alert('Please enter your full name.'); document.getElementById('payer-name').focus(); return; }
             if (!email) { alert('Please enter your email address.'); document.getElementById('payer-email').focus(); return; }
             if (!feeKey || total <= 0) { alert('Please select a fee to pay.'); return; }
 
