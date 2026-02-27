@@ -38,13 +38,22 @@ echo "🔄 Deployment preparation complete (v=${TIMESTAMP})"
 
 rsync -az --progress \
   --exclude='.git' \
+  --exclude='.gitignore' \
   --exclude='.DS_Store' \
+  --exclude='.env' \
+  --exclude='.claude' \
   --exclude='node_modules' \
-  --exclude='backend_db' \
-  --exclude='walkthrough.md' \
+  --exclude='backend/' \
+  --exclude='backend_db/' \
+  --exclude='postgres-grandplus/' \
+  --exclude='MD/' \
+  --exclude='scripts/' \
+  --exclude='diagram/' \
+  --exclude='ssl/' \
+  --exclude='deploy-*.sh' \
+  --exclude='gpc.pen' \
   --exclude='*.zip' \
   --exclude='stitch*' \
-  --exclude='ssl' \
   -e "ssh -o StrictHostKeyChecking=accept-new" \
   ./ "$SERVER:$REMOTE_DIR/"
 

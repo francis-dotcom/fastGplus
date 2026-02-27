@@ -4,7 +4,9 @@ brain/
 architecture_diagram.md
 
 # Diagrams
-diagram /
+diagram/
+
+# HTML files are tracked directly (added before this rule)
 *.html
 
 # IDE/Junk
