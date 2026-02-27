@@ -51,6 +51,36 @@ Quick reference: what is running on what port. Use this when debugging or config
 
 ---
 
+## Security overview (connections & access)
+
+**Browser → Site & APIs**
+- **HTTPS only:** Browser connects to `grandpluscollege.com` over HTTPS via Cloudflare, which then talks HTTPS to Nginx on the server.
+- **Forms & APIs:** All forms (support, apply, fees) and all `/api/*` requests are sent over HTTPS; no mixed HTTP.
+
+**Nginx → Backends**
+- **GPC Backend:** Nginx proxies `/api/*` to `http://127.0.0.1:4000` — the Node.js API is only reachable on localhost, not exposed to the internet.
+- **SelfDB stack:** Nginx routes `/submit-data` to Docker SelfDB; ports 3000/8000 stay internal or behind SSH tunnels.
+
+**Backends → Database**
+- **PostgreSQL:** Listens on `127.0.0.1:5432` only; both GPC backend and SelfDB connect over localhost. No direct remote DB access from the internet.
+
+**External services**
+- **Supabase:** Fees data is fetched from Supabase over HTTPS using the public anon key; service keys stay server-side.
+- **PayGate Plus:** GPC backend talks to PayGate over HTTPS with `Authorization: Bearer <PAYGATE_API_KEY>` and a secret-based signature; keys live only in `.env` on the server.
+- **Webhook:** PayGate hits `https://grandpluscollege.com/api/payments/webhook` over HTTPS; backend verifies a checksum before trusting the payload and only updates PENDING transactions.
+
+**SSH & deployment**
+- **SSH:** All server access, rsync, and deploy scripts use SSH with host key checking.
+- **Deploy scripts:** `deploy-site.sh`, `deploy-selfdb.sh`, and `deploy-backend.sh` sync code and config over SSH and restart services; secrets are read from `.env` on the server, not from the browser.
+
+**Quick hardening checklist (recommended)**
+- Ensure **SSH** only allows key-based login (no password auth) and is restricted to user `femi`.
+- Keep **Nginx + Node + Docker** updated via regular server package updates.
+- Add security headers in Nginx (HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy) if not already present.
+- In Cloudflare, enable **WAF / Bot protection** for `/api/*` and rate-limiting on sensitive paths (e.g. `/api/payments/*`).
+
+---
+
 ## System diagram (Mermaid + image, one page)
 
 This is a high-level, single-page view of how everything connects (browser → Cloudflare → Hetzner/Nginx → SelfDB → Postgres).
