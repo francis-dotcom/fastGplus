@@ -267,6 +267,7 @@ h1 {
 .arr-static { color: var(--static); }
 .arr-ext    { color: var(--ext); }
 .arr-multi  { color: var(--dim); }
+.arr-backup { color: var(--muted); }
 
 /* ─── SECTION DIVIDERS ─── */
 .zone-label {
@@ -449,6 +450,11 @@ h1 {
     The system is split into two main flows: <strong>Static Asset Delivery</strong> (Left) and the <strong>Containerized Application Stack</strong> (Right).
     Everything inside the <span style="color:var(--docker); font-weight:bold">Blue Zone</span> is managed by Docker, providing an isolated environment for the SelfDB backend services.
   </p>
+  <p style="font-size: 0.7rem; color: #475569; line-height: 1.5; margin-top: 0.6rem;">
+    <strong>SelfDB on Docker:</strong><br>
+    • <strong>Local (Mac):</strong> Project folder <code>SELFDB-V0.0.5.4</code> → GUI on <code>:3000</code> / API on <code>:8000</code>.<br>
+    • <strong>Production (Hetzner Ubuntu):</strong> VPS <code>~/selfdb</code> → started with <code>docker compose -f docker-compose-production.yml up -d</code>. Nginx proxies <code>/api/</code> to Backend <code>:8000</code>.
+  </p>
 </div>
 
 <div class="diagram">
@@ -583,7 +589,13 @@ h1 {
 
         <!-- SelfDB Internals nested here -->
         <div class="zone-wrap" style="border-color: rgba(59,130,246,0.3); border-style: solid; border-width: 2px; margin-top: 1.5rem; background: rgba(59,130,246,0.03); width: 100%;">
-          <span class="zone-title" style="color:var(--docker); font-size: 0.6rem; font-weight:bold;">SELFDB V0.0.5.4 STACK</span>
+          <span class="zone-title" style="color:var(--docker); font-size: 0.6rem; font-weight:bold;">SELFDB V0.0.5.4 STACK 🐳</span>
+          <div style="font-size: 0.55rem; color: var(--docker); padding: 0 1.2rem; margin-top: -0.2rem; margin-bottom: 0.8rem; font-weight: 500;">
+            Runs in Docker — Local (Mac): <code>SELFDB-V0.0.5.4</code> → ports 3000 (GUI) & 8000 (API) · Production (Hetzner Ubuntu): <code>~/selfdb</code> → Nginx <code>/api/</code> → backend :8000.
+          </div>
+          <div style="font-size: 0.55rem; color: var(--docker); padding: 0 1.2rem; margin-top: -0.2rem; margin-bottom: 0.8rem; font-weight: 500;">
+            Runs in Docker — Local (Mac): <code>SELFDB-V0.0.5.4</code> → ports 3000 (GUI) & 8000 (API) · Production (Hetzner Ubuntu): <code>~/selfdb</code> → Nginx <code>/api/</code> → backend :8000.
+          </div>
 
           <div class="layer" style="flex-wrap:wrap; gap:1rem; padding: 1.2rem 0.5rem;">
             
@@ -688,6 +700,29 @@ h1 {
               </div>
             </div>
 
+          </div>
+
+          <!-- Backup / Sync flow: server → Mac -->
+          <div class="connrow" style="min-height: 20px; margin-top: 0.8rem;">
+            <div class="arrow-down arr-backup">
+              <div class="arrow-line" style="height: 14px;"></div>
+              <div class="arrow-head"></div>
+              <span class="arrow-label">BACKUP FLOW</span>
+            </div>
+          </div>
+          <div class="layer" style="margin-top: 0.2rem;">
+            <div class="node node-static">
+              <div class="node-box" style="border-style: dashed; border-color: var(--muted);">
+                <span class="node-icon">💾</span>
+                <span class="node-label">The Sync Truth</span>
+                <span class="node-sub">Code Flow Only</span>
+              </div>
+              <div class="annotation">
+                <strong>How "Sync" Works:</strong><br>
+                • <strong>Code & Config (YES):</strong> Synced from Mac to VPS when you run <code>./deploy-selfdb.sh</code> (rsync).<br>
+                • <strong>Database Data (NO):</strong> Local (Mac) and Production (Hetzner) have separate Postgres vaults. Data does <u>not</u> sync—live submissions only go to production.
+              </div>
+            </div>
           </div>
         </div>
       </div>
