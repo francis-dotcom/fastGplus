@@ -24,12 +24,13 @@ Quick reference: what is running on what port. Use this when debugging or config
 | Port | Service | Notes |
 |------|---------|--------|
 | **80** | Nginx | HTTP for grandpluscollege.com (redirects to 443 or serves site). |
-| **443** | Nginx | HTTPS for grandpluscollege.com. Serves static site and **proxies `/api`** to backend. |
+| **443** | Nginx | HTTPS for grandpluscollege.com. Serves static site and **proxies `/api/`** to GPC backend on port 4000. |
+| **4000** | GPC Node.js backend (PM2) | Express/TypeScript API at `/home/femi/gpc-backend`. Managed by PM2. Nginx proxies `https://grandpluscollege.com/api/` → `http://127.0.0.1:4000`. Deploy with `./deploy-backend.sh`. |
 | **3000** | Docker (SelfDB frontend) | SelfDB admin GUI. Not public; use SSH tunnel (e.g. local 3002 → server 3000). |
-| **8000** | Docker (SelfDB backend) | SelfDB API. Nginx proxies `https://grandpluscollege.com/api` → `http://127.0.0.1:8000`. |
-| (internal) | PostgreSQL | Inside Docker only, port 5432 on `selfdb-network`. |
+| **8000** | Docker (SelfDB backend) | SelfDB REST API — internal use only. **Not the GPC API** (that's port 4000). |
+| **5432** | Docker (PostgreSQL) | Exposed to localhost only (`127.0.0.1:5432:5432` in docker-compose). GPC Node.js backend connects via `DATABASE_URL=postgresql://...@localhost:5432/gpc_selfdb`. |
 | (internal) | PgBouncer | Inside Docker only, port 6432 on `selfdb-network`. |
-| (internal) | Realtime, Storage, Functions | Inside Docker only (e.g. 4000, 9000, 8090). |
+| (internal) | Realtime, Storage, Functions | Inside Docker only (e.g. 9000, 8090). |
 
 ### Local (Mac)
 
@@ -42,8 +43,10 @@ Quick reference: what is running on what port. Use this when debugging or config
 
 ### Summary
 
-- **Public site:** Nginx 80/443 → grandpluscollege.com; `/api` → backend 8000.
-- **Server SelfDB GUI:** Docker frontend on server port 3000; access via tunnel to **localhost:3002** (or 3001).
+- **Public site:** Nginx 80/443 → grandpluscollege.com; `/api/` → **GPC Node.js backend on port 4000**.
+- **GPC backend:** PM2 process at `/home/femi/gpc-backend`, port 4000. Deploy with `./deploy-backend.sh`.
+- **Server SelfDB:** Backend (REST API) on port 8000 — internal only, not the GPC API. GUI on port 3000; access via tunnel to **localhost:3002**.
+- **Server PostgreSQL:** Exposed to localhost on port 5432 (`127.0.0.1:5432`) so the GPC backend (host process) can connect directly.
 - **Local SelfDB:** Frontend 3000, backend 8000 on your Mac.
 
 ---
@@ -255,6 +258,7 @@ If you ever need to recreate the admin on the server (e.g. after a DB wipe):
 |--------|-------------|
 | `./deploy-site.sh` | HTML/CSS/JS changed, or support/apply form pages changed |
 | `./deploy-selfdb.sh` | SelfDB code in `~/Desktop/SELFDB-GPC` changed (schema, backend, config) |
+| `./deploy-backend.sh` | GPC Node.js backend changed (`backend/` folder — routes, payments, DB logic) |
 | `./deploy-all.sh` | Both changed — runs site + SelfDB deploy then commits and pushes to git |
 
 **What each script does:**
