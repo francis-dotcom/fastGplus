@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css?v=1772217717" />
+    <link rel="stylesheet" href="styles.css?v=1772220250" />
     <link rel="icon" href="images/logo.png" type="image/png" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script id="tailwind-config">
@@ -126,6 +126,9 @@
             <div class="space-y-2">
                 <label class="text-sm fw-medium px-1" for="payer-email">Email Address <span class="text-red-500">*</span></label>
                 <input id="payer-email" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4 text-sm" placeholder="Receipt will be sent here" type="email" required/>
+
+                <label class="text-sm fw-medium px-1 mt-3" for="payer-phone">Mobile Number <span class="text-red-500">*</span></label>
+                <input id="payer-phone" class="w-full h-12 rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-primary focus:border-primary px-4 text-sm" placeholder="e.g. 0803 123 4567" type="tel" required/>
             </div>
         </section>
 
@@ -222,7 +225,7 @@
     </footer>
 
     <script src="school-brand.js"></script>
-    <script src="menu.js?v=1772217717"></script>
+    <script src="menu.js?v=1772220250"></script>
     <script>
         lucide.createIcons();
 
@@ -338,6 +341,7 @@
             var btn      = this;
             var label    = document.getElementById('pay-btn-label');
             var email    = (document.getElementById('payer-email').value || '').trim();
+            var mobile   = (document.getElementById('payer-phone').value || '').trim();
             var studentId = (document.getElementById('student-id').value || '').trim();
             var feeKey   = feeSelect && feeSelect.value;
             var total    = getCurrentTotal();
@@ -345,6 +349,7 @@
 
             if (!payerName) { alert('Please enter your full name.'); document.getElementById('payer-name').focus(); return; }
             if (!email) { alert('Please enter your email address.'); document.getElementById('payer-email').focus(); return; }
+            if (!mobile) { alert('Please enter your mobile number.'); document.getElementById('payer-phone').focus(); return; }
             if (!feeKey || total <= 0) { alert('Please select a fee to pay.'); return; }
 
             btn.disabled = true;
@@ -358,6 +363,7 @@
                         email:          email,
                         amount:         total,
                         currency:       'NGN',
+                        mobile_no:      mobile,
                         payer_name:     payerName || null,
                         student_id:     studentId || null,
                         payer_type:     activePayer,

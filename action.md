@@ -259,7 +259,7 @@ If you ever need to recreate the admin on the server (e.g. after a DB wipe):
 | `./deploy-site.sh` | HTML/CSS/JS changed, or support/apply form pages changed |
 | `./deploy-selfdb.sh` | SelfDB code in `~/Desktop/SELFDB-GPC` changed (schema, backend, config) |
 | `./deploy-backend.sh` | GPC Node.js backend changed (`backend/` folder — routes, payments, DB logic) |
-| `./deploy-all.sh` | Both changed — runs site + SelfDB deploy then commits and pushes to git |
+| `./deploy-all.sh` | Everything changed — runs site + SelfDB + GPC backend deploy, then commits and pushes to git |
 
 **What each script does:**
 
@@ -274,14 +274,15 @@ If you ever need to recreate the admin on the server (e.g. after a DB wipe):
 - Restarts the SelfDB Docker stack (`docker compose up -d`)
 
 **`deploy-all.sh`**
-- Runs `deploy-site.sh` → `deploy-selfdb.sh` → `git add . && git commit && git push`
-- Uses `gacp` shortcut if available, otherwise plain git commands
+- Runs `deploy-site.sh` → `deploy-selfdb.sh` → `deploy-backend.sh` → `git add . && git commit && git push`
+- Uses `gacp` shortcut if available, otherwise plain git commands; also restarts the GPC backend via PM2 as part of `deploy-backend.sh`
 
 **Do you need to restart anything?**
 
 No — in normal use the deploy scripts handle everything automatically:
 - `deploy-site.sh` → no restart needed
 - `deploy-selfdb.sh` → already runs `docker compose up -d`
+- `deploy-backend.sh` (and `deploy-all.sh`) → already restarts the GPC backend PM2 process
 
 Only restart manually if something is broken or you changed a config file directly on the server:
 ```bash

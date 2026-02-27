@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Unified Deployment Script for Grand Plus College
-# Order: 1. Deploy Site (Frontend) -> 2. Deploy SelfDB (Backend) -> 3. Git Sync (Backup)
+# Order: 1. Deploy Site (Frontend) -> 2. Deploy SelfDB (Backend) -> 3. Deploy GPC Backend (Node) -> 4. Git Sync (Backup)
 
 set -e
 
@@ -16,9 +16,15 @@ echo "------------------------------------------------"
 ./deploy-selfdb.sh
 
 echo ""
-# PHASE 3: Syncing with GitHub
 echo "------------------------------------------------"
-echo "📦 PHASE 3: Syncing with GitHub..."
+echo "🟢 PHASE 3: Deploying GPC Backend (Node.js)..."
+echo "------------------------------------------------"
+./deploy-backend.sh
+
+echo ""
+# PHASE 4: Syncing with GitHub
+echo "------------------------------------------------"
+echo "📦 PHASE 4: Syncing with GitHub..."
 echo "------------------------------------------------"
 if command -v gacp >/dev/null 2>&1; then
   gacp

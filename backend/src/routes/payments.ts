@@ -25,6 +25,7 @@ router.post('/initialize', async (req: Request, res: Response) => {
       payer_type,
       fee_type,
       payment_method,
+      mobile_no,
     } = req.body;
 
     if (!email || !amount) {
@@ -32,6 +33,9 @@ router.post('/initialize', async (req: Request, res: Response) => {
     }
     if (typeof amount !== 'number' || amount <= 0) {
       return res.status(400).json({ ok: false, error: 'amount must be a positive number' });
+    }
+    if (!mobile_no || typeof mobile_no !== 'string') {
+      return res.status(400).json({ ok: false, error: 'mobile_no is required' });
     }
 
     const request_ref = generateReference();
@@ -44,6 +48,7 @@ router.post('/initialize', async (req: Request, res: Response) => {
       currency,
       payerName: payer_name ?? undefined,
       feeType:   fee_type   ?? undefined,
+      mobileNo:  mobile_no,
     });
 
     // Store amount as integer in cents/kobo (smallest unit)

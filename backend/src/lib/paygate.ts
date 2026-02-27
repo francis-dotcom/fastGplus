@@ -80,6 +80,7 @@ export async function paygateInitialize(payload: {
   payerName?: string;
   currency?: string;
   feeType?: string;
+  mobileNo?: string;
 }): Promise<{ payment_url: string; paygate_ref: string; raw: unknown }> {
 
   // Split full name into firstname / surname for PayGate customer object
@@ -106,7 +107,7 @@ export async function paygateInitialize(payload: {
         firstname,
         surname,
         email:        payload.email,
-        mobile_no:    '',
+        mobile_no:    payload.mobileNo ?? '',
       },
       meta: {
         fee_type:    payload.feeType ?? '',
