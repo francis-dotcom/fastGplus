@@ -97,7 +97,6 @@ export async function paygateInitialize(payload: {
       route_mode:    null,
     },
     transaction: {
-      mock_mode:              'inspect',
       transaction_ref:        payload.reference,
       transaction_desc:       `GPC Fee: ${payload.feeType ?? 'General'}`,
       transaction_ref_parent: null,
