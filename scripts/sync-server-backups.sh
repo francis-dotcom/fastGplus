@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Sync SelfDB server backups to Mac.
 # Rsyncs ~/selfdb/backups/ on the server to ~/Desktop/selfdb-backups/ on your Mac.
-# Run manually or via cron (see action.md).
+# Run manually or via cron (see MD/action.md).
 set -e
 
 SERVER="femi@46.225.232.77"

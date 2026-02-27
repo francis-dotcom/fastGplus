@@ -1,28 +1,27 @@
 import crypto from 'crypto';
 import { config } from '../config.js';
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Reference & Signature
+// ─────────────────────────────────────────────────────────────────────────────
+
 export function generateReference(): string {
   const timestamp = Date.now();
   const random = crypto.randomBytes(4).toString('hex').toUpperCase();
   return `GPC-${timestamp}-${random}`;
 }
 
-export function generateSignature(params: Record<string, string>): string {
-  // Sort keys alphabetically, concat all values + client secret, then MD5
-  const concatenated =
-    Object.keys(params)
-      .sort()
-      .map((k) => params[k])
-      .join('') + config.paygate.clientSecret;
-  return crypto.createHash('md5').update(concatenated).digest('hex');
+// PayGate Plus spec: MD5( requestRef + ";" + clientSecret )
+export function generateSignature(requestRef: string): string {
+  const raw = `${requestRef};${config.paygate.clientSecret}`;
+  return crypto.createHash('md5').update(raw).digest('hex');
 }
 
 export function verifyWebhookSignature(
-  payload: Record<string, string>,
+  requestRef: string,
   receivedChecksum: string
 ): boolean {
-  const { checksum: _omit, ...rest } = payload;
-  const expected = generateSignature(rest);
+  const expected = generateSignature(requestRef);
   try {
     return crypto.timingSafeEqual(
       Buffer.from(expected),
@@ -33,35 +32,50 @@ export function verifyWebhookSignature(
   }
 }
 
-export async function paygateInitialize(payload: {
-  reference: string;
-  amount: number; // in Naira
-  email: string;
-  currency?: string;
-}): Promise<{ payment_url: string; paygate_ref: string }> {
-  const params: Record<string, string> = {
-    api_key: config.paygate.apiKey,
-    reference: payload.reference,
-    amount: String(Math.round(payload.amount * 100)), // convert to kobo
-    email: payload.email,
-    currency: payload.currency ?? 'NGN',
-    callback_url: `${config.app.baseUrl}/api/payments/webhook`,
-    return_url: `${config.app.baseUrl}/payment-success`,
-  };
-  params.checksum = generateSignature(params);
+// ─────────────────────────────────────────────────────────────────────────────
+// Centralized HTTP wrapper — all PayGate calls go through here
+// ─────────────────────────────────────────────────────────────────────────────
 
-  const res = await fetch(`${config.paygate.baseUrl}/v1/payments/initialize`, {
+async function request<T>(path: string, body: Record<string, unknown>): Promise<T> {
+  const url = `${config.paygate.baseUrl}${path}`;
+
+  const res = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(params),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${config.paygate.apiKey}`,
+    },
+    body: JSON.stringify(body),
   });
 
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`PayGate initialize failed (${res.status}): ${err}`);
+    throw new Error(`PayGate ${path} failed (${res.status}): ${err}`);
   }
 
-  return res.json() as Promise<{ payment_url: string; paygate_ref: string }>;
+  return res.json() as Promise<T>;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PayGate API calls
+// ─────────────────────────────────────────────────────────────────────────────
+
+export async function paygateInitialize(payload: {
+  reference: string;
+  amount: number; // in Naira — converted to kobo internally
+  email: string;
+  currency?: string;
+}): Promise<{ payment_url: string; paygate_ref: string }> {
+  return request('/v1/payments/initialize', {
+    api_key: config.paygate.apiKey,
+    request_ref: payload.reference,
+    amount: Math.round(payload.amount * 100), // kobo
+    email: payload.email,
+    currency: payload.currency ?? 'NGN',
+    callback_url: `${config.app.baseUrl}/api/payments/webhook`,
+    return_url: `${config.app.baseUrl}/payment-success`,
+    checksum: generateSignature(payload.reference),
+  });
 }
 
 export async function paygateVerify(reference: string): Promise<{
@@ -69,47 +83,25 @@ export async function paygateVerify(reference: string): Promise<{
   paygate_ref: string;
   amount: number;
 }> {
-  const params: Record<string, string> = {
+  return request('/v1/payments/verify', {
     api_key: config.paygate.apiKey,
-    reference,
-  };
-  params.checksum = generateSignature(params);
-
-  const res = await fetch(`${config.paygate.baseUrl}/v1/payments/verify`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(params),
+    request_ref: reference,
+    checksum: generateSignature(reference),
   });
-
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`PayGate verify failed (${res.status}): ${err}`);
-  }
-
-  return res.json() as Promise<{ status: string; paygate_ref: string; amount: number }>;
 }
 
 export async function paygateRefund(
+  reference: string,
   paygateRef: string,
   amount: number,
   reason: string
 ): Promise<void> {
-  const params: Record<string, string> = {
+  await request('/v1/payments/refund', {
     api_key: config.paygate.apiKey,
+    request_ref: reference,
     paygate_ref: paygateRef,
-    amount: String(Math.round(amount * 100)),
+    amount: Math.round(amount * 100),
     reason,
-  };
-  params.checksum = generateSignature(params);
-
-  const res = await fetch(`${config.paygate.baseUrl}/v1/payments/refund`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(params),
+    checksum: generateSignature(reference),
   });
-
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`PayGate refund failed (${res.status}): ${err}`);
-  }
 }

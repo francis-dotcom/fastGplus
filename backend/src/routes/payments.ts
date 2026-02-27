@@ -16,44 +16,38 @@ const router = Router();
 // ─────────────────────────────────────────────────────────────────────────────
 router.post('/initialize', async (req: Request, res: Response) => {
   try {
-    const { email, amount, currency = 'NGN', application_id } = req.body;
+    const { email, amount, currency = 'NGN' } = req.body;
 
     if (!email || !amount) {
       return res.status(400).json({ ok: false, error: 'email and amount are required' });
     }
     if (typeof amount !== 'number' || amount <= 0) {
-      return res.status(400).json({ ok: false, error: 'amount must be a positive number' });
+      return res.status(400).json({ ok: false, error: 'amount must be a positive number (in Naira)' });
     }
 
-    const reference = generateReference();
+    const request_ref = generateReference();
 
-    // Call PayGate
-    const { payment_url, paygate_ref } = await paygateInitialize({
-      reference,
-      amount,
-      email,
-      currency,
-    });
+    // Call PayGate — returns payment_url and paygate_txn_id
+    const initResponse = await paygateInitialize({ reference: request_ref, amount, email, currency });
 
-    // Save to DB as PENDING
+    // Store amount as integer in kobo (smallest unit)
+    const amountKobo = Math.round(amount * 100);
+
     await query(
-      `INSERT INTO payments
-        (application_id, student_email, amount, currency, transaction_id, status, metadata, paid_at)
-       VALUES ($1, $2, $3, $4, $5, 'PENDING', $6, NULL)`,
-      [
-        application_id ?? null,
-        email,
-        amount,
-        currency,
-        reference,
-        JSON.stringify({ paygate_ref, payment_url }),
-      ]
+      `INSERT INTO transactions
+        (request_ref, email, amount, currency, status, raw_init_response)
+       VALUES ($1, $2, $3, $4, 'PENDING', $5)`,
+      [request_ref, email, amountKobo, currency, JSON.stringify(initResponse)]
     );
 
-    return res.status(201).json({ ok: true, reference, payment_url });
+    return res.status(201).json({
+      ok: true,
+      request_ref,
+      payment_url: initResponse.payment_url,
+    });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Internal error';
-    console.error('[payments/initialize]', err);
+    console.error('[payments/initialize] error=%s', message);
     return res.status(500).json({ ok: false, error: message });
   }
 });
@@ -65,111 +59,115 @@ router.post('/initialize', async (req: Request, res: Response) => {
 router.post('/webhook', async (req: Request, res: Response) => {
   try {
     const payload = req.body as Record<string, string>;
-    const { checksum, reference, status, paygate_ref } = payload;
+    const { checksum, request_ref, status, paygate_txn_id } = payload;
 
-    if (!verifyWebhookSignature(payload, checksum)) {
-      console.warn('[payments/webhook] Invalid signature for ref:', reference);
+    if (!verifyWebhookSignature(request_ref, checksum)) {
+      console.warn('[payments/webhook] invalid signature ref=%s', request_ref);
       return res.status(400).json({ ok: false, error: 'Invalid signature' });
     }
 
-    const tx = await queryOne<{ id: string; metadata: Record<string, unknown> }>(
-      `SELECT id, metadata FROM payments WHERE transaction_id = $1`,
-      [reference]
+    const tx = await queryOne<{ id: string; status: string }>(
+      `SELECT id, status FROM transactions WHERE request_ref = $1`,
+      [request_ref]
     );
 
     if (!tx) {
       return res.status(404).json({ ok: false, error: 'Transaction not found' });
     }
 
+    // Idempotency guard — never overwrite an already-settled transaction
+    if (tx.status !== 'PENDING') {
+      console.info('[payments/webhook] ref=%s already settled as %s — ignoring', request_ref, tx.status);
+      return res.status(200).json({ ok: true });
+    }
+
     const newStatus = status === 'SUCCESS' ? 'SUCCESS' : 'FAILED';
-    const updatedMeta = { ...tx.metadata, paygate_ref, webhook_data: payload };
 
     await query(
-      `UPDATE payments
-       SET status = $1,
-           metadata = $2,
-           paid_at = CASE WHEN $1 = 'SUCCESS' THEN NOW() ELSE paid_at END
-       WHERE id = $3`,
-      [newStatus, JSON.stringify(updatedMeta), tx.id]
+      `UPDATE transactions
+       SET status              = $1,
+           paygate_txn_id      = $2,
+           raw_webhook_payload = $3,
+           updated_at          = NOW()
+       WHERE id = $4 AND status = 'PENDING'`,
+      [newStatus, paygate_txn_id ?? null, JSON.stringify(payload), tx.id]
     );
 
-    // Always respond 200 fast — PayGate will retry on failure
+    console.info('[payments/webhook] ref=%s → %s', request_ref, newStatus);
     return res.status(200).json({ ok: true });
   } catch (err: unknown) {
-    console.error('[payments/webhook]', err);
-    // Still return 200 so PayGate doesn't keep retrying on our server errors
+    const message = err instanceof Error ? err.message : 'Internal error';
+    console.error('[payments/webhook] ref=%s error=%s', req.body?.request_ref, message);
+    // Always return 200 — PayGate retries on any non-200
     return res.status(200).json({ ok: true });
   }
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. Verify Payment — calls PayGate directly, syncs DB if needed
-// GET /api/payments/verify/:reference
+// 3. Verify Payment — calls PayGate, syncs DB if needed
+// GET /api/payments/verify/:request_ref
 // ─────────────────────────────────────────────────────────────────────────────
-router.get('/verify/:reference', async (req: Request, res: Response) => {
+router.get('/verify/:request_ref', async (req: Request, res: Response) => {
   try {
-    const { reference } = req.params;
+    const { request_ref } = req.params;
 
-    const tx = await queryOne<{
-      id: string;
-      status: string;
-      amount: number;
-      metadata: Record<string, unknown>;
-    }>(
-      `SELECT id, status, amount, metadata FROM payments WHERE transaction_id = $1`,
-      [reference]
+    const tx = await queryOne<{ id: string; status: string; amount: number }>(
+      `SELECT id, status, amount FROM transactions WHERE request_ref = $1`,
+      [request_ref]
     );
 
     if (!tx) {
       return res.status(404).json({ ok: false, error: 'Transaction not found' });
     }
 
-    const paygateData = await paygateVerify(reference);
+    const paygateData = await paygateVerify(request_ref);
     const newStatus = paygateData.status === 'SUCCESS' ? 'SUCCESS' : tx.status;
 
-    // Sync DB if PayGate says success but DB is still PENDING
-    if (tx.status !== newStatus) {
+    // Sync DB if PayGate says SUCCESS but we're still PENDING
+    if (tx.status === 'PENDING' && newStatus === 'SUCCESS') {
       await query(
-        `UPDATE payments
-         SET status = $1,
-             paid_at = CASE WHEN $1 = 'SUCCESS' THEN NOW() ELSE paid_at END
-         WHERE id = $2`,
-        [newStatus, tx.id]
+        `UPDATE transactions
+         SET status         = $1,
+             paygate_txn_id = $2,
+             updated_at     = NOW()
+         WHERE id = $3 AND status = 'PENDING'`,
+        [newStatus, paygateData.paygate_ref, tx.id]
       );
     }
 
     return res.json({
       ok: true,
-      reference,
+      request_ref,
       status: newStatus,
-      amount: tx.amount,
+      amount_kobo: tx.amount,
       paygate: paygateData,
     });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Internal error';
-    console.error('[payments/verify]', err);
+    console.error('[payments/verify] ref=%s error=%s', req.params.request_ref, message);
     return res.status(500).json({ ok: false, error: message });
   }
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 4. Check Local Status — DB only, no PayGate call
-// GET /api/payments/status/:reference
+// GET /api/payments/status/:request_ref
 // ─────────────────────────────────────────────────────────────────────────────
-router.get('/status/:reference', async (req: Request, res: Response) => {
+router.get('/status/:request_ref', async (req: Request, res: Response) => {
   try {
-    const { reference } = req.params;
+    const { request_ref } = req.params;
 
     const tx = await queryOne<{
       status: string;
       amount: number;
       currency: string;
-      student_email: string;
-      paid_at: string | null;
+      email: string;
+      created_at: string;
+      updated_at: string;
     }>(
-      `SELECT status, amount, currency, student_email, paid_at
-       FROM payments WHERE transaction_id = $1`,
-      [reference]
+      `SELECT status, amount, currency, email, created_at, updated_at
+       FROM transactions WHERE request_ref = $1`,
+      [request_ref]
     );
 
     if (!tx) {
@@ -178,16 +176,17 @@ router.get('/status/:reference', async (req: Request, res: Response) => {
 
     return res.json({
       ok: true,
-      reference,
+      request_ref,
       status: tx.status,
-      amount: tx.amount,
+      amount_kobo: tx.amount,
       currency: tx.currency,
-      email: tx.student_email,
-      paid_at: tx.paid_at,
+      email: tx.email,
+      created_at: tx.created_at,
+      updated_at: tx.updated_at,
     });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Internal error';
-    console.error('[payments/status]', err);
+    console.error('[payments/status] ref=%s error=%s', req.params.request_ref, message);
     return res.status(500).json({ ok: false, error: message });
   }
 });
@@ -198,66 +197,66 @@ router.get('/status/:reference', async (req: Request, res: Response) => {
 // ─────────────────────────────────────────────────────────────────────────────
 router.post('/refund', async (req: Request, res: Response) => {
   try {
-    const { reference, reason } = req.body;
+    const { request_ref, reason } = req.body;
 
-    if (!reference || !reason) {
-      return res.status(400).json({ ok: false, error: 'reference and reason are required' });
+    if (!request_ref || !reason) {
+      return res.status(400).json({ ok: false, error: 'request_ref and reason are required' });
     }
 
     const tx = await queryOne<{
       id: string;
       status: string;
       amount: number;
-      metadata: Record<string, unknown>;
+      paygate_txn_id: string | null;
     }>(
-      `SELECT id, status, amount, metadata FROM payments WHERE transaction_id = $1`,
-      [reference]
+      `SELECT id, status, amount, paygate_txn_id FROM transactions WHERE request_ref = $1`,
+      [request_ref]
     );
 
     if (!tx) {
       return res.status(404).json({ ok: false, error: 'Transaction not found' });
     }
     if (tx.status !== 'SUCCESS') {
-      return res.status(400).json({ ok: false, error: 'Only successful payments can be refunded' });
+      return res.status(400).json({ ok: false, error: 'Only successful transactions can be refunded' });
+    }
+    if (!tx.paygate_txn_id) {
+      return res.status(400).json({ ok: false, error: 'No paygate_txn_id on this transaction' });
     }
 
-    const paygateRef = tx.metadata?.paygate_ref as string | undefined;
-    if (!paygateRef) {
-      return res.status(400).json({ ok: false, error: 'No paygate_ref found on this transaction' });
-    }
-
-    await paygateRefund(paygateRef, tx.amount, reason);
-
-    const updatedMeta = {
-      ...tx.metadata,
-      refund_reason: reason,
-      refunded_at: new Date().toISOString(),
-    };
+    // amount stored in kobo — convert back to Naira for PayGate
+    const amountNaira = tx.amount / 100;
+    await paygateRefund(request_ref, tx.paygate_txn_id, amountNaira, reason);
 
     await query(
-      `UPDATE payments SET status = 'REFUNDED', metadata = $1 WHERE id = $2`,
-      [JSON.stringify(updatedMeta), tx.id]
+      `UPDATE transactions
+       SET status       = 'REFUNDED',
+           refund_reason = $1,
+           refunded_at  = NOW(),
+           updated_at   = NOW()
+       WHERE id = $2`,
+      [reason, tx.id]
     );
 
+    console.info('[payments/refund] ref=%s refunded', request_ref);
     return res.json({ ok: true, message: 'Refund processed successfully' });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Internal error';
-    console.error('[payments/refund]', err);
+    console.error('[payments/refund] ref=%s error=%s', req.body?.request_ref, message);
     return res.status(500).json({ ok: false, error: message });
   }
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 6. Payment History — paginated, filterable
-// GET /api/payments/history?status=SUCCESS&limit=20&offset=0
+// GET /api/payments/history?status=SUCCESS&email=x@x.com&limit=50&offset=0
 // ─────────────────────────────────────────────────────────────────────────────
 router.get('/history', async (req: Request, res: Response) => {
   try {
     const {
       status,
+      email,
       limit = '50',
       offset = '0',
-      email,
     } = req.query as Record<string, string>;
 
     const conditions: string[] = [];
@@ -269,30 +268,31 @@ router.get('/history', async (req: Request, res: Response) => {
     }
     if (email) {
       params.push(email.toLowerCase());
-      conditions.push(`LOWER(student_email) = $${params.length}`);
+      conditions.push(`LOWER(email) = $${params.length}`);
     }
 
     const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
     params.push(parseInt(limit, 10), parseInt(offset, 10));
 
     const rows = await query(
-      `SELECT id, transaction_id, student_email, amount, currency, status, payment_method, paid_at, metadata
-       FROM payments
+      `SELECT id, request_ref, paygate_txn_id, email, amount, currency,
+              status, refund_reason, refunded_at, created_at, updated_at
+       FROM transactions
        ${where}
-       ORDER BY paid_at DESC NULLS LAST
+       ORDER BY created_at DESC
        LIMIT $${params.length - 1} OFFSET $${params.length}`,
       params
     );
 
     const [{ count }] = await query<{ count: string }>(
-      `SELECT COUNT(*) as count FROM payments ${where}`,
+      `SELECT COUNT(*) as count FROM transactions ${where}`,
       params.slice(0, params.length - 2)
     );
 
-    return res.json({ ok: true, total: parseInt(count, 10), payments: rows });
+    return res.json({ ok: true, total: parseInt(count, 10), transactions: rows });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Internal error';
-    console.error('[payments/history]', err);
+    console.error('[payments/history] error=%s', message);
     return res.status(500).json({ ok: false, error: message });
   }
 });
